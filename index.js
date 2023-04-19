@@ -1,4 +1,3 @@
-
 class Product {
     constructor(title, description, price, thumbnail, code, stock) {
         this.id = 0

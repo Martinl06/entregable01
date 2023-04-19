@@ -55,10 +55,6 @@ class ProductManager {
 }
 
 
-
-
-const Productmanager = require('./ProductManager');
-
 const productManager = new ProductManager('products.json');
 
 const product1 = {

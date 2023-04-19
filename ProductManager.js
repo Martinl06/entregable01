@@ -54,7 +54,7 @@ class ProductManager {
 
 }
 
-module.exports = ProductManager;
+
 
 
 const Productmanager = require('./ProductManager');

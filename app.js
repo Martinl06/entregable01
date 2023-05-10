@@ -2,35 +2,18 @@ const express = require('express');
 const app = express();
 const ProductManager = require('./ProductManager.js');
 const productManager = new ProductManager('./products.json');
+const routesProducts = require('./Routes/products.js');
+const routesCart = require('./Routes/cart.js');
 
 
-app.listen(3000, () => console.log('Servidor escuchando en puerto 3000'))
 
-app.get('/products', async (req, res) => {
-    try{
-        const limit = parseInt(req.query.limit)
-        const products = await productManager.getProducts()
-        if(!limit){
-            res.send(products)
-        }else{
-            res.send(products.slice(0, limit))
-        }
-    }catch(err){
-        res.send('Error')
-    }
-})
+app.use(express.json());
+
+app.use('/api/products', routesProducts)
+app.use('/api/cart', routesCart)
 
 
-app.get('/products/:pid', async (req, res) => {
-    try{
-        const id = parseInt(req.params.pid)
-        const productFound = await productManager.getProductById(id)
-        if(!productFound){
-        res.send('No existe el producto')
-    }else{
-        res.send(productFound)
-    }
-    }catch(err){
-        res.send('Error')
-    }
-})
+
+
+
+app.listen(8080, () => console.log('Servidor escuchando en puerto 8080'))

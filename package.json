@@ -18,6 +18,8 @@
   "homepage": "https://github.com/Martinl06/entregable01#readme",
   "dependencies": {
     "express": "^4.18.2",
+    "express-handlebars": "^7.0.7",
+    "socket.io": "^4.6.1",
     "uuid4": "^2.0.3"
   }
 }

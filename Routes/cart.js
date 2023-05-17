@@ -13,7 +13,7 @@ const cartsFilePath = path.join(__dirname, '../data/carrito.json');
 router.post('/', (req, res) => {
   let carts = JSON.parse(fs.readFileSync(cartsFilePath, 'utf-8'));
   let newCart = {
-    id: generateUniqueId(), // Función para generar un ID único
+    id: generateUniqueId(), 
     products: [],
   };
   carts.push(newCart);
@@ -50,7 +50,7 @@ router.post('/:cid/product/:pid', (req, res) => {
   res.json(cart.products);
 });
 
-// Función para generar un ID único
+
 function generateUniqueId() {
   return Date.now().toString(36) + Math.random().toString(36).substr(2);
 }

@@ -1,16 +1,26 @@
+//create server
 const express = require('express');
 const app = express();
-const ProductManager = require('./ProductManager.js');
-const productManager = new ProductManager('./products.json');
+const PORT = 8080 || process.env.PORT;
+
+//import products
+const ProductManager = require('./managers/ProductManager.js');
+const productManager = new ProductManager('./utils/products.json');
+const CartManager = require('./managers/CartManager.js');
+const cartManager = new CartManager('./utils/Carrito.json');
+
+//import routes
 const routesProducts = require('./Routes/products.js');
 const routesCart = require('./Routes/cart.js');
-const PORT = 8080 || process.env.PORT;
 const homeRouter = require('./Routes/home.router.js')
 const realTimeProducts = require('./Routes/realTimeProducts.js')
 
-const { Server } = require('socket.io')
+//import http
 const http = require('http')
 const server = http.createServer(app)
+
+//import socket
+const { Server } = require('socket.io')
 const io = new Server(server)
 
 
@@ -38,9 +48,13 @@ app.engine('handlebars', handlebars.engine());
 app.set('view engine', 'handlebars');
 app.set('views', __dirname + '/views');
 
-//socket
+//socket canal abierto
 io.on('connection', (socket) => {
-    console.log('Nuevo cliente conectado')})
+    console.log('Nuevo cliente conectado')
+    socket.on('new-product', (data) => {
+        console.log(data)
+    })
 
+    })
 
 server.listen(PORT, () => console.log('Servidor escuchando en puerto 8080'));

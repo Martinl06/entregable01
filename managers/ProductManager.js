@@ -96,4 +96,4 @@ const product2 = {
 };
 /*productManager.updateProduct(1, actualizarProducto); // Actualiza el producto con id 1*/
 
-productManager.deleteProduct(); // Elimina el producto con id 2
+//productManager.deleteProduct(); // Elimina el producto con id 2

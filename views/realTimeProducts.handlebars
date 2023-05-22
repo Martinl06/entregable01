@@ -1,17 +1,47 @@
 
-<h1>Lista de Productos en Tiempo Real</h1>
-<ul>
+<h1 class="title-principal container">Lista de Productos</h1>
+  <div class = "fluid row">
+    <div class = "col-6 cards">
   {{#each products}}
-    <li>{{this}}</li>
+    <div class="card cards container mt-3" style="width: 18rem;">
+  <img src="this.thumbnail" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{this.title}}</h5>
+    <p class="card-text">{{this.description}}</p>
+    <p class="card-text">PRECIO: $ {{this.price}}</p>
+    <p class="card-text">CODIGO: {{this.code}}</p>
+    <p class="card-text">STOCK: {{this.stock}}</p>
+    <a href="#" class="btn btn-primary">Ver</a>
+  </div>
+</div>
   {{/each}}
-</ul>
+  </div>
+</div>
 
-<form id="productForm">
-  <input type="text" name="productName" placeholder="Nombre del producto" required>
-  <button type="submit">Agregar Producto</button>
-  <button type="submit">Eliminar Producto</button>
-
+<form class = "container formulario" onsubmit="return getProductForm()" method = "POST">
+  <h1>Formulario de Producto</h1>
+<div class="mb-3">
+  <label for="title" class="form-label title-form">Nombre del producto</label>
+  <input type="text" class="form-control" id="title" placeholder="Ingrese nombre del producto">
+</div>
+<div class="mb-3">
+  <label for="description" class="form-label form-input">Description</label>
+  <textarea class="form-control" id="description" placeholder="Descripción del producto" rows="3" cols="10"></textarea>
+</div>
+<div class="mb-3">
+  <label for="price" class="form-label form-input">Price</label>
+  <input type="text" class="form-control" id="price" placeholder="Ingrese Precio">
+</div>
+<div class="mb-3">
+  <label for="code" class="form-label form-input">Code</label>
+  <input type="text" class="form-control" id="code" placeholder="Ingrese código de producto">
+<div class="mb-3 mt-3">
+  <label for="stock" class="form-label form-input">Stock</label>
+  <input type="text" class="form-control" id="stock" placeholder="Ingrese cantidad disponible">
+</div>
+<div>
+  <button type="submit" class="btn btn-warning ">Agregar</button>
+</div>
 </form>
-
 <script src="/socket.io/socket.io.js"></script>
 <script src = "/js/index.js"></script>

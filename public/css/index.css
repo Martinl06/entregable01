@@ -1,0 +1,36 @@
+.formulario{
+    background-color: rgb(98, 98, 255);
+    color: white;
+    padding: 10px;
+    margin: 0 auto;
+    width: 60%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px black;
+    margin-top: 9rem;
+}
+
+.title-form{
+    font-weight: bold;
+    font-size: 1rem;
+    font-family:cursive;
+    margin-top: 1rem;
+}
+
+.form-input{
+    font-weight: bold;
+    font-size: 1rem;
+    font-family:cursive;
+}
+
+.title-principal{
+    color: blue;
+    text-align: center;
+}
+
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}

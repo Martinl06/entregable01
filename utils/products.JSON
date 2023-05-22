@@ -97,13 +97,5 @@
     "thumbnail": "/path/to/producto11/thumbnail",
     "code": "abc140",
     "stock": 25
-  },
-  {
-    "id": 12,
-    "title": "Gorro",
-    "description": "Gorro lana",
-    "price": "$5600",
-    "code": "A200",
-    "stock": "10"
   }
 ]

@@ -2,7 +2,24 @@ const socketCliente = io()
 
 socketCliente.on('productsNew', (data) => {
     console.log(data)
+    render(data)
+
 })
+
+function render(data){
+    const html = data.map((elem, index) => {
+        return(`<div>
+        <p><strong>Nombre: </strong>${elem.title}</p>
+        <p><strong>Descripcion: </strong>${elem.description}</p>
+        <p><strong>Precio: </strong>${elem.price}</p>
+        <p><strong>Codigo: </strong>${elem.code}</p>
+        <p><strong>Stock: </strong>${elem.stock}</p>
+        </div>`)
+    }).join(" ")
+    document.getElementById('productN').innerHTML = html
+}
+
+
 
 function getProductForm() {
     const NewProduct = {

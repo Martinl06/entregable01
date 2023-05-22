@@ -51,7 +51,9 @@ app.set('views', __dirname + '/views');
 //socket canal abierto
 io.on('connection', (socket) => {
     console.log('Nuevo cliente conectado')
-    socket.on('new-product', (data) => {
+    socket.on('new-product', (data) => { 
+        productManager.addProduct(data)
+        io.sockets.emit('productsNew', data)
         console.log(data)
     })
 

@@ -13,11 +13,4 @@ router.get('/', (req, res) => {
   });
 
 
-
-  router.post('/', (req, res) => {
-    const { title, price, description, code, stock } = req.body;
-    const product = productManager.addProduct(title, description, price, code, stock);
-    res.redirect('/realTimeProducts');
-  })
-
   module.exports = router

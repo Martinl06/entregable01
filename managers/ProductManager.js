@@ -1,4 +1,5 @@
 const fs = require('fs');
+const uuid4 = require('uuid4');
 
 class ProductManager {
     constructor(path){
@@ -7,12 +8,13 @@ class ProductManager {
 
 
     addProduct(product) {
-        const products = this.getProducts();
-        const newProduct = { id: products.length + 1, ...product };
-        products.push(newProduct);
-        fs.writeFileSync(this.path, JSON.stringify(products, null, 2), 'utf-8');
-        return newProduct;
-      }
+      const products = this.getProducts();
+      const uuid4 = require('uuid4');
+      const newProduct = { id: uuid4(), ...product };
+      products.push(newProduct);
+      fs.writeFileSync(this.path, JSON.stringify(products, null, 2), 'utf-8');
+      return newProduct;
+    }
 
     getProducts() {
          try {

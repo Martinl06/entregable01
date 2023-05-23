@@ -5,6 +5,7 @@ const ProductManager = require('../managers/ProductManager.js');
 const productManager = new ProductManager('./utils/products.json');
 const uuid4 = require('uuid4')
 
+
 router.use(express.json())
 
 
@@ -17,6 +18,11 @@ router.get('/:id', (req, res) => {
     const product = productManager.getProductById(id)
     res.send({data: product, message: "Producto encontrado"})
 })
+
+router.post('/', (req, res) => {
+    const newProduct = req.body;
+    res.send(productManager.addProduct(newProduct))
+  })
 
 router.post('/createProduct', (req, res) => {
    const id = uuid4() 

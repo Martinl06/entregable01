@@ -2,8 +2,7 @@
 <h1 class="title-principal container">Lista de Productos</h1>
   <div class = "fluid row">
     <div class = "col-6 cards">
-  {{#each products}}
-  <div id="productN"></div>
+      {{#each products }}
     <div class="card cards container mt-3" style="width: 18rem;">
   <img src="" class="card-img-top" alt="...">
   <div class="card-body">
@@ -14,9 +13,13 @@
     <p class="card-text">STOCK: {{this.stock}}</p>
     <a href="#" class="btn btn-primary">Ver</a>
   </div>
-</div>
-  {{/each}}
   </div>
+  {{/each}}
+</div>
+</div>
+
+<div id="productN">
+  
 </div>
 
 <form class = "container formulario" onsubmit="return getProductForm()" method = "POST">

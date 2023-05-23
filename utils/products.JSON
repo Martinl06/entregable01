@@ -97,5 +97,13 @@
     "thumbnail": "/path/to/producto11/thumbnail",
     "code": "abc140",
     "stock": 25
+  },
+  {
+    "id": "953e588b-482b-4c50-9ac7-00db30d6c1af",
+    "title": "Gorro ",
+    "description": "Gorro lana mujer",
+    "price": "$1500",
+    "code": "Gm 777",
+    "stock": "11"
   }
 ]

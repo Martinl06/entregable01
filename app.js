@@ -49,12 +49,17 @@ app.set('view engine', 'handlebars');
 app.set('views', __dirname + '/views');
 
 //socket canal abierto
-io.on('connection', (socket) => {
+io.on('connection',async (socket) => {
     console.log('Nuevo cliente conectado')
-    socket.on('new-product', (data) => { 
-        productManager.addProduct(data)
-        io.sockets.emit('productsNew', data)
-        console.log(data)
+
+const product = await productManager.getProducts()
+
+    socket.emit('products', product)
+
+    socket.on( 'new-product', (newProduct) => { 
+        productManager.addProduct(newProduct)
+        io.sockets.emit('productsNew', newProduct)
+        console.log(newProduct)
     })
 
     })

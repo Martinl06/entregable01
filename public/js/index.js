@@ -1,14 +1,15 @@
 const socketCliente = io()
 
 
-socketCliente.on('productsNew', (data) => {
-  console.log(data)
+socketCliente.on('productsNew', products => {
+  console.log(products)
+  
 
 
 })
 
-function render(data){
-  const html = data.map((elem, index) => {
+function render(products){
+  const html = products.map((elem, index) => {
       return(`<div>
       <p><strong>Nombre: </strong>${elem.title}</p>
       <p><strong>Descripcion: </strong>${elem.description}</p>

@@ -52,14 +52,18 @@ app.set('views', __dirname + '/views');
 io.on('connection',async (socket) => {
     console.log('Nuevo cliente conectado')
 
-const product = await productManager.getProducts()
+const products = await productManager.getProducts()
 
-    socket.emit('products', product)
+    socket.emit('NewProduct', products)
 
-    socket.on( 'new-product', (newProduct) => { 
-        productManager.addProduct(newProduct)
-        io.sockets.emit('productsNew', newProduct)
-        console.log(newProduct)
+    socket.on( 'NewProduct', (NewProduct) => { 
+        productManager.addProduct(NewProduct)
+        console.log(NewProduct)
+    })
+
+    socket.on('ProductDelete', async (ProductDelete) => {
+        productManager.deleteProduct(ProductDelete)
+    io.emit('ProductsUpdate', ProductDelete)
     })
 
     })

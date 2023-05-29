@@ -1,26 +1,6 @@
 const socketCliente = io()
 
 
-socketCliente.on('productsNew', products => {
-  console.log(products)
-  
-
-
-})
-
-function render(products){
-  const html = products.map((elem, index) => {
-      return(`<div>
-      <p><strong>Nombre: </strong>${elem.title}</p>
-      <p><strong>Descripcion: </strong>${elem.description}</p>
-      <p><strong>Precio: </strong>${elem.price}</p>
-      <p><strong>Codigo: </strong>${elem.code}</p>
-      <p><strong>Stock: </strong>${elem.stock}</p>
-      </div>`)
-  }).join(" ")
-  document.getElementById('productN').innerHTML = html
-}
-
 function getProductForm() {
     const NewProduct = {
       title: document.getElementById('title').value,
@@ -29,11 +9,65 @@ function getProductForm() {
       code: document.getElementById('code').value,
       stock: document.getElementById('stock').value,
     }
-    socketCliente.emit('new-product', NewProduct)
-    
-
-
+    socketCliente.emit('NewProduct', NewProduct)
     console.log(NewProduct)
-    return false
 
   }
+
+  socketCliente.on('NewProduct', products => {
+    console.log(products)
+    render(products)
+  
+  
+  })
+
+
+  function deleteProductForm(){
+    const ProductDelete = {
+      id: document.getElementById('id').value,
+    }
+
+    socketCliente.emit('ProductDelete', ProductDelete)
+    console.log(ProductDelete)
+  }
+
+  socketCliente.on('ProductDelete', products => {
+    console.log(products)
+    renderDelete(products)
+  })
+
+
+
+
+  function render(products) {
+    const html = products.map((elem) => {
+        return `<div>
+            <div class = "fluid row">
+              <div class = "col-6 cards">
+                <div class="card cards container mt-3" style="width: 18rem;">
+                  <img src="" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">${elem.title}</h5>
+              <p class="card-text">${elem.description}</p>
+              <p class="card-text">PRECIO: ${elem.price}</p>
+              <p class="card-text">CODIGO: ${elem.code}</p>
+              <p class="card-text">STOCK: ${elem.stock}</p>
+              <p class="card-text">ID: ${elem.id}</p>
+              <a href="#" class="btn btn-primary">Ver</a>
+            </div>
+                </div>
+  </div>
+  </div>
+  </div>`;
+      })
+      .join(" ");
+    document.getElementById("productN").innerHTML = html;
+  }
+  
+
+  function renderDelete(products, id) {
+    const arrayNew = products.filter((elem) => {
+      return elem.id !== id;
+    });
+  }
+  

@@ -19,11 +19,6 @@ router.get('/:id', (req, res) => {
     res.send({data: product, message: "Producto encontrado"})
 })
 
-router.post('/', (req, res) => {
-    const newProduct = req.body;
-    res.send(productManager.addProduct(newProduct))
-  })
-
 router.post('/createProduct', (req, res) => {
    const id = uuid4() 
    const pr = req.body

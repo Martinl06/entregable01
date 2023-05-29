@@ -7,7 +7,7 @@ const productManager = new ProductManager('./utils/products.json');
 
 router.use(express.json())
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
     const products = productManager.getProducts()
     res.render('realTimeProducts', {products});
   });

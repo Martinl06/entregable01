@@ -18,22 +18,28 @@ function getProductForm() {
     console.log(products)
     render(products)
   
-  
+    
   })
+  
+  const formDelete = document.getElementById('formDelete')
+  formDelete.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    formDelete.reset();
+  });
 
 
   function deleteProductForm(){
     const ProductDelete = {
-      id: document.getElementById('id').value,
+      id: document.getElementById('id').value,   
     }
-
-    socketCliente.emit('ProductDelete', ProductDelete)
-    console.log(ProductDelete)
+    socketCliente.emit('ProductDelete', ProductDelete);
+      console.log(ProductDelete)
   }
 
+  //que se vea en el cliente todos los productos menos el que se borro
   socketCliente.on('ProductDelete', products => {
     console.log(products)
-    renderDelete(products)
   })
 
 
@@ -65,9 +71,4 @@ function getProductForm() {
   }
   
 
-  function renderDelete(products, id) {
-    const arrayNew = products.filter((elem) => {
-      return elem.id !== id;
-    });
-  }
   

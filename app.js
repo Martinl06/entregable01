@@ -58,12 +58,11 @@ const products = await productManager.getProducts()
 
     socket.on( 'NewProduct', (NewProduct) => { 
         productManager.addProduct(NewProduct)
-        console.log(NewProduct)
     })
-
+    
     socket.on('ProductDelete', async (ProductDelete) => {
         productManager.deleteProduct(ProductDelete)
-    io.emit('ProductsUpdate', ProductDelete)
+        socket.emit('ProductDelete', products)
     })
 
     })

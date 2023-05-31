@@ -1,6 +1,7 @@
 const socketCliente = io()
 
 
+
 function getProductForm() {
     const NewProduct = {
       title: document.getElementById('title').value,
@@ -21,26 +22,18 @@ function getProductForm() {
     
   })
   
-  const formDelete = document.getElementById('formDelete')
-  formDelete.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    formDelete.reset();
+
+  const FormDelete = document.getElementById('FormDelete');
+  const id = document.getElementById('id');
+  const ButtonDelete = document.getElementById('ButtonDelete');
+  
+  FormDelete.addEventListener('submit', (e) => {
+      e.preventDefault();
+  
+      socketCliente.emit('ProductDelete', id.value);
+  
+      FormDelete.reset();
   });
-
-
-  function deleteProductForm(){
-    const ProductDelete = {
-      id: document.getElementById('id').value,   
-    }
-    socketCliente.emit('ProductDelete', ProductDelete);
-      console.log(ProductDelete)
-  }
-
-  //que se vea en el cliente todos los productos menos el que se borro
-  socketCliente.on('ProductDelete', products => {
-    console.log(products)
-  })
 
 
 
@@ -52,7 +45,7 @@ function getProductForm() {
               <div class = "col-6 cards">
                 <div class="card cards container mt-3" style="width: 18rem;">
                   <img src="" class="card-img-top" alt="...">
-            <div class="card-body">
+            <div class="card-body container mx-4">
               <h5 class="card-title">${elem.title}</h5>
               <p class="card-text">${elem.description}</p>
               <p class="card-text">PRECIO: ${elem.price}</p>

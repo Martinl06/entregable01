@@ -59,13 +59,14 @@ const products = await productManager.getProducts()
     socket.on( 'NewProduct', (NewProduct) => { 
         productManager.addProduct(NewProduct)
     })
-    
+
     socket.on('ProductDelete', async (ProductDelete) => {
         productManager.deleteProduct(ProductDelete)
         socket.emit('ProductDelete', products)
     })
 
     })
+    
 
 
 server.listen(PORT, () => console.log('Servidor escuchando en puerto 8080'));

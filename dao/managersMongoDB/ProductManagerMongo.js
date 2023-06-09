@@ -1,5 +1,5 @@
 const Product = require('../models/modelProducts')
-const Message = require('../models/modelMessages')
+
 
 class ProductManagerMongo{
     constructor(path){
@@ -11,9 +11,9 @@ class ProductManagerMongo{
         return newProduct.save()
     }
 
-     getProducts() {
+     async getProducts() {
         try {
-          const products = Product.find();
+          const products = await Product.find({}).lean()
           return products;
         } catch (error) {
           console.log('error', error);

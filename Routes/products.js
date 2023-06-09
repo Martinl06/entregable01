@@ -15,7 +15,7 @@ router.use(express.json())
 
 
 router.get('/', async (req, res) => {
-    const products = await productManagerMongo.getProducts()
+    await productManagerMongo.getProducts()
     .then(products => {
     if(products.length) return res.status(200).send({data: products, message: "Productos encontrados"})
     return res.status(204).send({data: products, message: "No hay productos"})

@@ -61,7 +61,7 @@ app.set('views', __dirname + '/views');
 
 //socket canal abierto
 io.on('connection',async (socket) => {
-    console.log('Nuevo cliente conectado')
+    console.log('Nuevo cliente conectado!')
 
 const products = await productManagerMongo.getProducts()
 
@@ -76,16 +76,13 @@ const products = await productManagerMongo.getProducts()
         socket.emit('ProductDelete', products)
     })
 
-
+    socket.emit('allMessages', await Message.find())
 
     socket.on('newMessage', async (data) => {
-        console.log(data)
         const messages =  new Message(data)
-        await messages.save()
+        await messages.save(data)
         io.sockets.emit('allMessages', messages)
-        //const newMessage = new Message(data)
-        //await newMessage.save(data)
-        //io.sockets.emit('allMessages', newMessage)
+       
         })
 
         })

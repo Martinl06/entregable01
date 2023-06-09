@@ -18,20 +18,23 @@ function getChatForm() {
   chat.addEventListener('submit', (e) => {
         e.preventDefault();
         chat.reset();
-        }
-  )
-
-  socketCliente.on('allMessages', (data) => {
-    console.log(data)
-    renderMessage(data)
+      }
+      )
+      
+      socketCliente.on('allMessages', (data) => {
+        console.log(data)
+        renderMessage(data)
   })
 
     function renderMessage(data) {
-        let html = data.map((elem) => {
-            return (`<div class="container chat mx-4 my-2">
+        let html = data.map(elem => {
+            return `
+            <div class="container chat mx-4 my-2">
                 <strong>${elem.user}</strong> dice <em>${elem.message}</em>
-            </div>`)
-        }).join(' ')
+            </div>
+            `;
+        })
+        .join(' ')
         document.getElementById('boxChat').innerHTML = html
     }
 

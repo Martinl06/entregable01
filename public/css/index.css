@@ -34,3 +34,15 @@
     align-items: center;
     margin: 0 auto;
 }
+
+.formChat{
+        background-color: rgb(98, 98, 255);
+        color: white;
+        padding: 10px;
+        margin: 0 auto;
+        width: 50%;
+        border-radius: 10px;
+        box-shadow: 0 0 10px black;
+        margin-top: 12rem;
+    
+}

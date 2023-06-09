@@ -1,0 +1,22 @@
+  <div id = "boxChat">
+
+  </div>
+  
+
+  <form class= "formChat" id= "chat" onsubmit="return getChatForm()">  
+<h1 class = "container">Deje aquí su mensaje</h1>
+<div class = "container mt-5">
+<div class="mb-3">
+  <label for="user" class="form-label">Correo electrónico</label>
+  <input type="email" class="form-control" id="user" placeholder="name@example.com">
+</div>
+<div class="mb-3">
+  <label for="message" class="form-label">Mensaje</label>
+  <textarea class="form-control" id="message" placeholder="Escriba su Mensaje" rows="3" col="10"></textarea>
+</div>
+  <button type="submit" class="btn btn-primary" id = "buttonSend">Enviar</button>
+</div>
+  </form>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src = "/js/chat.js"></script>

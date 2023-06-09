@@ -4,7 +4,7 @@ const socketCliente = io()
 
 function getProductForm() {
     const NewProduct = {
-      title: document.getElementById('title').value,
+      name: document.getElementById('name').value,
       description: document.getElementById('description').value,
       price: document.getElementById('price').value,
       code: document.getElementById('code').value,
@@ -21,6 +21,30 @@ function getProductForm() {
   
     
   })
+
+  function render(products) {
+    let html = products.map((elem) => {
+        return `<div>
+            <div class = "fluid row">
+              <div class = "col-6 cards">
+                <div class="card cards container mt-3" style="width: 18rem;">
+                  <img src="" class="card-img-top" alt="...">
+            <div class="card-body container mx-4">
+              <h5 class="card-title">${elem.name}</h5>
+              <p class="card-text">${elem.description}</p>
+              <p class="card-text">PRECIO: ${elem.price}</p>
+              <p class="card-text">CODIGO: ${elem.code}</p>
+              <p class="card-text">STOCK: ${elem.stock}</p>
+              <a href="#" class="btn btn-primary">Ver</a>
+            </div>
+                </div>
+  </div>
+  </div>
+  </div>`;
+      })
+      .join(" ");
+    document.getElementById("productN").innerHTML = html
+  }
   
 
   const FormDelete = document.getElementById('FormDelete');
@@ -31,37 +55,10 @@ function getProductForm() {
       e.preventDefault();
   
       socketCliente.emit('ProductDelete', id.value);
-  
+      
       FormDelete.reset();
-  });
-
-
-
-
-  function render(products) {
-    const html = products.map((elem) => {
-        return `<div>
-            <div class = "fluid row">
-              <div class = "col-6 cards">
-                <div class="card cards container mt-3" style="width: 18rem;">
-                  <img src="" class="card-img-top" alt="...">
-            <div class="card-body container mx-4">
-              <h5 class="card-title">${elem.title}</h5>
-              <p class="card-text">${elem.description}</p>
-              <p class="card-text">PRECIO: ${elem.price}</p>
-              <p class="card-text">CODIGO: ${elem.code}</p>
-              <p class="card-text">STOCK: ${elem.stock}</p>
-              <p class="card-text">ID: ${elem.id}</p>
-              <a href="#" class="btn btn-primary">Ver</a>
-            </div>
-                </div>
-  </div>
-  </div>
-  </div>`;
-      })
-      .join(" ");
-    document.getElementById("productN").innerHTML = html;
-  }
-  
+    });
+    
 
   
+    

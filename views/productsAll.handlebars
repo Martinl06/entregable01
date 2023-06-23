@@ -1,13 +1,13 @@
 <h1 class="title-principal container">Lista de Productos</h1>
   <div class = "fluid row">
     <div class = "col-6 cards">
-  {{#each products}}
+  {{#each productsArray}}
     <div class="card container mt-3" style="width: 18rem;">
   <img src= '' class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">{{this.name}}</h5>
     <p class="card-text">PRECIO: $ {{this.price}}</p>
-    <p class="card-text">{{this.description}}</p>
+    <p class="card-text">DESCRIPCION: {{this.description}}</p>
     <p class="card-text">CÓDIGO: {{this.code}}</p>
     <p class="card-text">STOCK: {{this.stock}}</p>
     <p class="card-text">GÉNERO: {{this.genero}}</p>
@@ -17,3 +17,17 @@
   {{/each}}
   </div>
 </div>
+<div>
+  {{#if pagination.hasPrevPage}}
+    <a style='font-size: 20;' href='/products/?page={{pagination.prevPage}}'>⬅{{pagination.prevPage}}</a>
+  {{/if}}
+  <a style='font-size: 20;' href='#'>{{pagination.page}}</a>
+  {{#if pagination.hasNextPage}}
+    <a style='font-size: 20;' href='/products/?page={{pagination.nextPage}}'>{{pagination.nextPage}}➡</a>
+  {{/if}}
+  <br />
+  <br />
+  {{#each links}}
+    <a href='{{this.href}}'>{{this.label}}</a>
+  {{/each}}
+  </div>

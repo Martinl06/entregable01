@@ -6,7 +6,8 @@ const productManager = new ProductManager('./utils/products.json');
 const ProductManagerMongo = require('../dao/managersMongoDB/ProductManagerMongo');
 const productManagerMongo = new ProductManagerMongo();
 const Product = require('../dao/models/modelProducts')
-const uuid4 = require('uuid4')
+const uuid4 = require('uuid4');
+const { paginate } = require('mongoose-paginate-v2');
 
 
 
@@ -15,11 +16,30 @@ router.use(express.json())
 
 
 router.get('/', async (req, res) => {
-    await productManagerMongo.getProducts()
-    .then(products => {
-    if(products.length) return res.status(200).send({data: products, message: "Productos encontrados"})
-    return res.status(204).send({data: products, message: "No hay productos"})
-    }).catch(err => res.status(500).send({err}))
+    const {page, limit} = req.query
+    try{
+       const products = await productManagerMongo.getAll(page, limit)
+       //console.log(products)
+       return res.status(200).json({
+           status: 'success',
+           payload: products.docs,
+           totalPages: products.totalPages,
+           prevPage: products.prevPage,
+           nextPage: products.nextPage,
+           page: products.page,
+           hasPrevPage: products.hasPrevPage,
+           hasNextPage: products.hasNextPage,
+           prevLink: products.hasPrevPage? `http://localhost:8080/products/?page=${products.prevPage}`: null,
+           nextLink: products.hasNextPage? `http://localhost:8080/products/?page=${products.nextPage}`: null,   
+       })
+   }catch(err){
+       console.log(err)
+       return res.status(500).json({
+           status: 'error',
+           message: 'Error al obtener los productos',
+           data:{}
+       })
+     }
 })
 
 router.get('/:id', (req, res) => {

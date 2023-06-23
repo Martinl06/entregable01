@@ -18,11 +18,12 @@ const productManagerMongo = new ProductManagerMongo();
 const Message = require ('./dao/models/modelMessages.js')
 
 //import routes
-const routesProducts = require('./Routes/products.js');
+const routesProducts = require('./Routes/productsRouter.js');
 const routesCart = require('./Routes/cart.js');
-const homeRouter = require('./Routes/home.router.js')
-const realTimeProducts = require('./Routes/realTimeProducts.js')
-const chatRouter = require('./Routes/chat.js')
+const homeRouter = require('./Routes/home.router.js');
+const realTimeProducts = require('./Routes/realTimeProducts.js');
+const chatRouter = require('./Routes/chat.js');
+const allProducts = require('./Routes/allProducts.js')
 
 //import http
 const http = require('http')
@@ -45,11 +46,14 @@ const handlebars = require('express-handlebars');
 
 
 //routes
-app.use('/api/products', routesProducts);
+app.use('/api/productsRouter', routesProducts);
 app.use('/api/cart', routesCart);
 app.use('/home', homeRouter);
 app.use('/realTimeProducts', realTimeProducts)
 app.use('/chat', chatRouter)
+app.use('/products', allProducts)
+
+
 
 //public
 app.use(express.static(__dirname + '/public'));
@@ -78,7 +82,7 @@ const products = await productManagerMongo.getProducts()
 
     socket.emit('allMessages', await Message.find())
 
-    socket.on('newMessage', async (data) => {
+    socket.on('newMessage', async (data) =>{
         const messages =  new Message(data)
         await messages.save(data)
         io.sockets.emit('allMessages', messages)

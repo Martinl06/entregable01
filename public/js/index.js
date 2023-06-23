@@ -35,6 +35,7 @@ function getProductForm() {
               <p class="card-text">PRECIO: ${elem.price}</p>
               <p class="card-text">CODIGO: ${elem.code}</p>
               <p class="card-text">STOCK: ${elem.stock}</p>
+              <p class="card-text">GENERO: ${elem.genero}</p>
               <a href="#" class="btn btn-primary">Ver</a>
             </div>
                 </div>

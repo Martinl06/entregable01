@@ -13,13 +13,9 @@ class CartManagerMongo{
         return Cart.findById(id)
     }
 
-    writeCart(cart){
-        return cart.save()
-    }
-
-    async addCart(){
-        const newCart = new Cart()
-        return await this.writeCart(newCart)
+    async addCart(cart){
+        const newCart = new Cart(cart)
+        return await newCart.save()
     }
 
     async getCarts(){
@@ -33,7 +29,21 @@ class CartManagerMongo{
         }else{
             return cart
         }
+    } 
+    async deleteCart(_id){
+        const cart = await this.cartId(_id)
+        if(!cart){
+            return "No existe el carrito"
+        }else{
+            return cart.deleteOne()
+        }
+    }
+    async addProductToCart(){
+       const cart1 = await Cart.findOne({_id:'6494ef245475a6b6f42c7195'})
+       cart1.product.push({product: '5f9b3b4b9b0b3b2a3c9b4b9b'})
+
     }
 }
+
 
 module.exports = CartManagerMongo;

@@ -1,4 +1,5 @@
 const Product = require('../models/modelProducts')
+const productSchema = require('../models/modelProducts')
 
 
 class ProductManagerMongo{
@@ -45,6 +46,10 @@ class ProductManagerMongo{
         }
         return null;
     }
+    async getAll( page, limit ) {
+        const products = await productSchema.paginate({}, { limit:2 || 10, page: page || 1 });
+        return products;
+      }
 
 }
 

@@ -51,6 +51,26 @@ class CartManagerMongo{
             console.log(error);
         }
     }
+    async UpdateCart(cid){
+        try {
+            const Cart1 = await this.getCartID(cid);
+            Cart1.product = []
+            await Cart.updateOne({_id: cid},Cart1)
+            return "carrito actualizado"
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    async updateProduct(pid){
+        try {
+            const Cart1 = await this.getCartID(pid);
+            Cart1.product.product = []
+            await Cart.updateOne({_id: pid},Cart1)
+            return "producto actualizado"
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }
 
 

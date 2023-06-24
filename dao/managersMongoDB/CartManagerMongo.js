@@ -1,4 +1,6 @@
 const Cart = require('../models/modelCarts')
+const Product = require('../models/modelProducts')
+ 
 
 class CartManagerMongo{
     constructor(path){
@@ -22,8 +24,8 @@ class CartManagerMongo{
         return await this.readCart()
     }
 
-    async getCartID(id){
-        const cart = await this.cartId(id)
+    async getCartID(_id){
+        const cart = await this.cartId(_id)
         if(!cart){
             return "No existe el carrito"
         }else{
@@ -38,10 +40,16 @@ class CartManagerMongo{
             return cart.deleteOne()
         }
     }
-    async addProductToCart(){
-       const cart1 = await Cart.findOne({_id:'6494ef245475a6b6f42c7195'})
-       cart1.product.push({product: '5f9b3b4b9b0b3b2a3c9b4b9b'})
-
+    async addProductToCart(cid,pid){
+        try {
+            const Cart1 = await this.getCartID(cid);
+            const ProductToSelect = await Product.findById(pid);
+            Cart1.product.push({product: ProductToSelect})
+            await Cart.updateOne({_id: cid},Cart1)
+            return "producto agregado"
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
 

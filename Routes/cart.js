@@ -30,34 +30,43 @@ router.get('/', (req, res) => {
 })
 
 
-router.get('/:id', (req, res) => {
-    const id = req.params.id
-    const cart = cartManagerMongo.getCartID(id)
-    res.send({data: cart, message: "Carrito encontrado"})
+router.post('/:cid/products/:pid', async (req, res) => {
+    try {
+        let cid = req.params.cid;
+        let pid = req.params.pid;
+        const productAddedToCart = await cartManagerMongo.addProductToCart(cid,pid);
+
+        res.status(200).send(productAddedToCart);
+    } catch (error) {
+        res.status(500).send(`Error al agregar producto al carrito: ${error}`)   
+    }
+
+    
 })
 
 
+
 //elimina el producto seleccionado del carrito
-router.delete('api/carts/:cid/products/:pid ', (req, res) => {
+router.delete('api/cart/:cid/products/:pid ', (req, res) => {
     const { cid, pid } = req.params
     const cart = cartManagerMongo.deleteProduct(cid, pid)
     res.send({data: cart, message: "Producto eliminado del carrito"})
 })
 
 //actualiza el carrito con un arreglo de productos
-router.put('api/carts/:cid', (req, res) => {
+router.put('/cart/:cid', (req, res) => {
     const { cid } = req.params
     const cart = cartManagerMongo.updateCart(cid)
     res.send({data: cart, message: "Carrito actualizado"})
 })
 //actualiza solo la cantidad de ejemplares del producto por cualquier cantidad pasada desde req.body
-router.put('api/carts/:cid/products/:pid', (req, res) => {
+router.put('/cart/:cid/products/:pid', (req, res) => {
     const { cid, pid } = req.params
     const cart = cartManagerMongo.updateProduct(cid, pid)
     res.send({data: cart, message: "Producto actualizado"})
 })
 //elimina todos los productos del carrito
-router.delete('api/carts/:cid', (req, res) => {
+router.delete('/cart/:cid', (req, res) => {
     const { _id } = req.params
     const cart = cartManagerMongo.deleteCart(_id)
     res.send({data: cart, message: "Carrito eliminado"})

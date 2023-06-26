@@ -1,4 +1,5 @@
-<h1 class="title-principal container">Lista de Productos</h1>
+{{! Description: Vista de producto seleccionado }}
+<h1 class="title-principal container">Producto seleccionado</h1>
 {{#each products}}
 <div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
@@ -9,7 +10,6 @@
       <div class="card-body">
         <h5 class="card-title">{{products.name}}</h5>
         <p class="card-text">{{products.description}}</p>
-        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
       </div>
     </div>
   </div>

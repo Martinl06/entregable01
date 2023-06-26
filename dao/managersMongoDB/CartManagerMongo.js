@@ -71,6 +71,16 @@ class CartManagerMongo{
             console.log(error);
         }
     }
+    async deleteProductFromCart(cid,pid){
+        try {
+            const Cart1 = await this.getCartID(cid);
+            Cart1.product.pull({product: pid})
+            await Cart.updateOne({_id: cid},Cart1)
+            return "producto eliminado"
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }
 
 

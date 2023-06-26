@@ -24,6 +24,7 @@ const homeRouter = require('./Routes/home.router.js');
 const realTimeProducts = require('./Routes/realTimeProducts.js');
 const chatRouter = require('./Routes/chat.js');
 const allProducts = require('./Routes/allProducts.js')
+const productView = require('./Routes/productView.js')
 
 //import http
 const http = require('http')
@@ -52,6 +53,7 @@ app.use('/home', homeRouter);
 app.use('/realTimeProducts', realTimeProducts)
 app.use('/chat', chatRouter)
 app.use('/products', allProducts)
+app.use('/products/productView', productView)
 
 
 

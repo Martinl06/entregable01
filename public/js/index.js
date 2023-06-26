@@ -9,6 +9,7 @@ function getProductForm() {
       price: document.getElementById('price').value,
       code: document.getElementById('code').value,
       stock: document.getElementById('stock').value,
+      genero: document.getElementById('genero').value,
     }
     socketCliente.emit('NewProduct', NewProduct)
     console.log(NewProduct)

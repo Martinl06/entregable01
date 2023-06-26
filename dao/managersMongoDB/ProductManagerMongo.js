@@ -21,9 +21,13 @@ class ProductManagerMongo{
         }
       }
 
-     getProductById(id) {
-        const Product = this.getProducts()
-        return Product.find((product) => product.id === id)
+    async getProductById(id) {
+        try {
+            const product = await Product.findById(id)
+            return product
+        } catch (error) {
+            console.log('error', error);
+        }
     }
 
      updateProduct(id, actualizarProducto) {
@@ -47,11 +51,11 @@ class ProductManagerMongo{
         return null;
     }
     async getAll( page, limit ) {
-        const products = await productSchema.paginate({}, { limit:2 || 10, page: page || 1 });
+        const products = await productSchema.paginate({}, { limit:3 || 10, page: page || 1 });
         return products;
       }
-
 }
+
 
 
 

@@ -29,7 +29,7 @@ router.get('/', (req, res) => {
     res.send({data: carts, message: "Carritos encontrados"})
 })
 
-
+//agrega el carrito con el producto seleccionado
 router.post('/:cid/products/:pid', async (req, res) => {
     try {
         let cid = req.params.cid;
@@ -47,29 +47,47 @@ router.post('/:cid/products/:pid', async (req, res) => {
 
 
 //elimina el producto seleccionado del carrito
-router.delete('api/cart/:cid/products/:pid ', (req, res) => {
-    const { cid, pid } = req.params
-    const cart = cartManagerMongo.deleteProduct(cid, pid)
-    res.send({data: cart, message: "Producto eliminado del carrito"})
+router.delete('/:cid/products/:pid ', (req, res) => {
+   try {
+    let cid = req.params.cid;
+    let pid = req.params.pid;
+    const productDeletedFromCart = cartManagerMongo.deleteProductFromCart(cid,pid);
+    res.status(200).send(productDeletedFromCart);
+   } catch (error) {
+    res.status(500).send(`Error al eliminar producto del carrito: ${error}`)   
+   }
 })
 
 //actualiza el carrito con un arreglo de productos
 router.put('/cart/:cid', (req, res) => {
-    const { cid } = req.params
-    const cart = cartManagerMongo.updateCart(cid)
-    res.send({data: cart, message: "Carrito actualizado"})
+    try{
+        let cid = req.params.cid;
+        const cartUpdated = cartManagerMongo.UpdateCart(cid);
+        res.status(200).send(cartUpdated);
+    }catch(error){
+        res.status(500).send(`Error al actualizar carrito: ${error}`)   
+    }   
 })
 //actualiza solo la cantidad de ejemplares del producto por cualquier cantidad pasada desde req.body
 router.put('/cart/:cid/products/:pid', (req, res) => {
-    const { cid, pid } = req.params
-    const cart = cartManagerMongo.updateProduct(cid, pid)
-    res.send({data: cart, message: "Producto actualizado"})
+    try{
+        let cid = req.params.cid;
+        let pid = req.params.pid;
+        const productUpdated = cartManagerMongo.UpdateProduct(cid,pid);
+        res.status(200).send(productUpdated);
+    }catch(error){
+        res.status(500).send(`Error al actualizar producto del carrito: ${error}`)   
+    }
 })
 //elimina todos los productos del carrito
 router.delete('/cart/:cid', (req, res) => {
-    const { _id } = req.params
-    const cart = cartManagerMongo.deleteCart(_id)
-    res.send({data: cart, message: "Carrito eliminado"})
+    try{
+        let cid = req.params.cid;
+        const cartDeleted = cartManagerMongo.deleteCart(cid);
+        res.status(200).send(cartDeleted);
+    }catch(error){
+        res.status(500).send(`Error al eliminar carrito: ${error}`)   
+    }
 })
 
 module.exports = router;

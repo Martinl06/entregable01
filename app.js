@@ -2,6 +2,9 @@
 const express = require('express');
 const app = express();
 const PORT = 8080 || process.env.PORT;
+const MongoStore = require('connect-mongo');
+const session = require ('express-session');
+
 
 //conect to mongo
 const mongoose = require('mongoose');
@@ -26,6 +29,7 @@ const chatRouter = require('./Routes/chat.js');
 const allProducts = require('./Routes/allProducts.js')
 const productView = require('./Routes/productView.js')
 const cartView = require('./Routes/cartView.js')
+const formLogin = require('./Routes/formLogin.js')
 
 //import http
 const http = require('http')
@@ -36,7 +40,14 @@ const { Server } = require('socket.io')
 const io = new Server(server)
 
 
-
+app.use(session({
+    store: MongoStore.create({
+        mongoUrl: 'mongodb+srv://martinlujan0666:Martin1470@ecommerce.v4lpkit.mongodb.net/ecommerce'
+    }),
+    secret: 'secretCode',
+    resave: true,
+    saveUninitialized: false,
+}))
 
 
 
@@ -56,6 +67,7 @@ app.use('/chat', chatRouter)
 app.use('/products', allProducts)
 app.use('/products/productView', productView)
 app.use('/api/cart/cartView', cartView)
+app.use('/formLogin', formLogin)
 
 
 

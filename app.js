@@ -30,6 +30,7 @@ const allProducts = require('./Routes/allProducts.js')
 const productView = require('./Routes/productView.js')
 const cartView = require('./Routes/cartView.js')
 const formLogin = require('./Routes/formLogin.js')
+const authRoutes = require('./Routes/authRoutes.js')
 
 //import http
 const http = require('http')
@@ -53,6 +54,8 @@ app.use(session({
 
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 
 //Views engine
 const handlebars = require('express-handlebars');
@@ -67,8 +70,8 @@ app.use('/chat', chatRouter)
 app.use('/products', allProducts)
 app.use('/products/productView', productView)
 app.use('/api/cart/cartView', cartView)
-app.use('/formLogin', formLogin)
-
+app.use('/api/sessions', formLogin)
+app.use('/api/auth', authRoutes)
 
 
 //public

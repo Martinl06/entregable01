@@ -1,0 +1,16 @@
+<div>
+    <h1>LOGIN</h1>
+    <form action="/api/auth/formLogin"method ="post">
+        <div>
+            <label for="">Email:</label>
+            <input type="text" name="email" placeholder="Enter your Email" required>
+        </div>
+        <div>
+            <label for="">Password:</label>
+            <input type="password" name="password" placeholder="Enter your password" required>
+        </div>
+        <div>
+            <button type="submit">Login</button>
+            <a href="/api/sessions/registerView">Register</a>
+        </div>
+</div>

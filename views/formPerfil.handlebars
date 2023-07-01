@@ -1,4 +1,47 @@
+{{!se ve la lista de productos para el user logueado. Datos del user OK, rol OK}}
+{{!No agarra el css en los productos, verificar!!!}}
 <div>
-    <h1>User: Hola Martin</h1>
-    <a href="/api/auth/logout">Logout</a>
+    {{#if user}}
+    <nav class="navbar bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+  <div class="container">
+    <span class="navbar-text">
+        <h3>User: Bienvenido {{user.userName}} // UserMail: {{user.email}} // Rol: {{user.role}}</h3>
+        <a href="/api/auth/logout">Logout</a>
+    </span>
+  </div>
+</nav>
+    {{/if}} 
 </div>
+<h1 class="title-principal container mt-5">Lista de Productos</h1>
+  <div class = "fluid row">
+    <div class = "col-6 cards mt-5">
+  {{#each productsArray}}
+    <div class="card container mt-3" style="width: 18rem;">
+  <img src= '' class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{this.name}}</h5>
+    <p class="card-text">PRECIO: $ {{this.price}}</p>
+    <p class="card-text">DESCRIPCION: {{this.description}}</p>
+    <p class="card-text">CÓDIGO: {{this.code}}</p>
+    <p class="card-text">STOCK: {{this.stock}}</p>
+    <p class="card-text">GÉNERO: {{this.genero}}</p>
+    <a href="http://localhost:8080/products/productView" class="btn btn-primary">Ver</a>
+  </div>
+</div>
+  {{/each}}
+  </div>
+</div>
+<div>
+  {{#if pagination.hasPrevPage}}
+    <a style='font-size: 20;' href='/products/?page={{pagination.prevPage}}'>⬅{{pagination.prevPage}}</a>
+  {{/if}}
+  <a style='font-size: 20;' href='#'>{{pagination.page}}</a>
+  {{#if pagination.hasNextPage}}
+    <a style='font-size: 20;' href='/products/?page={{pagination.nextPage}}'>{{pagination.nextPage}}➡</a>
+  {{/if}}
+  <br />
+  <br />
+  {{#each links}}
+    <a href='{{this.href}}'>{{this.label}}</a>
+  {{/each}}
+  </div>

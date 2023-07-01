@@ -16,7 +16,7 @@ async saveUser(user){
 }
 
 // Función para buscar un usuario por email y contraseña y validar los parámetros
- async findUserAndValidate(email, password) {
+async findUserAndValidate(email, password) {
     try {
       // Buscar el usuario en la base de datos
       const userFind = await User.findOne( email, password )
@@ -26,21 +26,16 @@ async saveUser(user){
     } catch (err) {
         console.log(err);
     }
+ }
+async findUserByEmail(email){
+    try{
+        return await User.findOne({email})
+}catch(err){
+    console.log(err)
+  }
 }
 
- checkAutentication = (req, res, next) => {
-    if(req.session.email && req.session.password){
-      //el user esta autenticado y permite el acceso al perfil
-        next()
-    }else{
-      //el user no esta autenticado y lo redirecciona al login
-        res.redirect('/api/sessions/loginView')
-    }
 }
-
-
-}
-
 
 
 module.exports = LoginManagerMongo;

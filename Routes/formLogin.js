@@ -44,7 +44,8 @@ router.get('/perfilView', checkAutentication,  async (req, res) => {
         role: userFind.role
     }
     console.log(user)
-
+    
+    //renderiza los productos con paginacion en el perfil del user
     const {page, limit} = req.query
     const products = await productManagerMongo.getAll(page, limit)
     //console.log(products)

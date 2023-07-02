@@ -50,3 +50,16 @@
     color: black;
     background-color: red;
 }
+
+.title-product{
+    color: blue;
+    text-align: center;
+}
+.box-product{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+}

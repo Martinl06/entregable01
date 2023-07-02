@@ -5,7 +5,7 @@
     <nav class="navbar bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
   <div class="container">
     <span class="navbar-text">
-        <h3>User: Bienvenido {{user.userName}} // UserMail: {{user.email}} // Rol: {{user.role}}</h3>
+        <h3>User: Bienvenido //{{user.userName}} {{user.email}} // Rol: {{user.role}}</h3>
         <a href="/api/auth/logout">Logout</a>
     </span>
   </div>
@@ -25,7 +25,7 @@
     <p class="card-text">CÓDIGO: {{this.code}}</p>
     <p class="card-text">STOCK: {{this.stock}}</p>
     <p class="card-text">GÉNERO: {{this.genero}}</p>
-    <a href="http://localhost:8080/products/productView" class="btn btn-primary">Ver</a>
+    <a href="/products/productView" class="btn btn-primary">Ver</a>
   </div>
 </div>
   {{/each}}

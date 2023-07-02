@@ -1,17 +1,25 @@
 {{! Description: Vista de producto seleccionado }}
-<h1 class="title-principal container">Producto seleccionado</h1>
-{{#each products}}
-<div class="card mb-3" style="max-width: 540px;">
+<div class="box-product">
+<h1 class="title-Product container">Producto seleccionado</h1>
+{{#if product}}
+<div class="card mb-3"style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
       <img src="..." class="img-fluid rounded-start" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">{{products.name}}</h5>
-        <p class="card-text">{{products.description}}</p>
+        <h5 class="card-title">{{product.name}}</h5>
+        <p class="card-text">{{product.description}}</p>
+        <p class="card-text"><small class="text-muted">Precio: $ {{product.price}}</small></p>
+        <p class="card-text"><small class="text-muted">Stock: {{product.stock}}</small></p>
+        <p class="card-text"><small class="text-muted">Código: {{product.code}}</small></p>
+        <p class="card-text"><small class="text-muted">Género: {{product.genero}}</small></p>
+        <button type="button" class="btn btn-primary">Add to cart</button>
+        <a href="/api/sessions/perfilView" class="btn btn-primary">Volver</a>
       </div>
     </div>
   </div>
 </div>
-{{/each}}
+{{/if}}
+</div>

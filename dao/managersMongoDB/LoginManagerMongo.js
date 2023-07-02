@@ -19,7 +19,7 @@ async saveUser(user){
 async findUserAndValidate(email, password) {
     try {
       // Buscar el usuario en la base de datos
-      const userFind = await User.findOne( email, password )
+      const userFind = await User.find(email,password)
   
       // Usuario y contraseña válidos
       return userFind;
@@ -27,9 +27,9 @@ async findUserAndValidate(email, password) {
         console.log(err);
     }
  }
-async findUserByEmail(email){
+async findUserByEmail(email, password, userName) {
     try{
-        return await User.findOne({email})
+        return await User.findOne({email: email, password: password, userName: userName})
 }catch(err){
     console.log(err)
   }

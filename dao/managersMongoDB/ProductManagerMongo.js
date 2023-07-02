@@ -21,12 +21,12 @@ class ProductManagerMongo{
         }
       }
 
-    async getProductById(id) {
+      async getProductById(_id) {
         try {
-            const product = await Product.findById(id)
-            return product
+            const product = await Product.findById(_id);
+            return product;
         } catch (error) {
-            console.log('error', error);
+            throw new Error('Error retrieving product by ID');
         }
     }
 

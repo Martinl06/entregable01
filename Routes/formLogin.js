@@ -36,12 +36,23 @@ router.get('/registerView', (req, res) => {
 
 //ruta para que renderice el perfil del user con los productos 
 router.get('/perfilView', checkAutentication,  async (req, res) => {
+    const email = req.session.email
+    const password = req.session.password
+    const role = (email === 'adminCoder@coder.com' && password === 'admin2023') ? 'Admin' : 'User';
+    req.session.role = role
+    console.log(role)
     //busca el usuario de la db y lo guarda en una constante
-    const userFind = await loginManagerMongo.findUserByEmail(req.session.email)
+    const userFind = await loginManagerMongo.findUserByEmail(email, password, userName)
+
+
+    //si el usuario ya esta registrado, no lo deja registrarse de nuevo
+    if(userFind){
+        return res.status(400).send('El usuario ya esta registrado')
+    }
     const user = {
-        userName: userFind.userName,
-        email: userFind.email,
-        role: userFind.role
+        email: email,
+        role: role,
+        password: password,
     }
     console.log(user)
     

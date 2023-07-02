@@ -42,7 +42,7 @@ router.get('/perfilView', checkAutentication,  async (req, res) => {
     req.session.role = role
     console.log(role)
     //busca el usuario de la db y lo guarda en una constante
-    const userFind = await loginManagerMongo.findUserByEmail(email, password, userName)
+    const userFind = await loginManagerMongo.findUserByEmail(email, password)
 
 
     //si el usuario ya esta registrado, no lo deja registrarse de nuevo

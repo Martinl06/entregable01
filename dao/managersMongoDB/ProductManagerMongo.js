@@ -54,7 +54,13 @@ class ProductManagerMongo{
         const products = await productSchema.paginate({}, { limit:3 || 10, page: page || 1 });
         return products;
       }
-}
+
+    async getProduct(name,price,description,code,thumbnail,stock,genero){
+        const product = await productSchema.find({name,price,description,code,thumbnail,stock,genero})
+        return product;
+    }
+
+    }
 
 
 

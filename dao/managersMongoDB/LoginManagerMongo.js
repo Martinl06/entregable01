@@ -1,4 +1,6 @@
 const User = require('../models/modelUser.js')
+const { hashPassword, comparePassword } = require('../../utils/bcrypts.js');
+
 
 
 class LoginManagerMongo {
@@ -20,16 +22,15 @@ async findUserAndValidate(email, password) {
     try {
       // Buscar el usuario en la base de datos
       const userFind = await User.find(email,password)
-  
-      // Usuario y contraseña válidos
       return userFind;
     } catch (err) {
         console.log(err);
     }
  }
-async findUserByEmail(email, password, userName) {
+
+ async findUserByEmail(email) {
     try{
-        return await User.findOne({email: email, password: password, userName: userName})
+        return await User.findOne({email: email})
 }catch(err){
     console.log(err)
   }

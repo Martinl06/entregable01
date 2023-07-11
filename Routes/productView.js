@@ -13,19 +13,23 @@ router.use(express.json())
 
 //vista que devuelve el producto seleccionado
 router.get('/', async (req, res) => {
-    const _id = req.query._id
-    const productSelected = await productManagerMongo.getProductById(_id)
-    const productGet ={
-        name: productSelected.name,
-        price: productSelected.price,
-        description: productSelected.description,
-        code: productSelected.code,
-        thumbnail: productSelected.thumbnail,
-        stock: productSelected.stock,
-        genero: productSelected.genero
+    const product1 = await productManagerMongo.getProduct(req.body.product)
+    const productGet = {
+        name: product1.name,
+        description: product1.description,
+        price: product1.price,
+        stock: product1.stock,
+        thumbnail: product1.thumbnail,
+        genero: product1.genero,
+        code: product1.code,
+        
     }
     console.log(productGet)
     return res.status(200).render('productView', {productGet})
+
+
+
+    //return res.status(200).render('productView', {productGet})
   })
 
 

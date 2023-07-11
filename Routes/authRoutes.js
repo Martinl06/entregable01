@@ -7,31 +7,22 @@ const MongoStore = require('connect-mongo');
 const User = require('../dao/models/modelUser.js')
 const LoginManagerMongo = require('../dao/managersMongoDB/LoginManagerMongo.js')
 const loginManagerMongo = new LoginManagerMongo()
+const passport = require('passport');
 
 
-router.post('/formRegister', (req, res) => {
-    const newUser = req.body
-    console.log(newUser)
-    loginManagerMongo.saveUser(newUser)
-        res.redirect('/api/sessions/loginView') 
+router.post('/formRegister', passport.authenticate('passportRegister', {failureRedirect:'/api/session/failedregister'}), (req, res) => {
+     res.redirect('/api/sessions/loginView') 
 })
 
-router.post('/formLogin', async (req, res) => {
-    const user = req.body;
-    try {
-      const userFound = await loginManagerMongo.findUserAndValidate(user);
-      if (userFound) {
-        req.session.email = user.email;
-        req.session.password = user.password;
-        res.redirect('/api/sessions/perfilView');
-      } else {
-        res.send('Email o contraseña incorrecta');
-      }
-    } catch (error) {
-      console.log(error);
-      res.send('Error en la validación del usuario');
-    }
-  });
+router.post('/formLogin', passport.authenticate('passportLogin', {failureRedirect:'/api/sessions/failLogin'}), async (req, res) => {
+  if (!req.user) {
+    return res.json({ error: 'invalid credentials' });
+  }
+  req.session.user = { _id: req.user._id, email: req.user.email, lastName: req.user.lastName, userName: req.user.userName, role: req.user.role };
+console.log( req.session.user)
+return res.redirect('/api/sessions/perfilView');
+ 
+});
 
 router.get('/logout', (req, res) => {
     req.session.destroy(err => {
@@ -39,6 +30,7 @@ router.get('/logout', (req, res) => {
         res.redirect('/api/sessions/loginView')
     })
 })
+
 
 
 

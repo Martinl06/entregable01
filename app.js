@@ -4,7 +4,9 @@ const app = express();
 const PORT = 8080 || process.env.PORT;
 const MongoStore = require('connect-mongo');
 const session = require ('express-session');
-
+const passport = require('passport');
+const initializePassport = require('./dao/config/passport.js');
+const initializeGithubPassport = require('./dao/config/githubPassport.js');
 
 //conect to mongo
 const mongoose = require('mongoose');
@@ -31,6 +33,7 @@ const productView = require('./Routes/productView.js')
 const cartView = require('./Routes/cartView.js')
 const formLogin = require('./Routes/formLogin.js')
 const authRoutes = require('./Routes/authRoutes.js')
+const github = require('./Routes/github.js')
 
 //import http
 const http = require('http')
@@ -41,6 +44,9 @@ const { Server } = require('socket.io')
 const io = new Server(server)
 
 
+
+
+//conect to mongo
 app.use(session({
     store: MongoStore.create({
         mongoUrl: 'mongodb+srv://martinlujan0666:Martin1470@ecommerce.v4lpkit.mongodb.net/ecommerce'
@@ -50,11 +56,17 @@ app.use(session({
     saveUninitialized: false,
 }))
 
-
-
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+//passport
+initializePassport()
+initializeGithubPassport()
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+
 
 
 //Views engine
@@ -72,6 +84,7 @@ app.use('/products/productView', productView)
 app.use('/api/cart/cartView', cartView)
 app.use('/api/sessions', formLogin)
 app.use('/api/auth', authRoutes)
+app.use('/api/sessions', github)
 
 
 //public

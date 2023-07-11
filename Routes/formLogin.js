@@ -12,16 +12,22 @@ const loginManagerMongo = new LoginManagerMongo()
 
 
 
-//middleware para validar la autenticacion del user
-function checkAutentication (req, res, next) {
-    if(req.session.email && req.session.password){
-       //el user esta autenticado y permite el acceso al perfil
-         next()
-     }else{
-       //el user no esta autenticado y lo redirecciona al login
-         res.redirect('/api/sessions/loginView')
-     }
- }
+
+function isUser(req, res, next) {
+    if (req.session?.user?.email) {
+      return next();
+    }
+    return res.status(401).render('error', { error: 'error de autenticacion!' });
+  }
+  
+function isAdmin(req, res, next) {
+    if (req.session?.user?.isAdmin) {
+      return next();
+    }
+    return res.status(403).render('error', { error: 'error de autorización!' });
+  }
+
+
 
 router.use(express.json())
 
@@ -35,26 +41,15 @@ router.get('/registerView', (req, res) => {
 })
 
 //ruta para que renderice el perfil del user con los productos 
-router.get('/perfilView', checkAutentication,  async (req, res) => {
-    const email = req.session.email
-    const password = req.session.password
-    const role = (email === 'adminCoder@coder.com' && password === 'admin2023') ? 'Admin' : 'User';
-    req.session.role = role
-    console.log(role)
-    //busca el usuario de la db y lo guarda en una constante
-    const userFind = await loginManagerMongo.findUserByEmail(email, password)
-
-
-    //si el usuario ya esta registrado, no lo deja registrarse de nuevo
-    if(userFind){
-        return res.status(400).send('El usuario ya esta registrado')
-    }
+router.get('/perfilView', isUser, async (req, res) => {
+    const {email, role, password} = req.session.user
+    
     const user = {
         email: email,
         role: role,
         password: password,
     }
-    console.log(user)
+    //console.log(user)
     
     //renderiza los productos con paginacion en el perfil del user
     const {page, limit} = req.query
@@ -79,6 +74,8 @@ router.get('/perfilView', checkAutentication,  async (req, res) => {
     }
     return res.status(200).render('formPerfil',{productsArray, user, pagination: rest, links})
     
+
+
 
 })
 

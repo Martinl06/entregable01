@@ -9,10 +9,18 @@ const cartManagerMongo = new CartManagerMongo();
 const Cart = require('../dao/models/modelCarts')
 
 
+function checkAutentication (req, res, next) { 
+  if(req.session.user) {
+      next()
+  } else {
+      res.redirect('/api/sessions/login')
+  }
+}
+
 router.use(express.json())
 
 //vista que devuelve el producto seleccionado
-router.get('/', async (req, res) => {
+router.get('/', checkAutentication, async (req, res) => {
     const product1 = await productManagerMongo.getProduct(req.body.product)
     const productGet = {
         name: product1.name,
@@ -27,9 +35,6 @@ router.get('/', async (req, res) => {
     console.log(productGet)
     return res.status(200).render('productView', {productGet})
 
-
-
-    //return res.status(200).render('productView', {productGet})
   })
 
 

@@ -12,7 +12,7 @@ passport.use(
         {
             clientID: 'Iv1.93421613249c301b',
             clientSecret: '7519cd0d302f3c1b1444af4379fe3a0354538171',
-            callbackURL: 'http://localhost:8080/api/sessions/githubcallback'
+            callbackURL: 'http://localhost:8080/api/sessions/github/githubcallback'
         }, 
         async (accessToken, refreshToken, profile, done) => {
             try{

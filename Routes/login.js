@@ -10,6 +10,14 @@ const Product = require('../dao/models/modelProducts')
 const LoginManagerMongo = require('../dao/managersMongoDB/LoginManagerMongo.js')
 const loginManagerMongo = new LoginManagerMongo()
 
+//middleware para verificar si el user esta logueado
+function checkAutentication (req, res, next) { 
+    if(req.session.user) {
+        next()
+    } else {
+        res.redirect('/api/sessions/login')
+    }
+}
 
 
 
@@ -20,28 +28,28 @@ function isUser(req, res, next) {
     return res.status(401).render('error', { error: 'error de autenticacion!' });
   }
   
-function isAdmin(req, res, next) {
-    if (req.session?.user?.isAdmin) {
-      return next();
-    }
-    return res.status(403).render('error', { error: 'error de autorización!' });
-  }
 
 
 
 router.use(express.json())
 
 
-router.get('/loginView', (req, res) => {
-    res.render('formLogin', {})
+router.get('/login', (req, res) => {
+    res.render('login', {})
 })
 
-router.get('/registerView', (req, res) => {
-    res.render('formRegister', {})
+router.get('/register', (req, res) => {
+    const email = req.session.user
+    const admin = (email === 'adminCoder@coder.com') ? 'admin' : 'user';
+    const user = {
+      email: email,
+      role: admin,
+  }   
+    res.render('register', {})
 })
 
 //ruta para que renderice el perfil del user con los productos 
-router.get('/perfilView', isUser, async (req, res) => {
+router.get('/perfil', isUser, checkAutentication, async (req, res) => {
     const {email, role, password} = req.session.user
     
     const user = {
@@ -72,7 +80,7 @@ router.get('/perfilView', isUser, async (req, res) => {
     for (let i = 1; i <= rest.totalPages + 1; i++) {
         links.push({label:i, href:'http://localhost:8080/products/?page=' + i})
     }
-    return res.status(200).render('formPerfil',{productsArray, user, pagination: rest, links})
+    return res.status(200).render('perfil',{productsArray, user, pagination: rest, links})
     
 
 

@@ -17,11 +17,14 @@ const initializePassport = () => {
                     console.log('Usuario encontrado')
                     done(null, user)
                 }
+                const email = userData.email;
+                const role = (email === 'adminCoder@coder.com') ? 'admin' : 'user';
                 let userNew = {
                     name: userData.name,
                     lastName: userData.lastName,
                     userName: userData.userName,
                     email: userData.email,
+                    role: role,
                     password: createPassword(userData.password),
                 }
                 let userResult = await modelUser.create(userNew)

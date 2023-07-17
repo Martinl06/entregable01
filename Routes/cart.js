@@ -8,10 +8,20 @@ const cartManagerMongo = new CartManagerMongo();
 const Cart = require('../dao/models/modelCarts')
 const uuid4 = require('uuid4')
 
+
+function checkAutentication (req, res, next) { 
+    if(req.session.user) {
+        next()
+    } else {
+        res.redirect('/api/sessions/login')
+    }
+}
+
+
 router.use(express.json())
 
 
-router.post('/', (req, res) => {
+router.post('/', checkAutentication,  (req, res) => {
     const NewCart = req.body
     const cart = new Cart(NewCart)
     cartManagerMongo.addCart(cart)

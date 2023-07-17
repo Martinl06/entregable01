@@ -10,24 +10,29 @@ const loginManagerMongo = new LoginManagerMongo()
 const passport = require('passport');
 
 
-router.post('/formRegister', passport.authenticate('passportRegister', {failureRedirect:'/api/session/failedregister'}), (req, res) => {
-     res.redirect('/api/sessions/loginView') 
-})
 
-router.post('/formLogin', passport.authenticate('passportLogin', {failureRedirect:'/api/sessions/failLogin'}), async (req, res) => {
+router.post('/Register', passport.authenticate('passportRegister', {failureRedirect:'/'}), (req, res) => {
   if (!req.user) {
     return res.json({ error: 'invalid credentials' });
   }
-  req.session.user = { _id: req.user._id, email: req.user.email, lastName: req.user.lastName, userName: req.user.userName, role: req.user.role };
+  req.session.user = { _id: req.user._id, email: req.user.email, lastName: req.user.lastName, userName: req.user.userName, role: req.user.role};
+  res.redirect('/api/sessions/login') 
+})
+
+router.post('/login', passport.authenticate('passportLogin', {failureRedirect:'/api/sessions/login'}), async (req, res) => {
+  if (!req.user) {
+    return res.json({ error: 'invalid credentials' });
+  }
+  req.session.user = { _id: req.user._id, email: req.user.email, lastName: req.user.lastName, userName: req.user.userName, role: req.user.role};
 console.log( req.session.user)
-return res.redirect('/api/sessions/perfilView');
+return res.redirect('/api/sessions/perfil');
  
 });
 
 router.get('/logout', (req, res) => {
     req.session.destroy(err => {
         if(err)res.send('Error al cerrar sesión')
-        res.redirect('/api/sessions/loginView')
+        res.redirect('/api/sessions/login')
     })
 })
 

@@ -3,9 +3,18 @@ const { Router } = express
 const router = new Router()
 const Message = require('../dao/models/modelMessages')
 
+function checkAutentication (req, res, next) { 
+    if(req.session.user) {
+        next()
+    } else {
+        res.redirect('/api/sessions/login')
+    }
+}
+
+
 router.use(express.json())
 
-router.get('/', (req, res) => {
+router.get('/', checkAutentication, (req, res) => {
     Message.find()
     .then(messages => {
         if(messages.length) return res.status(200).render('chat', {messages})

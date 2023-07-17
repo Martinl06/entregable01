@@ -31,7 +31,7 @@ const chatRouter = require('./Routes/chat.js');
 const allProducts = require('./Routes/allProducts.js')
 const productView = require('./Routes/productView.js')
 const cartView = require('./Routes/cartView.js')
-const formLogin = require('./Routes/formLogin.js')
+const login = require('./Routes/login.js')
 const authRoutes = require('./Routes/authRoutes.js')
 const github = require('./Routes/github.js')
 
@@ -82,9 +82,9 @@ app.use('/chat', chatRouter)
 app.use('/products', allProducts)
 app.use('/products/productView', productView)
 app.use('/api/cart/cartView', cartView)
-app.use('/api/sessions', formLogin)
+app.use('/api/sessions', login)
 app.use('/api/auth', authRoutes)
-app.use('/api/sessions', github)
+app.use('/api/sessions/github', github)
 
 
 //public

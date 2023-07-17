@@ -1,6 +1,6 @@
 <div>
     <h1>LOGIN</h1>
-    <form action="/api/auth/formLogin"method ="post">
+    <form action="/api/auth/login"method ="post">
         <div>
             <label for="">Email:</label>
             <input type="text" name="email" placeholder="Enter your Email" required>
@@ -11,8 +11,8 @@
         </div>
         <div>
             <button type="submit">Login</button>
-            <a href="/api/sessions/registerView">Register</a>
+            <a href="/api/sessions/register">Register</a>
             <p>Do you have a gitHub account?</p>
-            <a href="/api/sessions/githubcallback">Login with GitHub</a>
+            <a href="/api/sessions/github/githubcallback">Login with GitHub</a>
         </div>
 </div>

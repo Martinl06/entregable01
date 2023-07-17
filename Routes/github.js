@@ -14,7 +14,7 @@ router.get('/github', passport.authenticate('auth-Github', { scope: [ 'user:emai
 router.get('/githubcallback', passport.authenticate('auth-Github', { scope: [ 'user:email' ], session: false }),(req, res) => {
     req.session.user = req.user;
     // Successful authentication, redirect perfilView.
-    res.redirect('/api/sessions/perfilView');
+    res.redirect('/api/sessions/perfil');
   });
 
 

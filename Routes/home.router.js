@@ -7,10 +7,19 @@ const ProductManagerMongo = require('../dao/managersMongoDB/ProductManagerMongo'
 const productManagerMongo = new ProductManagerMongo();
 const Product = require('../dao/models/modelProducts')
 
+function checkAutentication (req, res, next) { 
+    if(req.session.user) {
+        next()
+    } else {
+        res.redirect('/api/sessions/login')
+    }
+}
+
+
 router.use(express.json())
 
 
-router.get('/', async (req, res) => {
+router.get('/', checkAutentication, async (req, res) => {
     await productManagerMongo.getProducts()
     .then(products => {
     if(products.length) return res.status(200).render('home', {products})

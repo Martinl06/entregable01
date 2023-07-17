@@ -9,11 +9,18 @@ const Product = require('../dao/models/modelProducts')
 const uuid4 = require('uuid4');
 const { paginate } = require('mongoose-paginate-v2');
 
+function checkAutentication (req, res, next) { 
+    if(req.session.user) {
+        next()
+    } else {
+        res.redirect('/api/sessions/login')
+    }
+}
 
 
 router.use(express.json())
 
-router.get('/', async (req, res) => {
+router.get('/', checkAutentication, async (req, res) => {
     const {page, limit} = req.query
     const products = await productManagerMongo.getAll(page, limit)
     //console.log(products)

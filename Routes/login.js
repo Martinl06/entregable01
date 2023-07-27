@@ -33,6 +33,17 @@ function isUser(req, res, next) {
 
 router.use(express.json())
 
+//ruta para obtener el usuario actual
+router.get('/current', (req, res) => {
+    //verificar si el user esta autenticado
+    if(req.session.user) {
+        return res.status(200).json(req.session.user)
+    }else{
+    // user no autenticado    
+        return res.status(401).json({error: 'user not authenticated'})
+    }
+})
+
 
 router.get('/login', (req, res) => {
     res.render('login', {})
@@ -81,9 +92,6 @@ router.get('/perfil', isUser, checkAutentication, async (req, res) => {
         links.push({label:i, href:'http://localhost:8080/products/?page=' + i})
     }
     return res.status(200).render('perfil',{productsArray, user, pagination: rest, links})
-    
-
-
 
 })
 

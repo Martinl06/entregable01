@@ -28,4 +28,8 @@ router.get('/', checkAutentication, async (req, res) => {
 })
   
 
+//router.get('*', (req, res) => {
+//    res.status(404).render('home',{error404})
+//})
+
 module.exports = router

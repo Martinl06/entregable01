@@ -23,7 +23,7 @@ router.post('/login', passport.authenticate('passportLogin', {failureRedirect:'/
   if (!req.user) {
     return res.json({ error: 'invalid credentials' });
   }
-  req.session.user = { _id: req.user._id, email: req.user.email, lastName: req.user.lastName, userName: req.user.userName, role: req.user.role};
+  req.session.user = { _id: req.user._id, name: req.user.name, email: req.user.email, lastName: req.user.lastName, userName: req.user.userName, role: req.user.role, age: req.user.age, cart: req.user.cart, password: req.user.password};
 console.log( req.session.user)
 return res.redirect('/api/sessions/perfil');
  

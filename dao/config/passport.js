@@ -2,6 +2,8 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const modelUser = require('../models/modelUser.js')
 const { createPassword, comparePassword } = require('../../utils/bcrypts.js');
+const CartManagerMongo = require('../managersMongoDB/CartManagerMongo.js')
+const cartManagerMongo = new CartManagerMongo();
 
 
 const initializePassport = () => {
@@ -16,8 +18,13 @@ const initializePassport = () => {
                 if(user){
                     console.log('Usuario encontrado')
                     done(null, user)
+                
                 }
                 const email = userData.email;
+                const cart = {}
+                const date = new Date();
+                cart.date = date;
+                const newCart = await cartManagerMongo.addCart(cart)
                 const role = (email === 'adminCoder@coder.com') ? 'admin' : 'user';
                 let userNew = {
                     name: userData.name,
@@ -25,10 +32,16 @@ const initializePassport = () => {
                     userName: userData.userName,
                     email: userData.email,
                     role: role,
+                    age: userData.age,
+                    cart: newCart,
+                    date: date,
                     password: createPassword(userData.password),
                 }
+                
                 let userResult = await modelUser.create(userNew)
                 return done(null, userResult) //se activa serializeUser con el done
+                
+                
 
             }catch(err){
                 return done("error al crear el user" + err)

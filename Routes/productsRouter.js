@@ -14,18 +14,10 @@ function checkAutentication (req, res, next) {
 }
 
 
-router.use(express.json())
-
-
-
-router.get('/', checkAutentication, ProductController.getAll)
-
+router.get('/', checkAutentication, ProductController.getAllPaginate)
 router.get('/:id', ProductController.getById )
-
 router.post('/createProduct', ProductController.create )
-
 router.delete('/deleteProduct/:id', ProductController.deleteProduct )
-
 router.put('/updateProduct/:id', ProductController.updateProduct)
 
 

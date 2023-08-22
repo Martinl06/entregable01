@@ -2,8 +2,8 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const modelUser = require('../models/modelUser.js')
 const { createPassword, comparePassword } = require('../../utils/bcrypts.js');
-const CartManagerMongo = require('../managersMongoDB/CartManagerMongo.js')
-const cartManagerMongo = new CartManagerMongo();
+const CartService = require('../../services/cart.services.js');
+
 
 
 const initializePassport = () => {
@@ -24,7 +24,7 @@ const initializePassport = () => {
                 const cart = {}
                 const date = new Date();
                 cart.date = date;
-                const newCart = await cartManagerMongo.addCart(cart)
+                const newCart = await CartService.addCart(cart);
                 const role = (email === 'adminCoder@coder.com') ? 'admin' : 'user';
                 let userNew = {
                     name: userData.name,

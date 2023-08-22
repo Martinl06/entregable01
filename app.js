@@ -21,6 +21,8 @@ const cartManager = new CartManager('./utils/Carrito.json');
 const ProductManagerMongo = require('./dao/managersMongoDB/ProductManagerMongo');
 const productManagerMongo = new ProductManagerMongo();
 const Message = require ('./dao/models/modelMessages.js')
+const ProductController = require('./controllers/products.controllers.js');
+const ProductService = require('./services/products.services.js')
 
 //import routes
 const routesProducts = require('./Routes/productsRouter.js');
@@ -73,6 +75,8 @@ app.use(passport.session());
 const handlebars = require('express-handlebars');
 
 
+
+
 //routes
 app.use('/api/productsRouter', routesProducts);
 app.use('/api/cart', routesCart);
@@ -99,16 +103,16 @@ app.set('views', __dirname + '/views');
 io.on('connection',async (socket) => {
     console.log('Nuevo cliente conectado!')
 
-const products = await productManagerMongo.getProducts()
+const products = await ProductService.getProducts()
 
     socket.emit('NewProduct', products)
 
     socket.on( 'NewProduct', async (NewProduct) => { 
-        productManagerMongo.addProduct(NewProduct)
+        ProductService.addProduct(NewProduct)
     })
 
     socket.on('ProductDelete', async (ProductDelete) => {
-        productManagerMongo.deleteProduct(ProductDelete)
+        ProductService.deleteProduct(ProductDelete)
         socket.emit('ProductDelete', products)
     })
 

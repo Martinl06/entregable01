@@ -40,9 +40,9 @@ class ProductManagerMongo{
         return null;
     }
 
-     deleteProduct(id) {
+     deleteProduct(_id) {
         const products = this.getProducts()
-        const Newproduct = products.findIndex((product) => product.id === id)
+        const Newproduct = products.findIndex((product) => product.id === _id)
         if (Newproduct !== -1) {
             const deletedProduct = products.splice(Newproduct, 1)[0];
             return deletedProduct.deleteOne()
@@ -55,8 +55,8 @@ class ProductManagerMongo{
         return products;
       }
 
-    async getProduct(name,price,description,code,thumbnail,stock,genero){
-        const product = await productSchema.find({name,price,description,code,thumbnail,stock,genero})
+    async getProduct(_id){
+        const product = await Product.findOne({id: _id})
         return product;
     }
 

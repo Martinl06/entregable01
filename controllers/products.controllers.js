@@ -4,31 +4,28 @@ const ProductService = require('../services/products.services.js');
 
 class ProductController{
 
-    async getAll (req, res) {
+    async getAllPaginate (req, res) {
         const {page, limit} = req.query
-        try{
-           const products = await ProductService.getAll(page, limit)
-           //console.log(products)
-           return res.status(200).json({
-               status: 'success',
-               payload: products.docs,
-               totalPages: products.totalPages,
-               prevPage: products.prevPage,
-               nextPage: products.nextPage,
-               page: products.page,
-               hasPrevPage: products.hasPrevPage,
-               hasNextPage: products.hasNextPage,
-               prevLink: products.hasPrevPage? `http://localhost:8080/products/?page=${products.prevPage}`: null,
-               nextLink: products.hasNextPage? `http://localhost:8080/products/?page=${products.nextPage}`: null,   
-           })
-       }catch(err){
-           console.log(err)
-           return res.status(500).json({
-               status: 'error',
-               message: 'Error al obtener los productos',
-               data:{}
-           })
-         }
+        const products = await ProductService.getAll(page, limit)
+        //console.log(products)
+        let productsArray = products.docs.map((product)=>{
+            return {
+                name: product.name,
+                description: product.description,
+                code: product.code,
+                thumbnail: product.thumbnail,
+                price: product.price,
+                stock: product.stock,
+                genero: product.genero
+            }
+        })
+        const {docs , ...rest} = products
+        let links = []
+    
+        for (let i = 1; i <= rest.totalPages + 1; i++) {
+            links.push({label:i, href:'http://localhost:8080/products/?page=' + i})
+        }
+        return res.status(200).render('productsAll',{productsArray, pagination: rest, links})
     }
 
 
@@ -58,8 +55,8 @@ class ProductController{
 
 
     async deleteProduct (req, res) {
-        const id = req.params.id
         try{
+            const id = req.params.id
             const product = await ProductService.deleteProduct(id)
             return res.status(200).json({
                 status: 'success',
@@ -95,6 +92,12 @@ class ProductController{
             })
         }
     }
+
+    async getRealTime (req, res) {
+        const products = await ProductService.getProducts()
+        res.render('realTimeProducts', products);
+      };
+
 }
 
 module.exports = new ProductController();

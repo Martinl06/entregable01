@@ -1,16 +1,16 @@
-const modelProducts = require('../dao/models/modelProducts.js')
+const Product = require('../dao/models/modelProducts.js')
 
 
 class ProductService {
         
     addProducts = async (newPr) =>{
-        const newProduct = new modelProducts(newPr).save();
+        const newProduct = new Product(newPr).save();
         return newProduct
     };
 
      async getProducts() {
         try {
-          const products = await modelProducts.find({}).lean()
+          const products = await Product.find({}).lean()
           return products;
         } catch (error) {
           console.log('error', error);
@@ -19,7 +19,7 @@ class ProductService {
 
       async getProductById(_id) {
         try {
-            const product = await modelProducts.findById(_id);
+            const product = await Product.findById(_id);
             return product;
         } catch (error) {
             throw new Error('Error retrieving product by ID');
@@ -28,9 +28,9 @@ class ProductService {
 
     updateProductByID = async (id, newProps) =>{     
         try {
-            const FindProductById = await modelProducts.findById(id);
+            const FindProductById = await Product.findById(id);
             if (!FindProductById) return "id de producto no encontrado";
-            const updatedProduct = await modelProducts.findByIdAndUpdate(id, newProps, {new:true, runValidators:true}).exec();
+            const updatedProduct = await Product.findByIdAndUpdate(id, newProps, {new:true, runValidators:true}).exec();
             return updatedProduct;
         } catch (error) {
             console.log(error)
@@ -39,7 +39,7 @@ class ProductService {
 
     deleteProduct = async(id) =>{
         try {
-            const FindProductById = await modelProducts.findById(id);
+            const FindProductById = await Product.findById(id);
             if (!FindProductById) return "id de producto no encontrado"
             const deleteProduct = await FindProductById.deleteOne();
             console.log(`el producto ${FindProductById} fue eliminado`);            
@@ -48,9 +48,10 @@ class ProductService {
         }
     }
 
+
     getAll = async (page, limit ) => {
         try {
-            const products = await modelProducts.paginate({}, { limit: limit || 3 || 10, page: page || 1 });
+            const products = await Product.paginate({}, { limit: limit || 3 || 10, page: page || 1 });
             return products;
       } catch (error) {
             console.log('error', error);
@@ -58,7 +59,7 @@ class ProductService {
     }
 
     async getProduct(name,price,description,code,thumbnail,stock,genero){
-        const product = await modelProducts.find({name,price,description,code,thumbnail,stock,genero})
+        const product = await Product.find({name,price,description,code,thumbnail,stock,genero})
         return product;
     }
 

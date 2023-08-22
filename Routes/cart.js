@@ -1,12 +1,7 @@
 const express = require('express')
 const { Router } = express
 const router = new Router()
-const CartManager = require('../dao/managers/CartManager');
-const cartManager = new CartManager('./utils/carrito.json');
-const CartManagerMongo = require('../dao/managersMongoDB/CartManagerMongo');
-const cartManagerMongo = new CartManagerMongo();
-const Cart = require('../dao/models/modelCarts')
-const uuid4 = require('uuid4')
+const CartController = require('../controllers/cart.controllers')
 
 
 function checkAutentication (req, res, next) { 
@@ -18,86 +13,25 @@ function checkAutentication (req, res, next) {
 }
 
 
-router.use(express.json())
 
 
-router.post('/', checkAutentication,  (req, res) => {
-    const NewCart = req.body
-    const cart = new Cart(NewCart)
-    cartManagerMongo.addCart(cart)
-    .then(cart =>{
-        res.status(201).send({
-            msg: "Carrito creado",
-            data: cart
-        })
-    })
-    .catch(err => res.status(500).send({err}))
-})
+router.post('/', checkAutentication,  CartController.createCart)
 
-router.get('/', (req, res) => {
-    const carts = cartManagerMongo.getCarts()
-    res.send({data: carts, message: "Carritos encontrados"})
-})
+router.get('/', CartController.getAllCarts )
 
 //agrega el carrito con el producto seleccionado
-router.post('/:cid/products/:pid', async (req, res) => {
-    try {
-        let cid = req.params.cid;
-        let pid = req.params.pid;
-        const productAddedToCart = await cartManagerMongo.addProductToCart(cid,pid);
-
-        res.status(200).send(productAddedToCart);
-    } catch (error) {
-        res.status(500).send(`Error al agregar producto al carrito: ${error}`)   
-    }
-
-    
-})
-
-
+router.post('/:cid/products/:pid', CartController.addProductToCart)
 
 //elimina el producto seleccionado del carrito
-router.delete('/:cid/products/:pid ', (req, res) => {
-   try {
-    let cid = req.params.cid;
-    let pid = req.params.pid;
-    const productDeletedFromCart = cartManagerMongo.deleteProductFromCart(cid,pid);
-    res.status(200).send(productDeletedFromCart);
-   } catch (error) {
-    res.status(500).send(`Error al eliminar producto del carrito: ${error}`)   
-   }
-})
+router.delete('/:cid/products/:pid ', CartController.deleteProductFromCart)
 
 //actualiza el carrito con un arreglo de productos
-router.put('/cart/:cid', (req, res) => {
-    try{
-        let cid = req.params.cid;
-        const cartUpdated = cartManagerMongo.UpdateCart(cid);
-        res.status(200).send(cartUpdated);
-    }catch(error){
-        res.status(500).send(`Error al actualizar carrito: ${error}`)   
-    }   
-})
+router.put('/cart/:cid', CartController.UpdateCart)
+
 //actualiza solo la cantidad de ejemplares del producto por cualquier cantidad pasada desde req.body
-router.put('/cart/:cid/products/:pid', (req, res) => {
-    try{
-        let cid = req.params.cid;
-        let pid = req.params.pid;
-        const productUpdated = cartManagerMongo.UpdateProduct(cid,pid);
-        res.status(200).send(productUpdated);
-    }catch(error){
-        res.status(500).send(`Error al actualizar producto del carrito: ${error}`)   
-    }
-})
+router.put('/cart/:cid/products/:pid', CartController.UpdateProduct)
+
 //elimina todos los productos del carrito
-router.delete('/cart/:cid', (req, res) => {
-    try{
-        let cid = req.params.cid;
-        const cartDeleted = cartManagerMongo.deleteCart(cid);
-        res.status(200).send(cartDeleted);
-    }catch(error){
-        res.status(500).send(`Error al eliminar carrito: ${error}`)   
-    }
-})
+router.delete('/cart/:cid', CartController.deleteCart)
 
 module.exports = router;

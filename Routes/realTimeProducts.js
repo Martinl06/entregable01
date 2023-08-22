@@ -1,10 +1,7 @@
 const express = require('express')
 const { Router } = express
 const router = new Router()
-const ProductManager = require('../dao/managers/ProductManager');
-const productManager = new ProductManager('./utils/products.json');
-const ProductManagerMongo = require('../dao/managersMongoDB/ProductManagerMongo');
-const productManagerMongo = new ProductManagerMongo();
+const ProductController = require('../controllers/products.controllers')
 
 
 function checkAutentication (req, res, next) { 
@@ -24,12 +21,8 @@ function isAdmin(req, res, next) {
   }
 }
 
-router.use(express.json())
 
-router.get('/', checkAutentication, isAdmin, async (req, res) => {
-    const products = await productManagerMongo.getProducts()
-    res.render('realTimeProducts', products);
-  });
+router.get('/', checkAutentication, isAdmin, ProductController.getRealTime);
 
 
   module.exports = router

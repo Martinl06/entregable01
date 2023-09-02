@@ -1,15 +1,13 @@
-const {UserMethods} = require('../dao/factory.js')
-const userMethods = new UserMethods()
+const User = require('../models/modelUser.js');
 
 
 
-class UserService {
-    constructor(){
-    }
+class UserClass{
 
-    async saveUser(us){
+
+    async saveUser(user){
         try{
-            const newUser = new userMethods(us).save()
+            const newUser = new User(user).save()
             return await newUser
         }catch(err){
             console.log(err)
@@ -20,7 +18,7 @@ class UserService {
     async findUserAndValidate(email, password) {
         try {
           // Buscar el usuario en la base de datos
-          const userFind = await userMethods.find(email,password)
+          const userFind = await User.find(email,password)
           return userFind;
         } catch (err) {
             console.log(err);
@@ -29,7 +27,7 @@ class UserService {
     
      async findUserByEmail(email) {
         try{
-            return await userMethods.findOne({email: email})
+            return await User.findOne({email: email})
     }catch(err){
         console.log(err)
       }
@@ -37,4 +35,4 @@ class UserService {
 
 }
 
-module.exports =  UserService
+module.exports = UserClass

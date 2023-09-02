@@ -1,21 +1,15 @@
 const express = require('express')
 const { Router } = express
 const router = new Router()
-const ProductManagerMongo = require('../dao/managersMongoDB/ProductManagerMongo');
+const ProductManagerMongo = require('../dao/mongoDB/clases/ProductManagerMongo');
 const productManagerMongo = new ProductManagerMongo();
-const Product = require('../dao/models/modelProducts')
-const CartManagerMongo = require('../dao/managersMongoDB/CartManagerMongo');
+const Product = require('../dao/mongoDB/models/modelProducts')
+const CartManagerMongo = require('../dao/mongoDB/clases/CartManagerMongo');
 const cartManagerMongo = new CartManagerMongo();
-const Cart = require('../dao/models/modelCarts')
+const Cart = require('../dao/mongoDB/models/modelCarts')
+const {checkAutentication} = require('../middlewares/authenticator.middlewares.js')
 
 
-function checkAutentication (req, res, next) { 
-  if(req.session.user) {
-      next()
-  } else {
-      res.redirect('/api/sessions/login')
-  }
-}
 
 router.use(express.json())
 

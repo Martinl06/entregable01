@@ -2,23 +2,17 @@ const express = require('express')
 const { Router } = express
 const router = new Router()
 const ProductController = require('../controllers/products.controllers')
+const {checkAutentication, isAdmin} = require('../middlewares/authenticator.middlewares.js')
 
 
 
-function checkAutentication (req, res, next) { 
-    if(req.session.user) {
-        next()
-    } else {
-        res.redirect('/api/sessions/login')
-    }
-}
 
 
 router.get('/', checkAutentication, ProductController.getAllPaginate)
 router.get('/:id', ProductController.getById )
-router.post('/createProduct', ProductController.create )
-router.delete('/deleteProduct/:id', ProductController.deleteProduct )
-router.put('/updateProduct/:id', ProductController.updateProduct)
+router.post('/createProduct', isAdmin, ProductController.create )
+router.delete('/deleteProduct/:id', isAdmin, ProductController.deleteProduct )
+router.put('/updateProduct/:id', isAdmin, ProductController.updateProduct)
 
 
 module.exports = router

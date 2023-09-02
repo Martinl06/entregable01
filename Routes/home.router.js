@@ -2,18 +2,12 @@ const express = require('express')
 const { Router } = express
 const router = new Router() 
 const ProductControllers = require('../controllers/products.controllers.js')
-
-function checkAutentication (req, res, next) { 
-    if(req.session.user) {
-        next()
-    } else {
-        res.redirect('/api/sessions/login')
-    }
-}
+const {checkAutentication} = require('../middlewares/authenticator.middlewares.js')
 
 
 
-router.get('/', checkAutentication, ProductControllers.getAllPaginate )
+
+router.get('/', checkAutentication, ProductControllers.getImageHome )
   
 
 //router.get('*', (req, res) => {

@@ -9,7 +9,6 @@ function getChatForm() {
       message: document.getElementById('message').value
     }
     socketCliente.emit('newMessage', NewChat)
-    console.log(NewChat)
     return false
 
   }
@@ -22,7 +21,6 @@ function getChatForm() {
       )
       
       socketCliente.on('allMessages', (data) => {
-        console.log(data)
         renderMessage(data)
   })
 

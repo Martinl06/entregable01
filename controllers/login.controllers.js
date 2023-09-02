@@ -1,21 +1,23 @@
-const ProductController = require('../controllers/products.controllers.js')
-const UserService = require('../services/users.services.js')
-const ProductService = require('../services/products.services.js')
+const ProductService = require('../services/product.services.js')
+const productService = new ProductService()
+const UsersDTO = require('../dao/dto/users.dto.js')
+
 
 
 class LoginController{
 
-    async current(req, res){
-        (req, res) => {
-            //verificar si el user esta autenticado
-            if(req.session.user) {
-                return res.status(200).json(req.session.user)
+    //funcion para que se vea solo los datos del DTO
+    async current(req, res){ 
+        const usersDTO = new UsersDTO(req.session.user)
+        if(req.session.user){
+            // user autenticado
+            return res.status(200).json({data: usersDTO, message: 'user authenticated'})
             }else{
             // user no autenticado    
                 return res.status(401).json({error: 'user not authenticated'})
             }
         }
-    }
+    
 
     async login(req, res){
             res.render('login', {})
@@ -44,7 +46,7 @@ class LoginController{
         
         //renderiza los productos con paginacion en el perfil del user
         const {page, limit} = req.query
-        const products = await ProductService.getAll(page, limit)
+        const products = await productService.getAll(page, limit)
         //console.log(products)
         let productsArray = products.docs.map((product)=>{
             return {

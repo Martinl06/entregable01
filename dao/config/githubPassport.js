@@ -1,8 +1,10 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const passportGithub = require('passport-github2').Strategy;
-const modelUser = require('../models/modelUser.js')
+const modelUser = require('../mongoDB/models/modelUser.js')
 const fetch = require('node-fetch');
+const CartService = require('../../services/cart.services.js');
+const cartService = new CartService()
 
 
 const initializeGithubPassport = () => {
@@ -34,6 +36,10 @@ passport.use(
           }
           profile.email = emailDetail.email;
 
+            const cart ={}
+            const date = new Date();
+            cart.date = date;
+            const newCart = await cartService.addCart(cart);  
             let user = await modelUser.findOne({email: profile.email})
             if(!user){
               let newUser ={
@@ -41,6 +47,7 @@ passport.use(
                     lastName: profile._json.lastName,
                     userName: profile._json.login,
                     email: profile.email,
+                    cart: newCart,
                     password: 'no pass',
                     github: true
                 }

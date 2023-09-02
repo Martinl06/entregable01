@@ -1,5 +1,5 @@
 const User = require('../models/modelUser.js')
-const { hashPassword, comparePassword } = require('../../utils/bcrypts.js');
+
 
 
 

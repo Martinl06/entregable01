@@ -1,7 +1,10 @@
-const Product = require('../dao/models/modelProducts.js')
+const Product = require('../models/modelProducts.js')
 
 
-class ProductService {
+class ProductClass {
+    constructor() {
+
+    }
         
     addProducts = async (newPr) =>{
         const newProduct = new Product(newPr).save();
@@ -65,8 +68,8 @@ class ProductService {
 
 
 
-
+    
 }
 
 
-module.exports = new ProductService()
+module.exports =  ProductClass

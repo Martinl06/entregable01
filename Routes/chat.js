@@ -2,21 +2,15 @@ const express = require('express')
 const { Router } = express
 const router = new Router()
 const MessageController = require('../controllers/chat.controllers')
-
-
-function checkAutentication (req, res, next) { 
-    if(req.session.user) {
-        next()
-    } else {
-        res.redirect('/api/sessions/login')
-    }
-}
+const {checkAutentication, UserOk} = require('../middlewares/authenticator.middlewares.js')
 
 
 
 
-router.get('/', checkAutentication, MessageController.getAllMessages )
 
-router.post('/', MessageController.addMessage )
+
+router.get('/', checkAutentication, UserOk, MessageController.getAllMessages )
+
+router.post('/', checkAutentication, UserOk ,MessageController.addMessage )
 
 module.exports = router

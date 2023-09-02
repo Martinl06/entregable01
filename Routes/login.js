@@ -2,33 +2,11 @@ const express = require('express');
 const app = express();
 const { Router } = express;
 const router = new Router();
-const session = require ('express-session');
-const MongoStore = require('connect-mongo');
-const ProductManagerMongo = require('../dao/managersMongoDB/ProductManagerMongo');
-const productManagerMongo = new ProductManagerMongo();
-const Product = require('../dao/models/modelProducts')
-const LoginManagerMongo = require('../dao/managersMongoDB/LoginManagerMongo.js')
-const loginManagerMongo = new LoginManagerMongo()
 const LoginController = require('../controllers/login.controllers')
-
-//middleware para verificar si el user esta logueado
-function checkAutentication (req, res, next) { 
-    if(req.session.user) {
-        next()
-    } else {
-        res.redirect('/api/sessions/login')
-    }
-}
+const {checkAutentication, isUser} = require('../middlewares/authenticator.middlewares.js')
 
 
 
-function isUser(req, res, next) {
-    if (req.session?.user?.email) {
-      return next();
-    }
-    return res.status(401).render('error', { error: 'error de autenticacion!' });
-  }
-  
 
 
 

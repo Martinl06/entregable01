@@ -1,18 +1,31 @@
-<div>
-    <h1>LOGIN</h1>
-    <form action="/api/auth/login"method ="post">
-        <div>
-            <label for="">Email:</label>
-            <input type="text" name="email" placeholder="Enter your Email" required>
-        </div>
-        <div>
-            <label for="">Password:</label>
-            <input type="password" name="password" placeholder="Enter your password" required>
-        </div>
-        <div>
-            <button type="submit">Login</button>
-            <a href="/api/sessions/register">Register</a>
+<div class="container mt-5" align="center" justify="center" text-align="center">
+    <div class="formLogin">
+        <h1 class="titleLogin">LOGIN</h1>
+        <form action="/api/auth/login" method="post">
+                <div class="mb-3 formLabel">
+                    <label for="Email" class="form-label">Email address</label>
+                    <input type="text" class="form-control" name="email" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3 formLabel">
+                    <label for="Password" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Login</button>
+                <a class= "register" href="/api/sessions/register">Register</a>
+                
+
+            
             <p>Do you have a gitHub account?</p>
-            <a href="/api/sessions/github/githubcallback">Login with GitHub</a>
-        </div>
+            <a class="icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);"
+                href="/api/sessions/github/githubcallback">
+                <svg class="bi" aria-hidden="true">
+                    <use xlink:href="#clipboard"></use>
+                </svg>
+                Login with GitHub
+            </a>
+
+    </div>
+    </form>
+</div>
 </div>

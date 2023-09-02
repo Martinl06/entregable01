@@ -7,6 +7,7 @@ const session = require ('express-session');
 const passport = require('passport');
 const initializePassport = require('./dao/config/passport.js');
 const initializeGithubPassport = require('./dao/config/githubPassport.js');
+const path = require('path');
 
 //conect to mongo
 const mongoose = require('mongoose');
@@ -14,15 +15,10 @@ const MongoManagerDB = require('./dao/mongoDB/mongoDB.js');
 const mongoManagerDB = new MongoManagerDB('mongodb+srv://martinlujan0666:Martin1470@ecommerce.v4lpkit.mongodb.net/ecommerce');
 
 //import products
-const ProductManager = require('./dao/managers/ProductManager');
-const productManager = new ProductManager('./utils/products.json');
-const CartManager = require('./dao/managers/CartManager');
-const cartManager = new CartManager('./utils/Carrito.json');
-const ProductManagerMongo = require('./dao/managersMongoDB/ProductManagerMongo');
-const productManagerMongo = new ProductManagerMongo();
-const Message = require ('./dao/models/modelMessages.js')
+const Message = require ('./dao/mongoDB/models/modelMessages.js')
 const ProductController = require('./controllers/products.controllers.js');
-const ProductService = require('./services/products.services.js')
+const ProductService = require('./services/product.services.js')
+const productService = new ProductService()
 
 //import routes
 const routesProducts = require('./Routes/productsRouter.js');
@@ -32,7 +28,6 @@ const realTimeProducts = require('./Routes/realTimeProducts.js');
 const chatRouter = require('./Routes/chat.js');
 const allProducts = require('./Routes/allProducts.js')
 const productView = require('./Routes/productView.js')
-const cartView = require('./Routes/cartView.js')
 const login = require('./Routes/login.js')
 const authRoutes = require('./Routes/authRoutes.js')
 const github = require('./Routes/github.js')
@@ -85,14 +80,13 @@ app.use('/realTimeProducts', realTimeProducts)
 app.use('/chat', chatRouter)
 app.use('/products', allProducts)
 app.use('/products/productView', productView)
-app.use('/api/cart/cartView', cartView)
 app.use('/api/sessions', login)
 app.use('/api/auth', authRoutes)
 app.use('/api/sessions/github', github)
 
 
 //public
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname + '/public')));
 
 //Views
 app.engine('handlebars', handlebars.engine());
@@ -103,16 +97,16 @@ app.set('views', __dirname + '/views');
 io.on('connection',async (socket) => {
     console.log('Nuevo cliente conectado!')
 
-const products = await ProductService.getProducts()
+const products = await productService.getAllProducts()
 
     socket.emit('NewProduct', products)
 
     socket.on( 'NewProduct', async (NewProduct) => { 
-        ProductService.addProduct(NewProduct)
+        productService.addProduct(NewProduct)
     })
 
     socket.on('ProductDelete', async (ProductDelete) => {
-        ProductService.deleteProduct(ProductDelete)
+        productService.deleteProduct(ProductDelete)
         socket.emit('ProductDelete', products)
     })
 

@@ -1,4 +1,5 @@
-const ProductService = require('../services/products.services.js');
+const ProductService = require('../services/product.services.js');
+const productService = new ProductService();
 
 
 
@@ -6,7 +7,7 @@ class ProductController{
 
     async getAllPaginate (req, res) {
         const {page, limit} = req.query
-        const products = await ProductService.getAll(page, limit)
+        const products = await productService.getAll(page, limit)
         //console.log(products)
         let productsArray = products.docs.map((product)=>{
             return {
@@ -32,7 +33,7 @@ class ProductController{
     async getById (req, res) {
 
     const id = req.params.id
-    const product = ProductService.getProductById(id)
+    const product = productService.getProductById(id)
     .then(product => {
     if(product) return res.status(200).send({data: product, message: "Producto encontrado"})
     return res.status(204).send({data: product, message: "No hay productos"})
@@ -57,7 +58,7 @@ class ProductController{
     async deleteProduct (req, res) {
         try{
             const id = req.params.id
-            const product = await ProductService.deleteProduct(id)
+            const product = await productService.deleteProduct(id)
             return res.status(200).json({
                 status: 'success',
                 message: 'Producto eliminado',
@@ -77,7 +78,7 @@ class ProductController{
         const id = req.params.id
         const {name, price, image} = req.body;
         try{
-            const product = await ProductService.updateProduct(id, name, price, image)
+            const product = await productService.updateProduct(id, name, price, image)
             return res.status(200).json({
                 status: 'success',
                 message: 'Producto actualizado',
@@ -94,9 +95,14 @@ class ProductController{
     }
 
     async getRealTime (req, res) {
-        const products = await ProductService.getProducts()
+        const products = await productService.getAllProducts()
         res.render('realTimeProducts', products);
       };
+
+
+    async getImageHome (req, res) {
+        res.render('home')
+    }
 
 }
 

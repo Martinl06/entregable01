@@ -1,32 +1,30 @@
-const Message = require('../dao/models/modelMessages')
+const ChatService = require('../services/chat.services.js')
+const chatService = new ChatService()
 
 
 class MessageController{
 
-    async addMessage(req, res){
-            const NewMessage = req.body
-            const message = new Message(NewMessage)
-            message.save()
-            .then(message =>{
-                res.status(201).send({
-                    msg: "Mensaje creado",
-                    data: message
-                })
-            })
-            .catch(err => res.status(500).send({err}))
-        }
     
-
+    async addMessage(req, res){
+        try {
+            const message = req.body
+            const newMessage = await chatService.addMessage(message)
+            res.status(201).send({data: newMessage, message: "Mensaje creado"})
+        } catch (error) {
+            res.status(500).send(`Error al crear mensaje: ${error}`)
+        }
+    }
+    
+    
     async getAllMessages(req, res){
-            Message.find()
-            .then(messages => {
-                if(messages.length) return res.status(200).render('chat', {messages})
-                return res.status(204).send({data: messages, message: "No hay mensajes"})
-            })
-            .catch(err => res.status(500).send({err}))
-          }
+        try {
+            const messages = await chatService.getAllMessages()
+            return res.status(200).render('chat', {messages})
+        } catch (error) {
+            res.status(500).send(`Error al buscar mensajes: ${error}`)
+        }
     }
 
-
+}
 
 module.exports = new MessageController()

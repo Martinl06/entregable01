@@ -27,7 +27,6 @@ const homeRouter = require('./Routes/home.router.js');
 const realTimeProducts = require('./Routes/realTimeProducts.js');
 const chatRouter = require('./Routes/chat.js');
 const allProducts = require('./Routes/allProducts.js')
-const productView = require('./Routes/productView.js')
 const login = require('./Routes/login.js')
 const authRoutes = require('./Routes/authRoutes.js')
 const github = require('./Routes/github.js')
@@ -79,7 +78,6 @@ app.use('/home', homeRouter);
 app.use('/realTimeProducts', realTimeProducts)
 app.use('/chat', chatRouter)
 app.use('/products', allProducts)
-app.use('/products/productView', productView)
 app.use('/api/sessions', login)
 app.use('/api/auth', authRoutes)
 app.use('/api/sessions/github', github)

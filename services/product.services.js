@@ -81,11 +81,9 @@ class ProductService {
       }
     }
 
-    async getProduct(name,price,description,code,thumbnail,stock,genero){
-        const product = await productMethods.find({name,price,description,code,thumbnail,stock,genero})
-        return product;
+    async getProduct(_id){
+        return await productMethods.getProduct(_id);
     }
-
 
 }
 

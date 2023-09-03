@@ -61,8 +61,8 @@ class ProductClass {
       }
     }
 
-    async getProduct(name,price,description,code,thumbnail,stock,genero){
-        const product = await Product.find({name,price,description,code,thumbnail,stock,genero})
+    async getProduct(_id){
+        const product = await Product.findOne({id: _id})
         return product;
     }
 

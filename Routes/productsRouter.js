@@ -15,4 +15,5 @@ router.delete('/deleteProduct/:id', isAdmin, ProductController.deleteProduct )
 router.put('/updateProduct/:id', isAdmin, ProductController.updateProduct)
 
 
+
 module.exports = router

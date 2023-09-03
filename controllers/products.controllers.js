@@ -104,6 +104,11 @@ class ProductController{
         res.render('home')
     }
 
+    async getProduct(req, res){
+        return productService.getProduct()
+
+    }
+
 }
 
-module.exports = new ProductController();
+module.exports = new ProductController()

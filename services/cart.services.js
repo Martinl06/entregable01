@@ -17,11 +17,11 @@ class CartService {
 
 
     readCart(){
-        return cartMethods.find({})
+        return cartMethods.readCart()
     }
 
     cartId(id){
-        return cartMethods.findById(id)
+        return cartMethods.cartId(id)
     }
 
     async addCart(car){

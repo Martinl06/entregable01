@@ -8,6 +8,7 @@ const passport = require('passport');
 const initializePassport = require('./dao/config/passport.js');
 const initializeGithubPassport = require('./dao/config/githubPassport.js');
 const path = require('path');
+const compression = require('express-compression');
 
 //conect to mongo
 const mongoose = require('mongoose');
@@ -52,6 +53,13 @@ app.use(session({
     saveUninitialized: false,
 }))
 
+//compression brotli
+app.use(compression({
+    brotli: {enabled: true}
+}))
+
+
+//body parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

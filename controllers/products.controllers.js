@@ -109,6 +109,16 @@ class ProductController{
 
     }
 
+    async generateMockFakerProducts(req, res){
+        try{
+            const products = await productService.generateMockFakerProducts()
+            res.send({status: 'success', payload: products})
+        }catch(err){
+            console.log(err)
+            res.status(500).send({error: err, message:'No se pudieron obtener los productos'})
+        }
+    }
+
 }
 
 module.exports = new ProductController()

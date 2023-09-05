@@ -85,6 +85,10 @@ class ProductService {
         return await productMethods.getProduct(_id);
     }
 
+    async generateMockFakerProducts(){
+        return await productMethods.generateMockFakerProducts();
+    }
+
 }
 
 module.exports =  ProductService;

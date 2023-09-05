@@ -10,7 +10,7 @@ const {checkAutentication} = require('../middlewares/authenticator.middlewares.j
 
 router.get('/', checkAutentication, ProductController.getAllPaginate)
 
-router.get('/mockingProducts')
+router.get('/mockingProducts', checkAutentication, ProductController.generateMockFakerProducts)
 
 //vista que devuelve el producto seleccionado
 router.get('/productView', checkAutentication, async (req, res) => {

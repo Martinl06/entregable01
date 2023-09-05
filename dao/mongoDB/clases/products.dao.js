@@ -1,4 +1,5 @@
 const Product = require('../models/modelProducts.js')
+const {faker} = require('@faker-js/faker')
 
 
 class ProductClass {
@@ -66,8 +67,24 @@ class ProductClass {
         return product;
     }
 
+    async generateMockFakerProducts(){
+        const products = [];
+        let numProducts = 100;
+        for (let i = 0; i < numProducts; i++) {
+            const product = {
+                tittle: faker.commerce.productName(),
+                description: faker.commerce.productDescription(),
+                price: faker.commerce.price(),
+                stock: faker.number.int(),
+                code: faker.number.int(),
+                genero: faker.commerce.productMaterial()
+            }
+            products.push(product)
+        }
+        return products;
+    }
 
-
+    
     
 }
 

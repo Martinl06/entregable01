@@ -42,10 +42,9 @@ class CartClass {
     async addProductToCart(cid,pid){
         try {
             const Cart1 = await this.getCartID(cid);
-            const ProductToSelect = await Product.findById(pid)
-            Cart1.Product.push({Product: ProductToSelect})
+            const Product1 = await Product.findById(pid);
+            Cart1.Product.push(Product1)
             await Cart.updateOne({_id: cid},Cart1).populate('product.product')
-            console.log(Cart1);
             return "producto agregado"
         } catch (error) {
             console.log(error);

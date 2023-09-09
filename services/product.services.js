@@ -19,7 +19,8 @@ class ProductService {
 
     async getProductById(id) {
         try {
-            return await productMethods.getProductById(id);
+            const product = await productMethods.getProductById(id);
+            return product;
         } catch (err) {
             console.log(err);
         }
@@ -82,7 +83,8 @@ class ProductService {
     }
 
     async getProduct(_id){
-        return await productMethods.getProduct(_id);
+        const product = await productMethods.getProduct(_id);
+        return product;
     }
 
     async generateMockFakerProducts(){
@@ -90,5 +92,7 @@ class ProductService {
     }
 
 }
+
+
 
 module.exports =  ProductService;

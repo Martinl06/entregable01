@@ -8,7 +8,6 @@ class ProductController{
     async getAllPaginate (req, res) {
         const {page, limit} = req.query
         const products = await productService.getAll(page, limit)
-        //console.log(products)
         let productsArray = products.docs.map((product)=>{
             return {
                 name: product.name,
@@ -29,15 +28,46 @@ class ProductController{
         return res.status(200).render('productsAll',{productsArray, pagination: rest, links})
     }
 
+    async getAll (req, res) {
+        try{
+            const products = await productService.getAll()
+            return res.status(200).json({
+                status: 'success',
+                message: 'Productos encontrados',
+                payload: products
+            })
+        }catch(err){
+            console.log(err)
+            return res.status(500).json({
+                status: 'error',
+                message: 'Error al obtener los productos',
+                data:{}
+            })
+        }
+    }
 
-    async getById (req, res) {
-
-    const id = req.params.id
-    const product = productService.getProductById(id)
-    .then(product => {
-    if(product) return res.status(200).send({data: product, message: "Producto encontrado"})
-    return res.status(204).send({data: product, message: "No hay productos"})
-    }).catch(err => res.status(500).send({err}))
+//funcion para obtener un solo producto
+    async getProductById(req, res){
+        const ID = req.params.id;
+        const product1 = await productService.getProduct(ID)
+        console.log(product1);
+            if (!product1) {
+              return res.status(404).send('Producto no encontrado');
+            }else{
+          
+            const productGet = {
+              name: product1.name,
+              description: product1.description,
+              price: product1.price,
+              image: product1.image,
+              stock: product1.stock,
+              code: product1.code,
+              genero: product1.genero
+            };
+          
+            console.log(productGet);
+            return res.status(200).render('productView', { productGet });
+    }
 }
 
 
@@ -105,9 +135,27 @@ class ProductController{
     }
 
     async getProduct(req, res){
-        return productService.getProduct()
-
-    }
+            const ID = req.params.id;
+            const product1 = await productService.getAllProducts(ID)
+            console.log(product1);
+            if (!product1) {
+              return res.status(404).send('Producto no encontrado');
+            }else{
+          
+            const productGet = {
+              name: product1.name,
+              description: product1.description,
+              price: product1.price,
+              image: product1.image,
+              stock: product1.stock,
+              code: product1.code,
+              genero: product1.genero
+            };
+          
+            console.log(productGet);
+            return res.status(200).render('productView', { productGet });
+          }}
+    
 
     async generateMockFakerProducts(req, res){
         try{

@@ -17,7 +17,7 @@
   {{/each}}
   </div>
 </div>
-<div>
+<div class="container paginate">
   {{#if pagination.hasPrevPage}}
     <a style='font-size: 20;' href='/products/?page={{pagination.prevPage}}'>⬅{{pagination.prevPage}}</a>
   {{/if}}
@@ -25,9 +25,10 @@
   {{#if pagination.hasNextPage}}
     <a style='font-size: 20;' href='/products/?page={{pagination.nextPage}}'>{{pagination.nextPage}}➡</a>
   {{/if}}
-  <br />
+  {{!<br />
   <br />
   {{#each links}}
-    <a href='{{this.href}}'>{{this.label}}</a>
+  {{!<a href='{{this.href}}{{!'>{{this.label}}{{!</a>
   {{/each}}
   </div>
+  

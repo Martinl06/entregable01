@@ -21,9 +21,9 @@ class ProductClass {
         }
       }
 
-      async getProductById(_id) {
+      async getProductById(id) {
         try {
-            const product = await Product.findById(_id);
+            const product = await Product.findById(id);
             return product;
         } catch (error) {
             throw new Error('Error retrieving product by ID');
@@ -62,9 +62,13 @@ class ProductClass {
       }
     }
 
-    async getProduct(_id){
-        const product = await Product.findOne({id: _id})
-        return product;
+    async getProduct(id){
+        try{
+            const product = await Product.findOne({_id:id})
+            return product
+    }   catch(err){
+            console.log(err)
+        }
     }
 
     async generateMockFakerProducts(){

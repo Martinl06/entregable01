@@ -9,7 +9,7 @@ const {checkAutentication, isAdmin} = require('../middlewares/authenticator.midd
 
 
 router.get('/', checkAutentication, ProductController.getAllPaginate)
-router.get('/:id', ProductController.getById )
+router.get('/:id', ProductController.getProductById )
 router.post('/createProduct', isAdmin, ProductController.create )
 router.delete('/deleteProduct/:id', isAdmin, ProductController.deleteProduct )
 router.put('/updateProduct/:id', isAdmin, ProductController.updateProduct)

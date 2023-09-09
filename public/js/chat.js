@@ -28,9 +28,9 @@ function getChatForm() {
         let html = data.map(elem => {
             return `
             <div class = "container">
-            </div>
-            <div class="container chat mx-4 my-2">
-                <strong>${elem.user}</strong> dice <em>${elem.message}</em>
+              <div class="container chat mx-4 my-2">
+                <strong>${elem.user}</strong> dice <em> ${elem.message}</em>
+              </div>
             </div>
             `;
         })

@@ -15,3 +15,14 @@ info: Level info enabled
 info: Level info enabled
 info: Level info enabled
 info: Prueba info
+debug: Debugging enabled
+http: GET en /loggerTest - at 14/9/2023 - 22:35:33
+debug: Debugging enabled
+http: GET en / - at 14/9/2023 - 22:35:33
+info: Prueba info
+debug: Debugging enabled
+http: GET en /Api/productsRouter/6482bb6e516eddd9a5978326 - at 14/9/2023 - 22:35:57
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Prueba info

@@ -1,7 +1,9 @@
 //create server
 const express = require('express');
 const app = express();
-const PORT = 8080 || process.env.PORT;
+const config = require('./dao/config/config')
+const {addLogger} = require('./loggers/custom.loggers.js')
+
 const MongoStore = require('connect-mongo');
 const session = require ('express-session');
 const passport = require('passport');
@@ -31,6 +33,7 @@ const allProducts = require('./Routes/allProducts.js')
 const login = require('./Routes/login.js')
 const authRoutes = require('./Routes/authRoutes.js')
 const github = require('./Routes/github.js')
+const logger = require('./Routes/loggerTest.js')
 
 //import http
 const http = require('http')
@@ -76,8 +79,8 @@ app.use(passport.session());
 //Views engine
 const handlebars = require('express-handlebars');
 
-
-
+//loggers
+app.use(addLogger)
 
 //routes
 app.use('/api/productsRouter', routesProducts);
@@ -89,6 +92,7 @@ app.use('/products', allProducts)
 app.use('/api/sessions', login)
 app.use('/api/auth', authRoutes)
 app.use('/api/sessions/github', github)
+app.use('/loggerTest', logger)
 
 
 //public
@@ -128,8 +132,8 @@ const products = await productService.getAllProducts()
         })
     
 
-
-server.listen(PORT, () =>{ 
-console.log('Servidor escuchando en puerto 8080')
+const SERVER_PORT = config.port ;
+server.listen(SERVER_PORT, () =>{ 
+console.log('Servidor escuchando en puerto: ' + SERVER_PORT)
 mongoManagerDB.connectionMongoDB()
 });

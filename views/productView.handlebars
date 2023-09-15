@@ -1,8 +1,8 @@
 {{! Description: Vista de producto seleccionado }}
 <div class="box-product">
-<h1 class="title-Product container">Producto seleccionado</h1>
+<h1 class="title-principal-productView container">Productos Seleccionados</h1>
 {{#if productGet}}
-<div class="card mb-3"style="max-width: 540px;">
+<div class="card container mt-5"style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
       <img src="..." class="img-fluid rounded-start" alt="...">
@@ -10,12 +10,17 @@
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">{{productGet.name}}</h5>
-        <p class="card-text">{{productGet.description}}</p>
+        <p class="card-text"> ID: {{productGet._id}}</p>
+        <p class="card-text"> Description: {{productGet.description}}</p>
         <p class="card-text"><small class="text-muted">Precio: $ {{productGet.price}}</small></p>
         <p class="card-text"><small class="text-muted">Stock: {{productGet.stock}}</small></p>
         <p class="card-text"><small class="text-muted">Código: {{productGet.code}}</small></p>
         <p class="card-text"><small class="text-muted">Género: {{productGet.genero}}</small></p>
-        <button type="button" class="btn btn-primary">Add to cart</button>
+        <form action="/api/cart/{{user.cart}}/products/{{product._id}}" method="POST">
+            <!-- Aquí puedes agregar campos de formulario adicionales si es necesario -->
+            <button type="submit" class="btn btn-primary">Agregar al carrito</button>
+        </form>
+
         <a href="/products" class="btn btn-primary">Volver</a>
       </div>
     </div>

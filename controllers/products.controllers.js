@@ -10,6 +10,7 @@ class ProductController{
         const products = await productService.getAll(page, limit)
         let productsArray = products.docs.map((product)=>{
             return {
+                _id: product._id,
                 name: product.name,
                 description: product.description,
                 code: product.code,
@@ -19,12 +20,14 @@ class ProductController{
                 genero: product.genero
             }
         })
+        
         const {docs , ...rest} = products
         let links = []
     
         for (let i = 1; i <= rest.totalPages + 1; i++) {
             links.push({label:i, href:'http://localhost:8080/products/?page=' + i})
         }
+        
         return res.status(200).render('productsAll',{productsArray, pagination: rest, links})
     }
 
@@ -50,12 +53,12 @@ class ProductController{
     async getProductById(req, res){
         const ID = req.params.id;
         const product1 = await productService.getProduct(ID)
-        console.log(product1);
             if (!product1) {
               return res.status(404).send('Producto no encontrado');
             }else{
           
             const productGet = {
+              _id: product1._id,
               name: product1.name,
               description: product1.description,
               price: product1.price,
@@ -65,7 +68,6 @@ class ProductController{
               genero: product1.genero
             };
           
-            console.log(productGet);
             return res.status(200).render('productView', { productGet });
     }
 }
@@ -136,13 +138,14 @@ class ProductController{
 
     async getProduct(req, res){
             const ID = req.params.id;
-            const product1 = await productService.getAllProducts(ID)
-            console.log(product1);
+            const product1 = await productService.getProduct(ID)
+            console.log({product1});
             if (!product1) {
               return res.status(404).send('Producto no encontrado');
             }else{
           
             const productGet = {
+              _id: product1._id,
               name: product1.name,
               description: product1.description,
               price: product1.price,

@@ -6,12 +6,13 @@
   <img src= '' class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">{{this.name}}</h5>
+    <p class="card-text">ID: {{this._id}}</p>
     <p class="card-text">PRECIO: $ {{this.price}}</p>
     <p class="card-text">DESCRIPCION: {{this.description}}</p>
     <p class="card-text">CÓDIGO: {{this.code}}</p>
     <p class="card-text">STOCK: {{this.stock}}</p>
     <p class="card-text">GÉNERO: {{this.genero}}</p>
-    <a href="/products/productView" class="btn btn-primary">Ver</a>
+    <a href="/api/productsRouter/{{this._id}}" class="btn btn-primary">Ver</a>
   </div>
 </div>
   {{/each}}

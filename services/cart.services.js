@@ -1,10 +1,8 @@
-const {CartMethods, ProductMethods} = require('../dao/factory.js')
-const cartMethods = new CartMethods()
-const productMethods = new ProductMethods()
+const CartClass = require('../dao/mongoDB/clases/cart.dao.js')
+const cartClass = new CartClass()
 const ProductService = require('./product.services.js')
 const productService = new ProductService()
-const TicketService = require('./ticket.services.js')
-const ticketService = new TicketService()
+
 
 
 
@@ -17,15 +15,15 @@ class CartService {
 
 
     readCart(){
-        return cartMethods.readCart()
+        return cartClass.readCart()
     }
 
     cartId(id){
-        return cartMethods.cartId(id)
+        return cartClass.cartId(id)
     }
 
     async addCart(car){
-        return await cartMethods.addCart(car)
+        return await cartClass.addCart(car)
         
     }
 
@@ -51,14 +49,14 @@ class CartService {
     }
     async addProductToCart(cid,pid){
         try {
-            return await cartMethods.addProductToCart(cid,pid)
+            return await cartClass.addProductToCart(cid,pid)
         } catch (error) {
             console.log(error);
         }
     }
     async UpdateCart(cid){
         try {
-            return await cartMethods.UpdateCart(cid)
+            return await cartClass.UpdateCart(cid)
         } catch (error) {
             console.log(error);
         }
@@ -66,14 +64,14 @@ class CartService {
     }
     async updateProduct(pid){
         try {
-            return await cartMethods.updateProduct(pid)
+            return await cartClass.updateProduct(pid)
         } catch (error) {
             console.log(error);
         }
     }
     async deleteProductFromCart(cid,pid){
         try {
-            return await cartMethods.deleteProductFromCart(cid,pid)
+            return await cartClass.deleteProductFromCart(cid,pid)
         } catch (error) {
             console.log(error);
         }
@@ -81,7 +79,7 @@ class CartService {
     async updateProductsCart(cartId, arrayproductId) {
         try {
     
-          let cart = await cartMethods.updateProduct(cartId, arrayproductId)
+          let cart = await cartClass.updateProduct(cartId, arrayproductId)
     
     
           console.log(`The products of cart with id:${cartId} was updated succesfuly`)
@@ -96,7 +94,7 @@ class CartService {
       async purchase(cartId, user) {
         try {
     
-          let cart = await cartMethods.findOne(cartId)
+          let cart = await cartClass.findOne(cartId)
           if (cart) {
             // consigue id de productos en cart
             const productIds = cart.products.map(product => product.idProduct.toString());
@@ -138,7 +136,7 @@ class CartService {
     
             //Usamos .createTicket y  Creamos el ticket
     
-            const ticket = await ticketService.createTicket({
+            const ticket = await TicketService.createTicket({
               amount,
               purchaser: user,//Este es el email del user que lo sacamos de req.session
               // cartId
@@ -162,7 +160,7 @@ class CartService {
       }
       async getPurchase() {
         try {
-          const tickets = await ticketService.getTickets();
+          const tickets = await TicketService.getTickets();
           return tickets;
         } catch (error) {
           throw new Error(error.message);
@@ -170,7 +168,7 @@ class CartService {
       }
       async deletePurchase() {
         try {
-          const tickets = await ticketService.deletePurchase();
+          const tickets = await TicketService.deletePurchase();
           return tickets;
         } catch (error) {
           throw new Error(error.message);
@@ -179,4 +177,4 @@ class CartService {
 }
 
 
-module.exports = CartService
+module.exports =  CartService

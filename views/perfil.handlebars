@@ -19,12 +19,13 @@
   <img src= "https://imgs.search.brave.com/RYGjKPhiy8UkyqF1mrw7VdLRmoMctxFWiR0COFKq9iY/rs:fit:860:0:0/g:ce/aHR0cDovL3R1c2lt/YWdlbmVzZGUuY29t/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDE2/LzA2L2NhbXBlcmFz/LWRlLWN1ZXJvLTEu/anBn" class="card-img-top" alt="imagen del producto">
   <div class="card-body">
     <h5 class="card-title">{{this.name}}</h5>
+    <p class="card-text">ID: {{this._id}}</p>
     <p class="card-text">PRECIO: $ {{this.price}}</p>
     <p class="card-text">DESCRIPCION: {{this.description}}</p>
     <p class="card-text">CÓDIGO: {{this.code}}</p>
     <p class="card-text">STOCK: {{this.stock}}</p>
     <p class="card-text">GÉNERO: {{this.genero}}</p>
-    <a href="/products/productView" class="btn btn-primary">Ver</a>
+    <a href="/api/productsRouter/{{this._id}}" class="btn btn-primary">Ver</a>
   </div>
 </div>
   {{/each}}

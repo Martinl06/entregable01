@@ -1,5 +1,6 @@
-const {ProductMethods}  = require("../dao/factory.js");
-const productMethods = new ProductMethods()
+const ProductClass = require ('../dao/mongoDB/clases/products.dao.js')
+const productClass = new ProductClass()
+
 
 
 
@@ -11,7 +12,7 @@ class ProductService {
 
     async getAllProducts() {
         try {
-            return await productMethods.getProducts();
+            return await productClass.getProducts();
         } catch (err) {
             console.log(err);
         }
@@ -19,7 +20,7 @@ class ProductService {
 
     async getProductById(id) {
         try {
-            const product = await productMethods.getProductById(id);
+            const product = await productClass.getProductById(id);
             return product;
         } catch (err) {
             console.log(err);
@@ -28,7 +29,7 @@ class ProductService {
 
     async addProduct(prod) {
         try {
-            return await productMethods.addProducts(prod);
+            return await productClass.addProducts(prod);
         } catch (err) {
             console.log(err);
         }
@@ -36,7 +37,7 @@ class ProductService {
 
     async updateProduct(id, prod) {
         try {
-            return await productMethods.updateProduct(id, prod);
+            return await productClass.updateProduct(id, prod);
         } catch (err) {
             console.log(err);
         }
@@ -44,7 +45,7 @@ class ProductService {
 
     async deleteProduct(id) {
         try {
-            return await productMethods.deleteProduct(id);
+            return await productClass.deleteProduct(id);
         } catch (err) {
             console.log(err);
         }
@@ -54,7 +55,7 @@ class ProductService {
         try {
             if (!_id) throw new Error('Invalid _id');
             // this.productValidation(product.name, product.description, product.price, product.thumbnail, product.code, product.stock, product.category, product.genero);
-            const updatedProduct = await productMethods.updateOne(_id, {stock:product});
+            const updatedProduct = await productClass.updateOne(_id, {stock:product});
             console.log(`The stock product with id: ${_id} was updated succesfully!`);
             return updatedProduct;
         } catch (error) {
@@ -63,36 +64,27 @@ class ProductService {
         }
     }
 
-    async getArrProductsData(arr) {
-        const productsData = [];
-      
-        for (const id of arr) {
-          const product = await this.getProductById(id);
-          productsData.push(product);
-        }
-      
-        return productsData;
-      }
+    
 
     getAll = async (page, limit ) => {
         try {
-            return await productMethods.getAll(page, limit);
+            return await productClass.getAll(page, limit);
       } catch (error) {
             console.log('error', error);
       }
     }
 
     async getProduct(_id){
-        const product = await productMethods.getProduct(_id);
+        const product = await productClass.getProduct(_id);
         return product;
     }
 
     async generateMockFakerProducts(){
-        return await productMethods.generateMockFakerProducts();
+        return await productClass.generateMockFakerProducts();
     }
 
 }
 
 
 
-module.exports =  ProductService;
+module.exports =  ProductService

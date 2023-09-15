@@ -3,7 +3,9 @@ const Product = require('../models/modelProducts.js')
 
 
 class CartClass {
-
+    constructor(){
+    
+}
 
 
     readCart(){
@@ -14,23 +16,34 @@ class CartClass {
         return Cart.findById(id)
     }
 
-    async addCart(cart){
-        const newCart = new Cart(cart)
-        return await newCart.save()
+    addCart = async (cart)=>{
+        const newCart = new Cart({products:[]}) 
+        try {
+            const savedCart = await newCart.save();
+            return savedCart;
+        } catch (error) {
+            console.log(error);
+        }
     }
 
-    async getCarts(){
-        return await this.readCart()
-    }
+    getCarts = async ()=>{
+        try {
+            const AllCarts = await Cart.find({});
+            return AllCarts;
+        } catch (error) {
+            console.log(error)
+        }
+    }   
 
-    async getCartID(_id){
-        const cart = await this.cartId(_id)
-        if(!cart){
-            return "No existe el carrito"
-        }else{
-            return cart
+    async getCartID(id){
+        try {
+            const CartByID = await Cart.findById(id).populate('products.product').lean();
+            return CartByID;
+        } catch (error) {
+            console.log (error);
         }
     } 
+
     async deleteCart(_id){
         const cart = await this.cartId(_id)
         if(!cart){
@@ -40,13 +53,20 @@ class CartClass {
         }
     }
     async addProductToCart(cid,pid){
-        try {
-            const Cart1 = await this.getCartID(cid);
-            const Product1 = await Product.findById(pid);
-            Cart1.Product.push(Product1)
-            await Cart.updateOne({_id: cid},Cart1).populate('product.product')
-            return "producto agregado"
-        } catch (error) {
+         try {
+            const chooseCart = await this.getCartById(cid);
+            const index = chooseCart.products.findIndex(prod => prod.Product._id.toString() === pid)
+           if (index === -1){ // index -1 si no lo encuentra al pid
+                const add = {$push:{products:{product:{_id:pid},quantity:1}}}
+                await Cart.updateOne(chooseCart, add) 
+                return "producto agregado"
+           } else{// significa que encontró el pid dentro de products
+                const filter = { _id: cid, 'products.product': pid };
+                const update = { $inc: { 'products.$.quantity': 1 } };
+                await Cart.updateOne(filter, update);
+                return "producto agregado"
+           }
+        }  catch (error) {
             console.log(error);
         }
     }
@@ -79,6 +99,16 @@ class CartClass {
             return "producto eliminado"
         } catch (error) {
             console.log(error);
+        }
+    }
+    deleteAllProductsFromCart = async (cid) => {
+        try {
+            const chooseCart = await this.getCartById(cid);
+            const resetCart = {$set: {products: []}};
+            await Cart.updateOne(chooseCart,resetCart)
+            return `el carrito ${cid} fue vaciado`
+        } catch (error) {
+            console.log(error)
         }
     }
     

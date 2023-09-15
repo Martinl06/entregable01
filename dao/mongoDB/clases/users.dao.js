@@ -35,4 +35,4 @@ class UserClass{
 
 }
 
-module.exports = UserClass
+module.exports =  UserClass

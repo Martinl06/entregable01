@@ -1,6 +1,5 @@
-const {TicketMethods, ProductMethods} = require('../dao/factory.js')
-const ticketMethods = new TicketMethods()
-const productMethods = new ProductMethods()
+const TicketClass = require('../dao/mongoDB/clases/ticket.clases.js')
+const ticketClass = new TicketClass()
 const ProductService = require('./product.services.js')
 const productService = new ProductService()
 
@@ -13,7 +12,7 @@ class TicketService {
 
     async createTicket(ticket) {
         try {
-            return await ticketMethods.create(ticket)
+            return await ticketClass.create(ticket)
         } catch (err) {
             console.log(err)
         }
@@ -28,12 +27,12 @@ class TicketService {
     }
 
     async getTickets() {
-        const newTk = await ticketMethods.getAll();
+        const newTk = await ticketClass.getAll();
         return newTk
 
     }
     async deletePurchase() {
-        const newTk = await ticketMethods.deletePurchase();
+        const newTk = await ticketClass.deletePurchase();
         return newTk
 
     }

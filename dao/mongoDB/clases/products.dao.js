@@ -15,7 +15,7 @@ class ProductClass {
      async getProducts() {
         try {
           const products = await Product.find({}).lean()
-          return products;
+            return products;
         } catch (error) {
           console.log('error', error);
         }
@@ -23,10 +23,10 @@ class ProductClass {
 
       async getProductById(id) {
         try {
-            const product = await Product.findById(id);
-            return product;
+            const product = await Product.findById(id).lean();
+            console.log({product})
         } catch (error) {
-            throw new Error('Error retrieving product by ID');
+            throw new Error('Error al buscar el producto con id: ' + id);
         }
     }
 
@@ -93,4 +93,4 @@ class ProductClass {
 }
 
 
-module.exports =  ProductClass
+module.exports = ProductClass

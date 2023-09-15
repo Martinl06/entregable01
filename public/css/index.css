@@ -43,6 +43,14 @@
     font-weight: bold;
 }
 
+.title-principal-productView{
+    color: black;
+    text-align: center;
+    margin: 10rem 0 3rem 0 ;
+    font-family: cursive;
+    font-weight: bold;
+}
+
 .cards{
     display: flex;
     flex-wrap: wrap;

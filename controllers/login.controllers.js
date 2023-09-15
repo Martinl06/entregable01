@@ -50,6 +50,7 @@ class LoginController{
         //console.log(products)
         let productsArray = products.docs.map((product)=>{
             return {
+                _id: product._id,
                 name: product.name,
                 description: product.description,
                 code: product.code,

@@ -21,4 +21,4 @@ class TicketClass{
 }
 
 
-module.exports = TicketClass;
+module.exports =  TicketClass;

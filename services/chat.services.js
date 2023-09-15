@@ -1,5 +1,6 @@
-const {MessageMethods} = require ('../dao/factory.js')
-const messageMethods = new MessageMethods()
+const ChatClass = require('../dao/mongoDB/clases/chat.dao.js')
+const chatClass = new ChatClass()
+
 
 
 
@@ -10,7 +11,7 @@ class ChatService{
     
     async addMessage(mess){
         try{
-            return await messageMethods.addMessage(mess)
+            return await chatClass.addMessage(mess)
         }catch(err){
             console.log(err)
         }
@@ -18,11 +19,11 @@ class ChatService{
 
     async getAllMessages(){
         try{
-            return await messageMethods
+            return await chatClass
         }catch(err){
             console.log(err)
         }
     }
 }
 
-module.exports = ChatService
+module.exports =  ChatService

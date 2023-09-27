@@ -27,10 +27,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    role:{
-        type: String,
+    role: {
+        type: ['user', 'admin', 'premium'],
+        unique: false,
         default: 'user'
-    },
+    },   
     admin:{
         type: Boolean,
         default: false

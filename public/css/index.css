@@ -100,7 +100,7 @@
     padding-top: 3rem;
     margin: 10rem auto;
     width: 60%;
-    height: 31rem;
+    height: 37rem;
     border-radius: 10px;
     box-shadow: 0 0 10px black;
     display: flex;
@@ -115,7 +115,7 @@
 .register{
     text-decoration: none;
     display: block;
-    margin-top: 0.2rem;
+    margin-top: 2rem;
     color: #ffc107;
 }
 .login{

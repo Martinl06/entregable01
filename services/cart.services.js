@@ -18,8 +18,8 @@ class CartService {
         return cartClass.readCart()
     }
 
-    cartId(id){
-        return cartClass.cartId(id)
+    cartId(_id){
+        return cartClass.cartId(_id)
     }
 
     async addCart(car){
@@ -174,6 +174,7 @@ class CartService {
           throw new Error(error.message);
         }
       }
+  
 }
 
 

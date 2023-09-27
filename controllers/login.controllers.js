@@ -1,6 +1,9 @@
 const ProductService = require('../services/product.services.js')
 const productService = new ProductService()
 const UsersDTO = require('../dao/dto/users.dto.js')
+const UserService = require('../services/users.services.js')
+const userService = new UserService()
+const { recoveryPass } = require('../utils/nodemailer.js')
 
 
 
@@ -68,6 +71,80 @@ class LoginController{
         }
         return res.status(200).render('perfil',{productsArray, user, pagination: rest, links})
     
+    }
+     changeRol = async (req, res) => {
+        const uid = req.params.uid
+        try {
+            const user = await userService.findById(uid); 
+            if (!user) {
+                return res.status(404).send('User not found'); 
+            }
+            if (user.rol.includes('user')) {
+                user.rol = 'premium';
+            } else {
+                user.rol = 'user';
+            }
+            const updatedUser = await user.save();
+            res.status(201).send(`Rol has been changed to ${updatedUser.rol}`);
+        } catch (error) {
+            console.error('Error:', error);
+            res.status(500).send('Internal server error');
+        }
+    }
+
+    pageForgotPassword = async (req, res) => {
+        res.render('pageForgotPassword')
+    }
+    
+    pageRecoveryPassword = async (req, res) => {
+        const token = req.query.token;
+        console.log(req.query)
+        res.render('recoveryPassword', {
+            token: token
+        });
+    };
+    
+    
+    sendNewPasswordMail = async (req, res) => {
+        const body = req.body;
+        try {
+            const user = await userService.findOne({ email: body.email });
+            if (!user) {
+                return res.status(404).send('No existe usuario con ese correo electrónico');
+            }
+            recoveryPass(body.email, res);
+        } catch (error) {
+            res.status(500).send('Error interno del servidor');
+        }
+    }
+    
+    
+    resetPassword = async (req, res) => {
+        const newPassword = req.body.password;
+        const token = req.query.token;;
+        try {
+            const decodedEmail = verifyToken(token);
+            const user = await userService.findOne({ email: decodedEmail.email });
+    
+            if (!user) {
+                return res.status(404).send('Usuario no encontrado');
+            }
+            const comparePassword = await compare(newPassword, user.password);
+    
+            if (comparePassword) {
+                return res.status(404).send('No se puede poner misma contraseña')
+            }
+            const hashPW = await hashPassword(newPassword);
+            user.password = hashPW;
+            await user.save();
+            res.status(200).send('La contraseña ha sido modificada');
+        } catch (error) {
+            console.error(error);
+            if (error.message === 'Token invalid or expired') {
+                return res.redirect('/api/forgotPassword');
+            }
+            res.status(500).send('Error interno del servidor');
+        }
     }
 }
 

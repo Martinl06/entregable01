@@ -34,6 +34,8 @@ const login = require('./Routes/login.js')
 const authRoutes = require('./Routes/authRoutes.js')
 const github = require('./Routes/github.js')
 const logger = require('./Routes/loggerTest.js')
+const userPremium = require('./Routes/users.js')
+const emails = require('./Routes/emails.js')
 
 //import http
 const http = require('http')
@@ -93,6 +95,8 @@ app.use('/api/sessions', login)
 app.use('/api/auth', authRoutes)
 app.use('/api/sessions/github', github)
 app.use('/loggerTest', logger)
+app.use('/api/users', userPremium)
+app.use('/emails', emails)
 
 
 //public

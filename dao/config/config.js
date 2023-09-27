@@ -26,4 +26,11 @@ console.log("Enviroment: ", enviroment);
 module.exports = {
    port: process.env.PORT, 
    enviroment: enviroment,
+    jwt: process.env.JWT_SECRET,
+    email: {
+        user: process.env.mail,
+        pass: process.env.pass
+    },
+ 
+
 }

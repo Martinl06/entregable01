@@ -12,8 +12,8 @@ class CartClass {
         return Cart.find({})
     }
 
-    cartId(id){
-        return Cart.findById(id)
+    cartId(_id){
+        return Cart.findOne({id:_id})
     }
 
     addCart = async (cart)=>{
@@ -37,7 +37,7 @@ class CartClass {
 
     async getCartID(id){
         try {
-            const CartByID = await Cart.findById(id).populate('products.product').lean();
+            const CartByID = await Cart.findById(id).populate('product.product').lean();
             return CartByID;
         } catch (error) {
             console.log (error);
@@ -54,17 +54,17 @@ class CartClass {
     }
     async addProductToCart(cid,pid){
          try {
-            const chooseCart = await this.getCartById(cid);
-            const index = chooseCart.products.findIndex(prod => prod.Product._id.toString() === pid)
+            const chooseCart = await this.getCartID(cid);
+            const index = chooseCart.product.findIndex(prod => prod.product === pid)
            if (index === -1){ // index -1 si no lo encuentra al pid
-                const add = {$push:{products:{product:{_id:pid},quantity:1}}}
+                const add = {$push:{product:{product:{_id:pid},quantity: 1 }}}
                 await Cart.updateOne(chooseCart, add) 
                 return "producto agregado"
            } else{// significa que encontró el pid dentro de products
-                const filter = { _id: cid, 'products.product': pid };
-                const update = { $inc: { 'products.$.quantity': 1 } };
+                const filter = { _id: cid, 'product.product': pid };
+                const update = { $inc: { 'product.$.quantity': ++pid } };
                 await Cart.updateOne(filter, update);
-                return "producto agregado"
+                return ({message: "producto agregado"})
            }
         }  catch (error) {
             console.log(error);
@@ -73,7 +73,7 @@ class CartClass {
     async UpdateCart(cid){
         try {
             const Cart1 = await this.getCartID(cid);
-            Cart1.Product = []
+            Cart1.product = []
             await Cart.updateOne({_id: cid},Cart1)
             return "carrito actualizado"
         } catch (error) {
@@ -84,7 +84,7 @@ class CartClass {
     async updateProduct(pid){
         try {
             const Cart1 = await this.getCartID(pid);
-            Cart1.Product.Product = []
+            Cart1.product.Product = []
             await Cart.updateOne({_id: pid},Cart1)
             return "producto actualizado"
         } catch (error) {
@@ -94,7 +94,7 @@ class CartClass {
     async deleteProductFromCart(cid,pid){
         try {
             const Cart1 = await this.getCartID(cid);
-            Cart1.Product.pull({Product: pid})
+            Cart1.product.pull({product: pid})
             await Cart.updateOne({_id: cid},Cart1)
             return "producto eliminado"
         } catch (error) {
@@ -103,7 +103,7 @@ class CartClass {
     }
     deleteAllProductsFromCart = async (cid) => {
         try {
-            const chooseCart = await this.getCartById(cid);
+            const chooseCart = await this.getCartID(cid);
             const resetCart = {$set: {products: []}};
             await Cart.updateOne(chooseCart,resetCart)
             return `el carrito ${cid} fue vaciado`

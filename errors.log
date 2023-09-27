@@ -285,3 +285,208 @@ info: Level info enabled
 info: Level info enabled
 info: Level info enabled
 info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+info: Level info enabled
+debug: Debugging enabled
+http: GET en /api/sessions/login - at 27/9/2023 - 20:04:42
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 20:04:42
+debug: Debugging enabled
+http: GET en /api/sessions/forgotPassword - at 27/9/2023 - 20:04:46
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 20:04:46
+debug: Debugging enabled
+http: GET en /js/index.js - at 27/9/2023 - 20:04:46
+debug: Debugging enabled
+http: POST en /api/sessions/sendNewPasswordMail - at 27/9/2023 - 20:04:49
+debug: Debugging enabled
+http: GET en /api/sessions/forgotPassword - at 27/9/2023 - 20:10:48
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 20:10:48
+debug: Debugging enabled
+http: GET en /js/index.js - at 27/9/2023 - 20:10:48
+debug: Debugging enabled
+http: POST en /api/sessions/sendNewPasswordMail - at 27/9/2023 - 20:10:51
+debug: Debugging enabled
+http: GET en /api/sessions/recoveryPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmx1amFuMDY2NkBnbWFpbC5jb20iLCJpYXQiOjE2OTU4NTYyNTEsImV4cCI6MTY5NTg1OTg1MX0.ELk4NPHgmhWcSeIRHaMPiQPW8Xt7_w9ghxssouNImik - at 27/9/2023 - 20:11:12
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 20:11:12
+debug: Debugging enabled
+http: GET en /js/index.js - at 27/9/2023 - 20:11:12
+debug: Debugging enabled
+http: GET en /api/sessions/recoveryPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmx1amFuMDY2NkBnbWFpbC5jb20iLCJpYXQiOjE2OTU4NTYyNTEsImV4cCI6MTY5NTg1OTg1MX0.ELk4NPHgmhWcSeIRHaMPiQPW8Xt7_w9ghxssouNImik - at 27/9/2023 - 20:13:50
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 20:13:50
+debug: Debugging enabled
+http: GET en /js/index.js - at 27/9/2023 - 20:13:50
+debug: Debugging enabled
+http: GET en /api/sessions/recoveryPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmx1amFuMDY2NkBnbWFpbC5jb20iLCJpYXQiOjE2OTU4NTYyNTEsImV4cCI6MTY5NTg1OTg1MX0.ELk4NPHgmhWcSeIRHaMPiQPW8Xt7_w9ghxssouNImik - at 27/9/2023 - 20:14:31
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 20:14:31
+debug: Debugging enabled
+http: GET en /js/index.js - at 27/9/2023 - 20:14:31
+debug: Debugging enabled
+http: GET en /api/sessions/recoveryPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmx1amFuMDY2NkBnbWFpbC5jb20iLCJpYXQiOjE2OTU4NTYyNTEsImV4cCI6MTY5NTg1OTg1MX0.ELk4NPHgmhWcSeIRHaMPiQPW8Xt7_w9ghxssouNImik - at 27/9/2023 - 20:14:35
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 20:14:35
+debug: Debugging enabled
+http: GET en /js/index.js - at 27/9/2023 - 20:14:35
+debug: Debugging enabled
+http: GET en /api/sessions/recoveryPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmx1amFuMDY2NkBnbWFpbC5jb20iLCJpYXQiOjE2OTU4NTYyNTEsImV4cCI6MTY5NTg1OTg1MX0.ELk4NPHgmhWcSeIRHaMPiQPW8Xt7_w9ghxssouNImik - at 27/9/2023 - 20:15:54
+debug: Debugging enabled
+http: GET en /js/index.js - at 27/9/2023 - 20:15:54
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 20:15:54
+debug: Debugging enabled
+http: GET en /api/sessions/recoveryPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmx1amFuMDY2NkBnbWFpbC5jb20iLCJpYXQiOjE2OTU4NTYyNTEsImV4cCI6MTY5NTg1OTg1MX0.ELk4NPHgmhWcSeIRHaMPiQPW8Xt7_w9ghxssouNImik - at 27/9/2023 - 20:19:15
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 20:19:15
+debug: Debugging enabled
+http: GET en /js/index.js - at 27/9/2023 - 20:19:15
+debug: Debugging enabled
+http: GET en /api/sessions/recoveryPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmx1amFuMDY2NkBnbWFpbC5jb20iLCJpYXQiOjE2OTU4NTYyNTEsImV4cCI6MTY5NTg1OTg1MX0.ELk4NPHgmhWcSeIRHaMPiQPW8Xt7_w9ghxssouNImik - at 27/9/2023 - 20:19:53
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 20:19:53
+debug: Debugging enabled
+http: GET en /js/index.js - at 27/9/2023 - 20:19:53
+debug: Debugging enabled
+http: GET en /api/sessions/recoveryPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmx1amFuMDY2NkBnbWFpbC5jb20iLCJpYXQiOjE2OTU4NTYyNTEsImV4cCI6MTY5NTg1OTg1MX0.ELk4NPHgmhWcSeIRHaMPiQPW8Xt7_w9ghxssouNImik - at 27/9/2023 - 20:23:13
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 20:23:13
+debug: Debugging enabled
+http: GET en /js/index.js - at 27/9/2023 - 20:23:13
+debug: Debugging enabled
+http: POST en /api/sessions/resetPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmx1amFuMDY2NkBnbWFpbC5jb20iLCJpYXQiOjE2OTU4NTYyNTEsImV4cCI6MTY5NTg1OTg1MX0.ELk4NPHgmhWcSeIRHaMPiQPW8Xt7_w9ghxssouNImik - at 27/9/2023 - 20:27:33
+debug: Debugging enabled
+http: GET en /api/sessions/recoveryPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmx1amFuMDY2NkBnbWFpbC5jb20iLCJpYXQiOjE2OTU4NTYyNTEsImV4cCI6MTY5NTg1OTg1MX0.ELk4NPHgmhWcSeIRHaMPiQPW8Xt7_w9ghxssouNImik - at 27/9/2023 - 20:31:40
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 20:31:40
+debug: Debugging enabled
+http: GET en /js/index.js - at 27/9/2023 - 20:31:40
+debug: Debugging enabled
+http: POST en /api/sessions/resetPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmx1amFuMDY2NkBnbWFpbC5jb20iLCJpYXQiOjE2OTU4NTYyNTEsImV4cCI6MTY5NTg1OTg1MX0.ELk4NPHgmhWcSeIRHaMPiQPW8Xt7_w9ghxssouNImik - at 27/9/2023 - 20:31:46
+debug: Debugging enabled
+http: GET en /api/sessions/recoveryPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmx1amFuMDY2NkBnbWFpbC5jb20iLCJpYXQiOjE2OTU4NTYyNTEsImV4cCI6MTY5NTg1OTg1MX0.ELk4NPHgmhWcSeIRHaMPiQPW8Xt7_w9ghxssouNImik - at 27/9/2023 - 20:36:38
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 20:36:38
+debug: Debugging enabled
+http: GET en /js/index.js - at 27/9/2023 - 20:36:38
+debug: Debugging enabled
+http: POST en /api/sessions/resetPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmx1amFuMDY2NkBnbWFpbC5jb20iLCJpYXQiOjE2OTU4NTYyNTEsImV4cCI6MTY5NTg1OTg1MX0.ELk4NPHgmhWcSeIRHaMPiQPW8Xt7_w9ghxssouNImik - at 27/9/2023 - 20:36:42
+debug: Debugging enabled
+http: GET en /api/sessions/recoveryPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmx1amFuMDY2NkBnbWFpbC5jb20iLCJpYXQiOjE2OTU4NTYyNTEsImV4cCI6MTY5NTg1OTg1MX0.ELk4NPHgmhWcSeIRHaMPiQPW8Xt7_w9ghxssouNImik - at 27/9/2023 - 20:37:07
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 20:37:07
+debug: Debugging enabled
+http: GET en /js/index.js - at 27/9/2023 - 20:37:07
+debug: Debugging enabled
+http: POST en /api/sessions/resetPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmx1amFuMDY2NkBnbWFpbC5jb20iLCJpYXQiOjE2OTU4NTYyNTEsImV4cCI6MTY5NTg1OTg1MX0.ELk4NPHgmhWcSeIRHaMPiQPW8Xt7_w9ghxssouNImik - at 27/9/2023 - 20:37:12
+debug: Debugging enabled
+http: GET en /api/sessions/recoveryPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmx1amFuMDY2NkBnbWFpbC5jb20iLCJpYXQiOjE2OTU4NTYyNTEsImV4cCI6MTY5NTg1OTg1MX0.ELk4NPHgmhWcSeIRHaMPiQPW8Xt7_w9ghxssouNImik - at 27/9/2023 - 20:37:59
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 20:37:59
+debug: Debugging enabled
+http: GET en /js/index.js - at 27/9/2023 - 20:37:59
+debug: Debugging enabled
+http: POST en /api/sessions/resetPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmx1amFuMDY2NkBnbWFpbC5jb20iLCJpYXQiOjE2OTU4NTYyNTEsImV4cCI6MTY5NTg1OTg1MX0.ELk4NPHgmhWcSeIRHaMPiQPW8Xt7_w9ghxssouNImik - at 27/9/2023 - 20:38:08
+debug: Debugging enabled
+http: GET en /api/sessions/recoveryPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmx1amFuMDY2NkBnbWFpbC5jb20iLCJpYXQiOjE2OTU4NTYyNTEsImV4cCI6MTY5NTg1OTg1MX0.ELk4NPHgmhWcSeIRHaMPiQPW8Xt7_w9ghxssouNImik - at 27/9/2023 - 20:39:14
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 20:39:14
+debug: Debugging enabled
+http: GET en /js/index.js - at 27/9/2023 - 20:39:14
+debug: Debugging enabled
+http: POST en /api/sessions/resetPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmx1amFuMDY2NkBnbWFpbC5jb20iLCJpYXQiOjE2OTU4NTYyNTEsImV4cCI6MTY5NTg1OTg1MX0.ELk4NPHgmhWcSeIRHaMPiQPW8Xt7_w9ghxssouNImik - at 27/9/2023 - 20:39:19
+debug: Debugging enabled
+http: GET en /api/sessions/perfil - at 27/9/2023 - 20:40:18
+debug: Debugging enabled
+http: GET en /products - at 27/9/2023 - 20:40:22
+debug: Debugging enabled
+http: GET en /api/sessions/login - at 27/9/2023 - 20:40:22
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 20:40:22
+debug: Debugging enabled
+http: POST en /api/auth/login - at 27/9/2023 - 20:40:27
+debug: Debugging enabled
+http: GET en /api/sessions/perfil - at 27/9/2023 - 20:40:29
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 20:40:30
+debug: Debugging enabled
+http: GET en /api/auth/logout - at 27/9/2023 - 20:53:42
+debug: Debugging enabled
+http: GET en /api/sessions/login - at 27/9/2023 - 20:53:42
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 20:53:43
+debug: Debugging enabled
+http: GET en /api/sessions/forgotPassword - at 27/9/2023 - 20:53:57
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 20:53:58
+debug: Debugging enabled
+http: GET en /js/index.js - at 27/9/2023 - 20:53:58
+debug: Debugging enabled
+http: POST en /api/sessions/sendNewPasswordMail - at 27/9/2023 - 20:54:02
+debug: Debugging enabled
+http: GET en /api/sessions/recoveryPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmx1amFuMDY2NkBnbWFpbC5jb20iLCJpYXQiOjE2OTU4NTg4NDIsImV4cCI6MTY5NTg2MjQ0Mn0.SLb_eC9YyBAHSjoeF1Q2HLUJXlCNHuBLfeMmbE0XDP8 - at 27/9/2023 - 20:54:21
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 20:54:21
+debug: Debugging enabled
+http: GET en /js/index.js - at 27/9/2023 - 20:54:21
+debug: Debugging enabled
+http: POST en /api/sessions/resetPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmx1amFuMDY2NkBnbWFpbC5jb20iLCJpYXQiOjE2OTU4NTg4NDIsImV4cCI6MTY5NTg2MjQ0Mn0.SLb_eC9YyBAHSjoeF1Q2HLUJXlCNHuBLfeMmbE0XDP8 - at 27/9/2023 - 20:54:28
+debug: Debugging enabled
+http: GET en /api/sessions/perfil - at 27/9/2023 - 20:54:38
+debug: Debugging enabled
+http: GET en /products - at 27/9/2023 - 20:54:42
+debug: Debugging enabled
+http: GET en /api/sessions/login - at 27/9/2023 - 20:54:42
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 20:54:43
+debug: Debugging enabled
+http: POST en /api/auth/login - at 27/9/2023 - 20:54:48
+debug: Debugging enabled
+http: GET en /api/sessions/perfil - at 27/9/2023 - 20:54:49
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 20:54:50

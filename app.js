@@ -1,7 +1,7 @@
 //create server
 const express = require('express');
 const app = express();
-const config = require('./dao/config/config')
+const config = require('./dao/config/config.js')
 const {addLogger} = require('./loggers/custom.loggers.js')
 
 const MongoStore = require('connect-mongo');

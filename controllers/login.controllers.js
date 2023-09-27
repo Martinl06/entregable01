@@ -4,6 +4,9 @@ const UsersDTO = require('../dao/dto/users.dto.js')
 const UserService = require('../services/users.services.js')
 const userService = new UserService()
 const { recoveryPass } = require('../utils/nodemailer.js')
+const User = require('../dao/mongoDB/models/modelUser.js')
+const { verifyToken } = require('../dao/config/jwt.js')
+const { comparePassword, createPassword } = require('../utils/bcrypts.js')
 
 
 
@@ -108,7 +111,7 @@ class LoginController{
     sendNewPasswordMail = async (req, res) => {
         const body = req.body;
         try {
-            const user = await userService.findOne({ email: body.email });
+            const user = await User.findOne({ email: body.email });
             if (!user) {
                 return res.status(404).send('No existe usuario con ese correo electrónico');
             }
@@ -124,17 +127,17 @@ class LoginController{
         const token = req.query.token;;
         try {
             const decodedEmail = verifyToken(token);
-            const user = await userService.findOne({ email: decodedEmail.email });
+            const user = await User.findOne({ email: decodedEmail.email });
     
             if (!user) {
                 return res.status(404).send('Usuario no encontrado');
             }
-            const comparePassword = await compare(newPassword, user.password);
+            const compare = await comparePassword(newPassword, user.password);
     
-            if (comparePassword) {
+            if (compare) {
                 return res.status(404).send('No se puede poner misma contraseña')
             }
-            const hashPW = await hashPassword(newPassword);
+            const hashPW = await createPassword(newPassword);
             user.password = hashPW;
             await user.save();
             res.status(200).send('La contraseña ha sido modificada');

@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer');
-const config = require('../dao/config/jwt.js');
+const config = require('../dao/config/config');
 const { generateToken } = require('../dao/config/jwt.js');
 const { addLogger } = require('../loggers/custom.loggers.js');
 
@@ -8,9 +8,10 @@ const { addLogger } = require('../loggers/custom.loggers.js');
 // Crear un objeto de transporte de nodemailer
 const transporter = nodemailer.createTransport({
     service: 'gmail',
+    port: 587,
     auth: {
-        user: config.mail,
-        pass: config.passMail
+        user: config.gmailAccount,
+        pass: config.gmailPass
     }
 });
 
@@ -42,15 +43,15 @@ const sendEmail = (req, res) => {
 
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
-                addLogger.error(error);
-                res.status(400).send({ message: 'Error', payload: error });
+                console.log(error);
+                res.status(400).send({ message: 'Error sendmail', payload: error });
             } else {
-                addLogger.info('Mensaje enviado: %s', info.messageId);
+                console.log('Mensaje enviado: %s', info.messageId);
                 res.send({ message: 'Éxito', payload: info });
             }
         });
     } catch (error) {
-        addLogger.error(error);
+        console.log(error);
         res.status(500).send({ error, message: 'Error al intentar enviar correo desde ' + config.mail });
     }
 }
@@ -58,10 +59,10 @@ const sendEmail = (req, res) => {
 
 
 
-const recoveryPass = (email, res) => {
+const recoveryPass = (mail, res, req) => {
     try {
-        const token = generateToken(email);
-        const to = email;
+        const token = generateToken(mail);
+        const to = mail;
         if (!to) {
             return res.status(400).send({ message: 'Falta la dirección de correo electrónico del destinatario' });
         }
@@ -79,14 +80,14 @@ const recoveryPass = (email, res) => {
 
         const result = transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
-                addLogger.error(error);
+                console.error(error);
                 res.status(400).send({ message: 'Error', payload: error });
             }
-            addLogger.info('Mensaje enviado: %s', info.messageId);
+            console.log('Mensaje enviado: %s', info);
             res.status(201).send('Mail enviado');
         });
     } catch (error) {
-        addLogger.error(error);
+        console.error(error);
         res.status(500).send({ error, message: 'Error al intentar enviar el correo desde ' + config.mail });
     }
 };

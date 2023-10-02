@@ -490,3 +490,678 @@ debug: Debugging enabled
 http: GET en /api/sessions/perfil - at 27/9/2023 - 20:54:49
 debug: Debugging enabled
 http: GET en /css/index.css - at 27/9/2023 - 20:54:50
+debug: Debugging enabled
+http: GET en /api/auth/logout - at 27/9/2023 - 21:28:22
+debug: Debugging enabled
+http: GET en /api/sessions/login - at 27/9/2023 - 21:28:22
+debug: Debugging enabled
+http: GET en /css/index.css - at 27/9/2023 - 21:28:22
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 17:26:38
+debug: Debugging enabled
+http: GET en /favicon.ico - at 1/10/2023 - 17:26:38
+debug: Debugging enabled
+http: GET en /apidocs - at 1/10/2023 - 17:26:45
+debug: Debugging enabled
+http: GET en /apidocs/ - at 1/10/2023 - 17:26:45
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 1/10/2023 - 17:26:45
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 1/10/2023 - 17:26:45
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 1/10/2023 - 17:26:45
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 1/10/2023 - 17:26:45
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 17:26:50
+debug: Debugging enabled
+http: GET en /apidocs/ - at 1/10/2023 - 17:38:34
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 1/10/2023 - 17:38:34
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 1/10/2023 - 17:38:34
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 1/10/2023 - 17:38:34
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 1/10/2023 - 17:38:34
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 17:38:35
+debug: Debugging enabled
+http: GET en /api/sessions/perfil - at 1/10/2023 - 17:39:31
+debug: Debugging enabled
+http: GET en /api/sessions/perfil - at 1/10/2023 - 17:39:34
+debug: Debugging enabled
+http: GET en /api/sessions/perfil - at 1/10/2023 - 17:39:49
+debug: Debugging enabled
+http: GET en /products - at 1/10/2023 - 17:40:00
+debug: Debugging enabled
+http: GET en /api/sessions/login - at 1/10/2023 - 17:40:00
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 17:40:00
+debug: Debugging enabled
+http: POST en /api/auth/login - at 1/10/2023 - 17:40:09
+debug: Debugging enabled
+http: GET en /api/sessions/login - at 1/10/2023 - 17:40:09
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 17:40:09
+debug: Debugging enabled
+http: POST en /api/auth/login - at 1/10/2023 - 17:40:23
+debug: Debugging enabled
+http: GET en /api/sessions/perfil - at 1/10/2023 - 17:40:25
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 17:40:26
+debug: Debugging enabled
+http: GET en /products - at 1/10/2023 - 17:40:32
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 17:40:32
+debug: Debugging enabled
+http: GET en /products/mockingProducts - at 1/10/2023 - 17:41:08
+debug: Debugging enabled
+http: GET en /home - at 1/10/2023 - 17:41:52
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 17:41:52
+debug: Debugging enabled
+http: GET en /api/sessions/perfil - at 1/10/2023 - 17:41:58
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 17:41:58
+debug: Debugging enabled
+http: GET en /api/sessions/perfil - at 1/10/2023 - 17:45:31
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 17:45:33
+debug: Debugging enabled
+http: GET en /api/products/647d212d2ab8c3f91486059b - at 1/10/2023 - 17:45:36
+debug: Debugging enabled
+http: GET en /api/products/647d22cf3f62089311cdd417 - at 1/10/2023 - 17:46:47
+debug: Debugging enabled
+http: GET en /api/products/647d6335b459a57e6a164014 - at 1/10/2023 - 17:56:50
+debug: Debugging enabled
+http: GET en /api/products/647d6335b459a57e6a164014 - at 1/10/2023 - 17:57:04
+debug: Debugging enabled
+http: GET en /api/products/647d6335b459a57e6a164014 - at 1/10/2023 - 17:57:42
+debug: Debugging enabled
+http: GET en /api/products/647d6335b459a57e6a164014 - at 1/10/2023 - 17:58:00
+debug: Debugging enabled
+http: GET en /api/sessions/perfil - at 1/10/2023 - 17:58:56
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 17:58:59
+debug: Debugging enabled
+http: GET en /api/sessions/products/647d6335b459a57e6a164014 - at 1/10/2023 - 17:59:01
+debug: Debugging enabled
+http: GET en /api/sessions/perfil - at 1/10/2023 - 17:59:51
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 17:59:52
+debug: Debugging enabled
+http: GET en /products - at 1/10/2023 - 17:59:57
+debug: Debugging enabled
+http: GET en /api/sessions/api/products647d22cf3f62089311cdd417 - at 1/10/2023 - 18:00:04
+debug: Debugging enabled
+http: GET en /api/sessions/api/products647d212d2ab8c3f91486059b - at 1/10/2023 - 18:00:14
+debug: Debugging enabled
+http: GET en /api/sessions/api/products647d6335b459a57e6a164014 - at 1/10/2023 - 18:00:17
+debug: Debugging enabled
+http: GET en /api/sessions/api/products647d6335b459a57e6a164014 - at 1/10/2023 - 18:02:58
+debug: Debugging enabled
+http: GET en /api/sessions/perfil - at 1/10/2023 - 18:03:34
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:03:37
+debug: Debugging enabled
+http: GET en /647d22cf3f62089311cdd417 - at 1/10/2023 - 18:03:40
+debug: Debugging enabled
+http: GET en /api/sessions/perfil - at 1/10/2023 - 18:04:08
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:04:09
+debug: Debugging enabled
+http: GET en /api/products647d212d2ab8c3f91486059b - at 1/10/2023 - 18:04:11
+debug: Debugging enabled
+http: GET en /api/sessions/perfil - at 1/10/2023 - 18:04:44
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:04:46
+debug: Debugging enabled
+http: GET en /api/products/647d212d2ab8c3f91486059b - at 1/10/2023 - 18:04:51
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:04:51
+debug: Debugging enabled
+http: GET en /api/products/... - at 1/10/2023 - 18:04:52
+debug: Debugging enabled
+http: GET en /api/products - at 1/10/2023 - 18:05:00
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:05:01
+debug: Debugging enabled
+http: GET en /products/?page=2 - at 1/10/2023 - 18:06:04
+debug: Debugging enabled
+http: GET en /api/products/647d22cf3f62089311cdd417 - at 1/10/2023 - 18:08:17
+debug: Debugging enabled
+http: GET en /api/products/... - at 1/10/2023 - 18:08:18
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:08:18
+debug: Debugging enabled
+http: GET en /api/products - at 1/10/2023 - 18:08:20
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:08:21
+debug: Debugging enabled
+http: GET en /api/sessions/perfil - at 1/10/2023 - 18:08:25
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:08:25
+debug: Debugging enabled
+http: GET en /api/products/647d22cf3f62089311cdd417 - at 1/10/2023 - 18:08:28
+debug: Debugging enabled
+http: GET en /api/products/... - at 1/10/2023 - 18:08:28
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:08:28
+debug: Debugging enabled
+http: GET en /api/products - at 1/10/2023 - 18:08:31
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:08:31
+debug: Debugging enabled
+http: GET en /home - at 1/10/2023 - 18:08:34
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:08:35
+debug: Debugging enabled
+http: GET en /api/products - at 1/10/2023 - 18:08:37
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:08:38
+debug: Debugging enabled
+http: GET en /api/products/mockingProducts - at 1/10/2023 - 18:08:41
+debug: Debugging enabled
+http: GET en /realTimeProducts - at 1/10/2023 - 18:10:30
+debug: Debugging enabled
+http: GET en /chat - at 1/10/2023 - 18:10:36
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:10:37
+debug: Debugging enabled
+http: GET en /js/chat.js - at 1/10/2023 - 18:10:37
+debug: Debugging enabled
+http: GET en /api/products/mockingProducts - at 1/10/2023 - 18:10:46
+debug: Debugging enabled
+http: GET en /api/sessions/perfil - at 1/10/2023 - 18:14:44
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:14:45
+debug: Debugging enabled
+http: GET en /api/products/647d6335b459a57e6a164014 - at 1/10/2023 - 18:14:49
+debug: Debugging enabled
+http: GET en /api/products/... - at 1/10/2023 - 18:14:50
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:14:50
+debug: Debugging enabled
+http: GET en /api/products - at 1/10/2023 - 18:14:52
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:14:53
+debug: Debugging enabled
+http: GET en /api/products - at 1/10/2023 - 18:16:52
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:16:52
+debug: Debugging enabled
+http: GET en /mockingProducts - at 1/10/2023 - 18:16:55
+debug: Debugging enabled
+http: GET en /mockingProducts - at 1/10/2023 - 18:17:12
+debug: Debugging enabled
+http: GET en /api/products - at 1/10/2023 - 18:17:17
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:17:17
+debug: Debugging enabled
+http: GET en /products/mockingProducts - at 1/10/2023 - 18:17:21
+debug: Debugging enabled
+http: GET en /api/products - at 1/10/2023 - 18:17:34
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:17:35
+debug: Debugging enabled
+http: GET en /api/api/products/mockingProducts - at 1/10/2023 - 18:17:39
+debug: Debugging enabled
+http: GET en /api/products - at 1/10/2023 - 18:17:55
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:17:55
+debug: Debugging enabled
+http: GET en /api/products/mockingProducts - at 1/10/2023 - 18:18:00
+debug: Debugging enabled
+http: GET en /api/products/mockingProducts - at 1/10/2023 - 18:18:56
+debug: Debugging enabled
+http: GET en /api/products - at 1/10/2023 - 18:20:09
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:20:10
+debug: Debugging enabled
+http: GET en /api/products/647d22cf3f62089311cdd417 - at 1/10/2023 - 18:20:13
+debug: Debugging enabled
+http: GET en /api/products/... - at 1/10/2023 - 18:20:14
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:20:15
+debug: Debugging enabled
+http: GET en /api/products - at 1/10/2023 - 18:20:17
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:20:18
+debug: Debugging enabled
+http: GET en /api/products/mockingProducts - at 1/10/2023 - 18:25:34
+debug: Debugging enabled
+http: GET en /api/products - at 1/10/2023 - 18:26:19
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:26:20
+debug: Debugging enabled
+http: GET en /api/products/mockingProducts - at 1/10/2023 - 18:26:23
+debug: Debugging enabled
+http: GET en /api/products - at 1/10/2023 - 18:28:37
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:28:38
+debug: Debugging enabled
+http: GET en /api/products/mockingProducts - at 1/10/2023 - 18:28:44
+debug: Debugging enabled
+http: GET en /api/products - at 1/10/2023 - 18:29:50
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:29:52
+debug: Debugging enabled
+http: GET en /api/productsRouter/mockingProducts - at 1/10/2023 - 18:29:56
+debug: Debugging enabled
+http: GET en /api/products - at 1/10/2023 - 18:30:35
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:30:35
+debug: Debugging enabled
+http: GET en /api/productsRouter/mockingProducts - at 1/10/2023 - 18:30:39
+debug: Debugging enabled
+http: GET en /api/products - at 1/10/2023 - 18:31:36
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:31:38
+debug: Debugging enabled
+http: GET en /productsRouter/mockingProducts - at 1/10/2023 - 18:31:41
+debug: Debugging enabled
+http: GET en /api/products - at 1/10/2023 - 18:31:57
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:31:58
+debug: Debugging enabled
+http: GET en /mockingProducts - at 1/10/2023 - 18:32:01
+debug: Debugging enabled
+http: GET en /mockingProducts - at 1/10/2023 - 18:33:11
+debug: Debugging enabled
+http: GET en /api/products - at 1/10/2023 - 18:33:19
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:33:21
+debug: Debugging enabled
+http: GET en /api/productsRouter/mockingProducts - at 1/10/2023 - 18:33:25
+debug: Debugging enabled
+http: GET en /api/products - at 1/10/2023 - 18:34:39
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:34:41
+debug: Debugging enabled
+http: GET en /api/products/mockingProducts - at 1/10/2023 - 18:34:45
+debug: Debugging enabled
+http: GET en /api/sessions/perfil - at 1/10/2023 - 18:37:29
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:37:31
+debug: Debugging enabled
+http: GET en /api/productsMocking/mockingProducts - at 1/10/2023 - 18:37:36
+debug: Debugging enabled
+http: GET en /api/products - at 1/10/2023 - 18:38:02
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 18:38:04
+debug: Debugging enabled
+http: GET en /api/productsMocking/mockingProducts - at 1/10/2023 - 18:38:08
+debug: Debugging enabled
+http: GET en /apidocs/ - at 1/10/2023 - 18:38:21
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 1/10/2023 - 18:38:21
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 1/10/2023 - 18:38:21
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 1/10/2023 - 18:38:22
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 1/10/2023 - 18:38:22
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 18:38:23
+debug: Debugging enabled
+http: GET en /apidocs/ - at 1/10/2023 - 18:39:02
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 1/10/2023 - 18:39:03
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 1/10/2023 - 18:39:03
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 1/10/2023 - 18:39:03
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 1/10/2023 - 18:39:03
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 18:39:04
+debug: Debugging enabled
+http: GET en /apidocs/ - at 1/10/2023 - 18:39:07
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 1/10/2023 - 18:39:08
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 1/10/2023 - 18:39:08
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 1/10/2023 - 18:39:08
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 1/10/2023 - 18:39:08
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 18:39:08
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 18:39:10
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 18:39:18
+debug: Debugging enabled
+http: GET en /apidocs/ - at 1/10/2023 - 18:39:38
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 1/10/2023 - 18:39:39
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 1/10/2023 - 18:39:39
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 1/10/2023 - 18:39:40
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 1/10/2023 - 18:39:40
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 18:39:41
+debug: Debugging enabled
+http: GET en /apidocs/ - at 1/10/2023 - 18:44:32
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 1/10/2023 - 18:44:33
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 1/10/2023 - 18:44:33
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 1/10/2023 - 18:44:34
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 1/10/2023 - 18:44:34
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 18:44:35
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 18:44:39
+debug: Debugging enabled
+http: GET en /api/products/ - at 1/10/2023 - 18:45:35
+debug: Debugging enabled
+http: GET en /apidocs/ - at 1/10/2023 - 19:05:14
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 1/10/2023 - 19:05:15
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 1/10/2023 - 19:05:15
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 1/10/2023 - 19:05:16
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 1/10/2023 - 19:05:16
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 19:05:17
+debug: Debugging enabled
+http: GET en /apidocs/ - at 1/10/2023 - 20:09:20
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 1/10/2023 - 20:09:21
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 1/10/2023 - 20:09:21
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 1/10/2023 - 20:09:22
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 1/10/2023 - 20:09:22
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 20:09:23
+debug: Debugging enabled
+http: GET en /apidocs/ - at 1/10/2023 - 20:18:48
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 1/10/2023 - 20:18:48
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 1/10/2023 - 20:18:48
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 1/10/2023 - 20:18:49
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 1/10/2023 - 20:18:49
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 20:18:50
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 20:18:53
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 20:18:55
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 20:18:59
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 20:20:26
+debug: Debugging enabled
+http: GET en /api/products/647d212d2ab8c3f91486059b - at 1/10/2023 - 20:20:32
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 20:39:54
+debug: Debugging enabled
+http: GET en /apidocs/ - at 1/10/2023 - 20:39:56
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 1/10/2023 - 20:39:57
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 1/10/2023 - 20:39:57
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 1/10/2023 - 20:39:58
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 1/10/2023 - 20:39:58
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 20:39:58
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 20:40:01
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 20:40:05
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 20:40:06
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 20:40:09
+debug: Debugging enabled
+http: GET en /apidocs/ - at 1/10/2023 - 20:49:20
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 1/10/2023 - 20:49:21
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 1/10/2023 - 20:49:21
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 1/10/2023 - 20:49:22
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 1/10/2023 - 20:49:22
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 20:49:23
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 20:49:31
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 20:49:40
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 20:49:43
+debug: Debugging enabled
+http: GET en /apidocs/ - at 1/10/2023 - 20:50:15
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 1/10/2023 - 20:50:16
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 1/10/2023 - 20:50:16
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 1/10/2023 - 20:50:17
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 1/10/2023 - 20:50:17
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 20:50:18
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 20:50:20
+debug: Debugging enabled
+http: GET en /apidocs/ - at 1/10/2023 - 20:51:45
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 1/10/2023 - 20:51:45
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 1/10/2023 - 20:51:46
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 1/10/2023 - 20:51:46
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 1/10/2023 - 20:51:46
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 20:51:47
+debug: Debugging enabled
+http: GET en /apidocs/ - at 1/10/2023 - 20:52:45
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 1/10/2023 - 20:52:46
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 1/10/2023 - 20:52:46
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 1/10/2023 - 20:52:47
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 1/10/2023 - 20:52:47
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 1/10/2023 - 20:52:48
+debug: Debugging enabled
+http: GET en /api/sessions/perfil - at 1/10/2023 - 20:55:09
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 20:55:11
+debug: Debugging enabled
+http: GET en /api/auth/logout - at 1/10/2023 - 20:55:23
+debug: Debugging enabled
+http: GET en /api/sessions/login - at 1/10/2023 - 20:55:24
+debug: Debugging enabled
+http: GET en /css/index.css - at 1/10/2023 - 20:55:24
+debug: Debugging enabled
+http: POST en /api/auth/login - at 2/10/2023 - 00:44:56
+debug: Debugging enabled
+http: GET en /api/sessions/perfil - at 2/10/2023 - 00:44:58
+debug: Debugging enabled
+http: GET en /css/index.css - at 2/10/2023 - 00:44:59
+debug: Debugging enabled
+http: GET en /apidocs/ - at 2/10/2023 - 00:45:11
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 2/10/2023 - 00:45:11
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 2/10/2023 - 00:45:11
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 2/10/2023 - 00:45:12
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 2/10/2023 - 00:45:12
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 2/10/2023 - 00:45:13
+debug: Debugging enabled
+http: GET en /apidocs/ - at 2/10/2023 - 01:00:16
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 2/10/2023 - 01:00:17
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 2/10/2023 - 01:00:17
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 2/10/2023 - 01:00:18
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 2/10/2023 - 01:00:18
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 2/10/2023 - 01:00:18
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 2/10/2023 - 01:00:22
+debug: Debugging enabled
+http: GET en /api/cart - at 2/10/2023 - 01:00:24
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 2/10/2023 - 01:00:42
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 2/10/2023 - 01:00:58
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 2/10/2023 - 01:01:17
+debug: Debugging enabled
+http: GET en /apidocs/ - at 2/10/2023 - 01:09:20
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 2/10/2023 - 01:09:21
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 2/10/2023 - 01:09:21
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 2/10/2023 - 01:09:21
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 2/10/2023 - 01:09:21
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 2/10/2023 - 01:09:22
+debug: Debugging enabled
+http: GET en /apidocs/ - at 2/10/2023 - 01:10:29
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 2/10/2023 - 01:10:29
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 2/10/2023 - 01:10:30
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 2/10/2023 - 01:10:30
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 2/10/2023 - 01:10:30
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 2/10/2023 - 01:10:31
+debug: Debugging enabled
+http: GET en /apidocs/ - at 2/10/2023 - 01:12:04
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 2/10/2023 - 01:12:04
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 2/10/2023 - 01:12:05
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 2/10/2023 - 01:12:05
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 2/10/2023 - 01:12:05
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 2/10/2023 - 01:12:06
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 2/10/2023 - 01:12:17
+debug: Debugging enabled
+http: POST en /api/products - at 2/10/2023 - 01:12:25
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 2/10/2023 - 01:13:42
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 2/10/2023 - 01:13:46
+debug: Debugging enabled
+http: GET en /api/products - at 2/10/2023 - 01:13:50
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 2/10/2023 - 01:14:00
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 2/10/2023 - 01:14:12
+debug: Debugging enabled
+http: POST en /api/products - at 2/10/2023 - 01:14:24
+debug: Debugging enabled
+http: GET en /apidocs/ - at 2/10/2023 - 01:17:03
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 2/10/2023 - 01:17:04
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 2/10/2023 - 01:17:04
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 2/10/2023 - 01:17:05
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 2/10/2023 - 01:17:05
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 2/10/2023 - 01:17:05
+debug: Debugging enabled
+http: GET en /apidocs/ - at 2/10/2023 - 01:17:37
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 2/10/2023 - 01:17:37
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 2/10/2023 - 01:17:37
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 2/10/2023 - 01:17:38
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 2/10/2023 - 01:17:38
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 2/10/2023 - 01:17:39
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 2/10/2023 - 01:17:42
+debug: Debugging enabled
+http: POST en /api/products/createProduct - at 2/10/2023 - 01:17:46
+debug: Debugging enabled
+http: GET en /apidocs/ - at 2/10/2023 - 01:19:34
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 2/10/2023 - 01:19:35
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 2/10/2023 - 01:19:35
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 2/10/2023 - 01:19:36
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 2/10/2023 - 01:19:36
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 2/10/2023 - 01:19:37
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 2/10/2023 - 01:19:40
+debug: Debugging enabled
+http: GET en /api/sessions/perfil - at 2/10/2023 - 01:25:56
+debug: Debugging enabled
+http: GET en /css/index.css - at 2/10/2023 - 01:25:57
+debug: Debugging enabled
+http: GET en /api/auth/logout - at 2/10/2023 - 01:26:01
+debug: Debugging enabled
+http: GET en /api/sessions/login - at 2/10/2023 - 01:26:01
+debug: Debugging enabled
+http: GET en /css/index.css - at 2/10/2023 - 01:26:01
+debug: Debugging enabled
+http: POST en /api/auth/login - at 2/10/2023 - 01:26:10
+debug: Debugging enabled
+http: GET en /api/sessions/perfil - at 2/10/2023 - 01:26:12
+debug: Debugging enabled
+http: GET en /css/index.css - at 2/10/2023 - 01:26:12
+debug: Debugging enabled
+http: GET en /apidocs/ - at 2/10/2023 - 01:26:22
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui.css - at 2/10/2023 - 01:26:22
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-bundle.js - at 2/10/2023 - 01:26:22
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-standalone-preset.js - at 2/10/2023 - 01:26:24
+debug: Debugging enabled
+http: GET en /apidocs/swagger-ui-init.js - at 2/10/2023 - 01:26:24
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 2/10/2023 - 01:26:24
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 2/10/2023 - 01:26:27
+debug: Debugging enabled
+debug: Debugging enabled
+debug: Debugging enabled
+debug: Debugging enabled
+http: POST en /api/products/createProduct - at 2/10/2023 - 01:31:16
+debug: Debugging enabled
+http: GET en /apidocs/favicon-32x32.png - at 2/10/2023 - 01:31:37

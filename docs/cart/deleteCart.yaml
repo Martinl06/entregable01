@@ -1,0 +1,27 @@
+paths:
+  /api/cart/{id}:
+    delete:
+      summary: Elimina un carrito por su id
+      tags:
+        - Cart
+      parameters:
+        - name: id
+          in: path
+          description: id del carrito a eliminar
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Respuesta exitosa!!!
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cart'
+                
+        "400":
+          description: Error, envio no esperado!!!
+        "500":
+          description: Error en el servidor, no se pudieron obtener los carritos!!!"

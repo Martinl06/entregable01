@@ -27,7 +27,7 @@ class ProductService {
         }
     }
 
-    async addProduct(prod) {
+    async addProducts(prod) {
         try {
             return await productClass.addProducts(prod);
         } catch (err) {

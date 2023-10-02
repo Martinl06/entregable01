@@ -15,25 +15,25 @@ router.get('/', CartController.getAllCarts )
 //router.get('/:cid/products/:pid', UserOk, CartController.getProductByIdCart)
 
 //agrega el carrito con el producto seleccionado
-router.post('/:cid/products/:pid', UserOk, CartController.addProductToCart)
+router.post('/:id/products/:id', UserOk, CartController.addProductToCart)
 
 //elimina el producto seleccionado del carrito
-router.delete('/:cid/products/:pid ', UserOk, CartController.deleteProductFromCart)
+router.delete('/:id/products/:id ', UserOk, CartController.deleteProductFromCart)
 
 //actualiza el carrito con un arreglo de productos
-router.put('/cart/:cid', CartController.UpdateCart)
+router.put('/:id', CartController.UpdateCart)
 
 //actualiza solo la cantidad de ejemplares del producto por cualquier cantidad pasada desde req.body
-router.put('/cart/:cid/products/:pid', CartController.UpdateProduct)
+router.put('/:id/products/:pid', CartController.UpdateProduct)
 
 //elimina todos los productos del carrito
-router.delete('/cart/:cid', UserOk, CartController.deleteCart)
+router.delete('/:id', UserOk, CartController.deleteCart)
 
 //devuelve el carrito con el id pasado por params
-router.get('/:cid', checkAutentication, CartController.getByIdCart)
+router.get('/:id', checkAutentication, CartController.getByIdCart)
 
 // Ruta para finalizar el proceso de compra
-router.get('/:cid/purchase', CartController.purchase );
+router.get('/:id/purchase', CartController.purchase );
 
 
 

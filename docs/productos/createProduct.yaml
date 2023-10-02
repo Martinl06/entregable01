@@ -1,0 +1,27 @@
+paths:
+  /api/products/createProduct:
+    post:
+      summary: Crea un producto
+      tags:
+        - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        "200":
+          description: Respuesta exitosa!!!
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        "400":
+          description: Error, envio no esperado!!!
+        "401":
+          description: Error, no autorizado!!!
+        "500":
+          description: Error en el servidor, no se pudo crear el producto!!!"

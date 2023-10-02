@@ -71,7 +71,7 @@ class ProductClass {
         }
     }
 
-    async generateMockFakerProducts(){
+     generateMockFakerProducts(){
         const products = [];
         let numProducts = 100;
         for (let i = 0; i < numProducts; i++) {

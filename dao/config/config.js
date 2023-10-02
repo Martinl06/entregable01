@@ -32,6 +32,6 @@ module.exports = {
    jwt: process.env.JWT_SECRET,
    gmailAccount: process.env.mail,
    gmailPass: process.env.passMail,
- 
+   URL_MONGODB: process.env.URL_MONGODB,
 
 }

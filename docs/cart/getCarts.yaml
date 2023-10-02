@@ -1,0 +1,20 @@
+paths:
+  /api/cart:
+    get:
+      summary: Obtiene todos los carritos disponibles en la APP
+      tags:
+        - Cart
+      responses:
+        "200":
+          description: Respuesta exitosa!!!
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cart'
+                
+        "400":
+          description: Error, envio no esperado!!!
+        "500":
+          description: Error en el servidor, no se pudieron obtener los carritos!!!"

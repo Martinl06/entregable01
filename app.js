@@ -24,7 +24,7 @@ const ProductService = require('./services/product.services.js')
 const productService = new ProductService()
 
 //import routes
-const routesProducts = require('./Routes/productsRouter.js');
+const routesMocking = require('./Routes/productsMocking.js');
 const routesCart = require('./Routes/cart.js');
 const homeRouter = require('./Routes/home.router.js');
 const realTimeProducts = require('./Routes/realTimeProducts.js');
@@ -46,12 +46,10 @@ const { Server } = require('socket.io')
 const io = new Server(server)
 
 
-
-
 //conect to mongo
 app.use(session({
     store: MongoStore.create({
-        mongoUrl: 'mongodb+srv://martinlujan0666:Martin1470@ecommerce.v4lpkit.mongodb.net/ecommerce'
+        mongoUrl: config.URL_MONGODB,
     }),
     secret: 'secretCode',
     resave: true,
@@ -84,13 +82,34 @@ const handlebars = require('express-handlebars');
 //loggers
 app.use(addLogger)
 
+
+//import swagger
+const swaggerUIExpress = require('swagger-ui-express')
+const swaggerJSDoc = require('swagger-jsdoc')
+
+const swaggerOptions = {
+    definition: {
+        openapi: '3.0.1',
+        info:{
+            title: "Documentacion API Ecommerce",
+            description: "Documentacion de la API Ecommerce Get clothes" 
+        }
+    },
+    apis:['./docs/**/*.yaml']
+}
+const specs = swaggerJSDoc(swaggerOptions)
+//declare swagger api endpoint
+app.use('/apidocs', swaggerUIExpress.serve, swaggerUIExpress.setup(specs))
+
+
+
 //routes
-app.use('/api/productsRouter', routesProducts);
+app.use('/api/productsMocking', routesMocking);
 app.use('/api/cart', routesCart);
 app.use('/home', homeRouter);
 app.use('/realTimeProducts', realTimeProducts)
 app.use('/chat', chatRouter)
-app.use('/products', allProducts)
+app.use('/api/products', allProducts)
 app.use('/api/sessions', login)
 app.use('/api/auth', authRoutes)
 app.use('/api/sessions/github', github)

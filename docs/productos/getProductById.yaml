@@ -1,0 +1,28 @@
+paths:
+  /api/products/{id}:
+      get:  
+        summary: Obtiene un producto disponible en la APP por ID
+        tags:
+          - Products
+
+        parameters:
+          - in: path
+            name: id
+            schema:
+              type: string
+            required: true
+            description: ID del producto a obtener  
+        responses:
+          "200":
+            description: Respuesta exitosa!!!
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Product'
+                  
+          "400":
+            description: Error, envio no esperado!!!
+          "500":
+            description: Error en el servidor, no se pudo obtener el producto!!!"  

@@ -1,0 +1,38 @@
+components:
+  schemas:
+    Product:
+      Type: object
+      properties:
+        _id: 
+          type: ObjectId
+          description: ID del producto generado por MongoDB
+        name:
+          type: string
+          description: Nombre del producto 
+        price:
+          type: number
+          description: Precio del producto
+        description:
+          type: string
+          description: Descripcion del producto
+        code:
+          type: string
+          description: Codigo del producto
+        thumbnail:
+          type: string
+          description: Imagen del producto
+        stock:  
+          type: number
+          description: Stock del producto
+        genero:
+          type: string
+          description: Genero del producto
+      example:
+        _id: 60b0a4b4e6b3a1b4b8f9b0a1
+        name: "Remera"
+        price: 1000
+        description: "Remera de algodon"
+        code: "1234"
+        thumbnail: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.com%2Fadidas-Originals-3-Stripes-T-Shirt%2Fdp%2FB07D9TQZ2J&psig=AOvVaw0QZ4Z4Z4Z4Z4Z4Z4Z4Z4Z4&ust=1622216160000000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJjQ4ZqH4_ACFQAAAAAdAAAAABAD"
+        stock: 10
+        genero: "Masculino"          

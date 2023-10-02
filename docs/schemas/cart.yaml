@@ -1,0 +1,27 @@
+components:
+  schemas:
+    Cart:
+      type: object
+      properties:
+        _id: 
+          type: ObjectId
+          description: ID del carrito generado por MongoDB
+        date:
+          type: string
+          description: Fecha de creacion del carrito
+        products:
+          type: array  
+          description: Productos del carrito      
+      example:
+        _id: 60b0a4b4e6b3a1b4b8f9b0a1
+        date: "2021-05-28T20:45:00.000Z"
+        products: [
+          {
+            _id: 60b0a4b4e6b3a1b4b8f9b0a1,
+            name: "Remera",
+            price: 1000,
+            quantity: 1,
+            thumbnail: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.com%2Fadidas-Originals-3-Stripes-T-Shirt%2Fdp%2FB07D9TQZ2J&psig=AOvVaw0QZ4Z4Z4Z4Z4Z4Z4Z4Z4Z4&ust=1622216160000000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJjQ4ZqH4_ACFQAAAAAdAAAAABAD"
+            
+          }
+        ]    

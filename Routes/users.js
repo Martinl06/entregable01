@@ -8,4 +8,5 @@ router.get('/premium/:uid', checkAutentication, (req, res) => {
 })
 
 
+
 module.exports = router

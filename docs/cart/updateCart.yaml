@@ -1,0 +1,32 @@
+paths:
+  /api/cart/{id}:
+    put:
+      summary: Actualiza un carrito por su id
+      tags:
+        - Cart
+      parameters:
+        - name: id
+          in: path
+          description: id del carrito a actualizar
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cart'
+      responses:
+        "200":
+          description: Respuesta exitosa!!!
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cart'
+        "400":
+          description: Error, envio no esperado!!!
+        "500":
+          description: Error en el servidor, no se pudo actualizar el carrito!!!"

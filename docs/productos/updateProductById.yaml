@@ -1,0 +1,33 @@
+paths:
+  /api/products/updateProduct/{id}:
+    put:
+      summary: Actualiza un producto por su id
+      tags:
+        - Products
+      parameters:
+        - name: id
+          in: path
+          description: id del producto a actualizar
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        "200":
+          description: Respuesta exitosa!!!
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        "400":
+          description: Error, envio no esperado!!!
+        "500":
+          description: Error en el servidor, no se pudo actualizar el producto!!!"  
+                            

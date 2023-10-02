@@ -1,0 +1,25 @@
+paths:
+  /api/cart:
+    post:
+      summary: Crea un carrito
+      tags:
+        - Cart
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cart'
+      responses:
+        "200":
+          description: Respuesta exitosa!!!
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cart'
+        "400":
+          description: Error, envio no esperado!!!
+        "500":
+          description: Error en el servidor, no se pudo crear el carrito!!!"

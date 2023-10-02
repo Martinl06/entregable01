@@ -1,0 +1,27 @@
+paths:
+  /api/products/deleteProduct/{id}:
+    delete:  
+      summary: Elimina un producto por su id
+      tags:
+        - Products
+      parameters:
+        - name: id
+          in: path
+          description: id del producto a eliminar
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Respuesta exitosa!!!
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+                
+        "400":
+          description: Error, envio no esperado!!!
+        "500":
+          description: Error en el servidor, no se pudieron obtener los productos!!!"

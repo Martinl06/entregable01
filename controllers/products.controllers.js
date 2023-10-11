@@ -1,5 +1,7 @@
 const ProductService = require('../services/product.services.js');
 const productService = new ProductService();
+const CartService = require('../services/cart.services.js');
+const cartService = new CartService();
 
 
 
@@ -51,6 +53,9 @@ class ProductController{
 
 //funcion para obtener un solo producto
     async getProductById(req, res){
+
+        const IdCart = req.user.cart
+        const cart = await cartService.getCartID(IdCart)
         const ID = req.params.id;
         const product1 = await productService.getProduct(ID)
             if (!product1) {
@@ -65,10 +70,16 @@ class ProductController{
               image: product1.image,
               stock: product1.stock,
               code: product1.code,
-              genero: product1.genero
+              genero: product1.genero,
             };
+
+            const cart1 = {
+                _id: cart._id,
+            
+            }
+
           
-            return res.status(200).render('productView', { productGet });
+            return res.status(200).render('productView', { cart1, productGet });
     }
 }
 

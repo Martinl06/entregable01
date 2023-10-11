@@ -20,11 +20,11 @@
 </div>
 <div class="container paginate">
   {{#if pagination.hasPrevPage}}
-    <a style='font-size: 20;' href='/products/?page={{pagination.prevPage}}'>⬅{{pagination.prevPage}}</a>
+    <a style='font-size: 20;' href='/api/products/?page={{pagination.prevPage}}'>⬅{{pagination.prevPage}}</a>
   {{/if}}
   <a style='font-size: 20;' href='#'>{{pagination.page}}</a>
   {{#if pagination.hasNextPage}}
-    <a style='font-size: 20;' href='/products/?page={{pagination.nextPage}}'>{{pagination.nextPage}}➡</a>
+    <a style='font-size: 20;' href='/api/products/?page={{pagination.nextPage}}'>{{pagination.nextPage}}➡</a>
   {{/if}}
   {{!<br />
   <br />

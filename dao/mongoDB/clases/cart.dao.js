@@ -12,8 +12,8 @@ class CartClass {
         return Cart.find({})
     }
 
-    cartId(_id){
-        return Cart.findOne({id:_id})
+    cartId(id){
+        return Cart.findOne({_id:id})
     }
 
     addCart = async (cart)=>{
@@ -37,7 +37,7 @@ class CartClass {
 
     async getCartID(id){
         try {
-            const CartByID = await Cart.findById(id).populate('product.product').lean();
+            const CartByID = await Cart.findOne({_id:id}).populate('product.product').lean();
             return CartByID;
         } catch (error) {
             console.log (error);
@@ -52,24 +52,25 @@ class CartClass {
             return cart.deleteOne()
         }
     }
-    async addProductToCart(cid,pid){
-         try {
+    addProductToCart = async (cid,pid) => {
+        try {
             const chooseCart = await this.getCartID(cid);
-            const index = chooseCart.product.findIndex(prod => prod.product === pid)
-           if (index === -1){ // index -1 si no lo encuentra al pid
-                const add = {$push:{product:{product:{_id:pid},quantity: 1 }}}
+            const index = chooseCart.product.findIndex(prod => prod.product.id == pid)
+           if (index === -1){ 
+                const add = {$push:{product:{Product:{_id:pid},quantity:1}}}
                 await Cart.updateOne(chooseCart, add) 
                 return "producto agregado"
-           } else{// significa que encontró el pid dentro de products
+           } else{
                 const filter = { _id: cid, 'product.product': pid };
-                const update = { $inc: { 'product.$.quantity': ++pid } };
+                const update = { $inc: { 'product.$.quantity': 1 } };
                 await Cart.updateOne(filter, update);
-                return ({message: "producto agregado"})
+                return "producto agregado"
            }
         }  catch (error) {
             console.log(error);
         }
-    }
+    } 
+
     async UpdateCart(cid){
         try {
             const Cart1 = await this.getCartID(cid);

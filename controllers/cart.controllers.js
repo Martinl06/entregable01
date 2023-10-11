@@ -2,6 +2,8 @@ const CartService = require('../services/cart.services.js')
 const cartService = new CartService()
 const TicketService = require('../services/ticket.services.js')
 const ticketService = new TicketService()
+const ProductService = require('../services/product.services.js')
+const productService = new ProductService()
 
 
 class CartController{
@@ -12,10 +14,14 @@ class CartController{
         res.send({data: carts, message: "Carritos encontrados"})
     }
 
+    //funcion para encontrar un carrito por id con el producto seleccionado
     async getByIdCart (req, res) {
         const id = req.params.id
         const cart = await cartService.getCartID(id)
+        const IDCart = req.params.id;
+        const product = await productService.getProduct(IDCart)
         res.send({data: cart, message: "Carrito encontrado"})
+        
     }
 
     async createCart (req, res) {
@@ -44,12 +50,58 @@ class CartController{
         try {
             let cid = req.params.cid;
             let pid = req.params.pid;
+            const cartId = req.user.cart
+            const cart = await cartService.getCartID(cartId)
             const productAddedToCart = await cartService.addProductToCart(cid,pid);
-            res.status(200).send(productAddedToCart);
+            const cart1 = {
+                _id: cart._id,
+            }
+            res.status(200).send({cart1, productAddedToCart});
         } catch (error) {
             res.status(500).send(`Error al agregar producto al carrito: ${error}`)   
         }
     }
+
+     getProductsInCartController = async (req, res) => {
+        const { id } = req.params
+        try {
+            const cartSelectedPopulated = await cartService.getCartID(id)
+            res.status(200).send(cartSelectedPopulated)
+        } catch (error) {
+            res.status(404).send({ error: 'Error trying create User' })
+        }
+    }
+    
+    async getProductAndCart(req, res){
+
+        const IdCart = req.user.cart
+        const cart = await cartService.getCartID(IdCart)
+        const ID = req.params.id;
+        const product1 = await productService.getProduct(ID)
+            if (!product1) {
+              return res.status(404).send('Producto no encontrado');
+            }else{
+          
+            const productGet = {
+              _id: product1._id,
+              name: product1.name,
+              description: product1.description,
+              price: product1.price,
+              image: product1.image,
+              stock: product1.stock,
+              code: product1.code,
+              genero: product1.genero,
+            };
+
+            const cart1 = {
+                id: cart.id,
+            
+            }
+
+          
+            return res.status(200).render('cart', { cart1, productGet });
+    }
+}
 
     async UpdateCart(req, res){
         try {

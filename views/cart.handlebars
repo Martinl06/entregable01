@@ -1,22 +1,24 @@
-{{#if cart}}
+<h1 class="title-principal-productView container">Productos Seleccionados</h1>
+
+{{#if cart1}}
     <div class="card">
-    <p>cart {{cart._id}}</p>
+    <p class = "mt-5">cart {{cart1._id}}</p>
     <ul>
-        {{#each cart.productGet}}
+        {{#if productGet.cart1}}
         <li>
             <div class="bg-secondary">
                 <img src="" alt="Imagen"
                     class="card-image">
 
-            <p>Nombre del producto: {{this.productGet.title}}</p>
-            <p>Precio: $ {{this.productGet.price}}</p>
-            <p>Cantidad: {{this.quantity}}</p>
+            <p>Nombre del producto: {{productGet.title}}</p>
+            <p>Precio: $ {{productGet.price}}</p>
+            <p>Cantidad: {{productGet.quantity}}</p>
             </div>
         </li>
         
-        {{/each}}
+        {{/if}}
     </ul>
-    <button class="card-button bg-success">Comprar</button>
+    <button class="card-button bg-warning">Comprar</button>
     </div>
    
 {{/if}}

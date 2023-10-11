@@ -8,11 +8,10 @@ const {checkAutentication, UserOk} = require('../middlewares/authenticator.middl
 
 
 
+
 router.post('/', checkAutentication,  CartController.createCart)
 
 router.get('/', CartController.getAllCarts )
-
-//router.get('/:cid/products/:pid', UserOk, CartController.getProductByIdCart)
 
 //agrega el carrito con el producto seleccionado
 router.post('/:id/products/:id', UserOk, CartController.addProductToCart)

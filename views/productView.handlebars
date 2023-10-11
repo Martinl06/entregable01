@@ -2,6 +2,7 @@
 <div class="box-product">
 <h1 class="title-principal-productView container">Productos Seleccionados</h1>
 {{#if productGet}}
+{{#if cart1}}
 <div class="card container mt-5"style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
@@ -10,13 +11,14 @@
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">{{productGet.name}}</h5>
+        <p class="card-text">el carrito es: {{cart1._id}}</p>
         <p class="card-text"> ID: {{productGet._id}}</p>
         <p class="card-text"> Description: {{productGet.description}}</p>
         <p class="card-text"><small class="text-muted">Precio: $ {{productGet.price}}</small></p>
         <p class="card-text"><small class="text-muted">Stock: {{productGet.stock}}</small></p>
         <p class="card-text"><small class="text-muted">Código: {{productGet.code}}</small></p>
         <p class="card-text"><small class="text-muted">Género: {{productGet.genero}}</small></p>
-        <form action="/api/cart/{{cart._id}}api/products/{{product._id}}" method="GET">
+        <form action="/api/cart/{{cart1._id}}/products/{{productGet._id}}" method="POST">
             <button type="submit" class="btn btn-primary">Agregar al carrito</button>
         </form>
 
@@ -25,5 +27,6 @@
     </div>
   </div>
 </div>
+{{/if}}
 {{/if}}
 </div>

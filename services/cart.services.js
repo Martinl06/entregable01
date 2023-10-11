@@ -32,12 +32,11 @@ class CartService {
     }
 
     async getCartID(_id){
-        const cart = await this.cartId(_id)
+        const cart = await cartClass.cartId(_id)
         if(!cart){
             return "No existe el carrito"
-        }else{
-            return cart
-        }
+          }
+          return cart
     } 
     async deleteCart(_id){
         const cart = await this.cartId(_id)

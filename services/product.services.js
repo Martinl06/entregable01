@@ -1,3 +1,4 @@
+const { error } = require('winston');
 const ProductClass = require ('../dao/mongoDB/clases/products.dao.js')
 const productClass = new ProductClass()
 
@@ -18,9 +19,9 @@ class ProductService {
         }
     }
 
-    async getProductById(id) {
+    async getProductById(pid) {
         try {
-            const product = await productClass.getProductById(id);
+            const product = await productClass.getProductById(pid);
             return product;
         } catch (err) {
             console.log(err);
@@ -47,14 +48,12 @@ class ProductService {
         try {
             return await productClass.deleteProduct(id);
         } catch (err) {
-            console.log(err);
+            console.log(err.Error);
         }
     }
 
     async updateStockProduct(_id, product) {
         try {
-            if (!_id) throw new Error('Invalid _id');
-            // this.productValidation(product.name, product.description, product.price, product.thumbnail, product.code, product.stock, product.category, product.genero);
             const updatedProduct = await productClass.updateOne(_id, {stock:product});
             console.log(`The stock product with id: ${_id} was updated succesfully!`);
             return updatedProduct;
@@ -77,6 +76,14 @@ class ProductService {
     async getProduct(_id){
         const product = await productClass.getProduct(_id);
         return product;
+    }
+
+    async getArrProductsData(arr) {
+        try {
+            return await productClass.getArrProductsData(arr);
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     async generateMockFakerProducts(){

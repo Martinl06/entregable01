@@ -1,24 +1,39 @@
 <h1 class="title-principal-productView container">Productos Seleccionados</h1>
-
-{{#if cart1}}
-    <div class="card">
-    <p class = "mt-5">cart {{cart1._id}}</p>
-    <ul>
-        {{#if productGet.cart1}}
-        <li>
-            <div class="bg-secondary">
-                <img src="" alt="Imagen"
-                    class="card-image">
-
-            <p>Nombre del producto: {{productGet.title}}</p>
-            <p>Precio: $ {{productGet.price}}</p>
-            <p>Cantidad: {{productGet.quantity}}</p>
-            </div>
-        </li>
         
-        {{/if}}
-    </ul>
-    <button class="card-button bg-warning">Comprar</button>
-    </div>
-   
-{{/if}}
+            {{#if cart}}
+ <div class="container">
+    <h5>Total: ${{this.product.price}} </h5>
+    <h5>Total Items:  {{this.product.quantity}}</h5>
+</div>
+
+<div class="container">
+    <table class="table table-striped ">
+        <thead class="thead-dark ">
+            <tr>
+            <th scope="col">Thumbnail</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each cart.product}}
+            <tr>
+            <td><img src="{{this.product.thumbnail}}"  class=" img-card" alt="imagen del producto"></td>
+            <td><h5 class="table-title">{{this.product.name}}</h5></td>
+            <td><h5>$<strong>{{this.product.price}}</strong></h5></td>
+            <td><h5>  {{this.quantity}}</h5></td>
+            <td><input type="submit" class="link" value="Delete" id="ButtonDelete" onclick="deleteProduct{{this.product._id}}"></input></td>
+            </tr>
+            {{/each}}
+            <a class="btn btn-outline-warning mt-2" href='/api/cart/{{cart._id}}/purchase'>Purchase</a>
+            {{/if}}
+
+        </tbody>
+    </table>
+</div> 
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/index.js"></script>
+
+

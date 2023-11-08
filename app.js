@@ -15,7 +15,7 @@ const compression = require('express-compression');
 //conect to mongo
 const mongoose = require('mongoose');
 const MongoManagerDB = require('./dao/mongoDB/mongoDB.js');
-const mongoManagerDB = new MongoManagerDB('mongodb+srv://martinlujan0666:Martin1470@ecommerce.v4lpkit.mongodb.net/ecommerce');
+const mongoManagerDB = new MongoManagerDB(config.URL_MONGODB);
 
 //import products
 const Message = require ('./dao/mongoDB/models/modelMessages.js')
@@ -135,24 +135,27 @@ const products = await productService.getAllProducts()
     socket.emit('NewProduct', products)
 
     socket.on( 'NewProduct', async (NewProduct) => { 
-        productService.addProduct(NewProduct)
+       await productService.addProduct(NewProduct)
     })
 
     socket.on('ProductDelete', async (ProductDelete) => {
-        productService.deleteProduct(ProductDelete)
+       await productService.deleteProduct(ProductDelete)
         socket.emit('ProductDelete', products)
     })
 
-    socket.emit('allMessages', await Message.find())
+    socket.on('newMessage', async (data) => {
+        const message = new Message(data);
+        await message.save();
+        
+        // Después de guardar el nuevo mensaje, emite 'allMessages' a todos los clientes
+        const allMessages = await Message.find();
+        io.sockets.emit('allMessages', allMessages);
 
-    socket.on('newMessage', async (data) =>{
-        const messages =  new Message(data)
-        await messages.save(data)
-        io.sockets.emit('allMessages', messages)
-       
-        })
+    })
 
-        })
+   
+
+})
     
 
 const SERVER_PORT = config.port ;

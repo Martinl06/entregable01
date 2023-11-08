@@ -11,7 +11,7 @@ class MessageController{
             const newMessage = await chatService.addMessage(message)
             res.status(201).send({data: newMessage, message: "Mensaje creado"})
         } catch (error) {
-            res.status(500).send(`Error al crear mensaje: ${error}`)
+            res.status(500).send(`Error al crear mensaje: ${error.Error}`)
         }
     }
     
@@ -21,7 +21,7 @@ class MessageController{
             const messages = await chatService.getAllMessages()
             return res.status(200).render('chat', {messages})
         } catch (error) {
-            res.status(500).send(`Error al buscar mensajes: ${error}`)
+            res.status(500).send(`Error al buscar mensajes: ${error.Error}`)
         }
     }
 

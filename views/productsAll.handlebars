@@ -2,17 +2,13 @@
   <div class = "fluid row">
     <div class = "col-6 cards">
   {{#each productsArray}}
-    <div class="card container mt-3" style="width: 18rem;">
-  <img src= '' class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">{{this.name}}</h5>
-    <p class="card-text">ID: {{this._id}}</p>
-    <p class="card-text">PRECIO: $ {{this.price}}</p>
-    <p class="card-text">DESCRIPCION: {{this.description}}</p>
-    <p class="card-text">CÓDIGO: {{this.code}}</p>
-    <p class="card-text">STOCK: {{this.stock}}</p>
-    <p class="card-text">GÉNERO: {{this.genero}}</p>
-    <a href="/api/products/{{this._id}}" class="btn btn-primary">Ver</a>
+    <div class="card container mt-3 cardsBody" style="width: 18rem;">
+  <img src= {{this.thumbnail}} class="card-img-top mb-3" alt="...">
+  <div class="card-body mt-3">
+    <h4 class="card-title mb-4">{{this.name}}</h4>
+    <h6 class="card-text mb-4">PRECIO: $ {{this.price}}</h6>
+    <h6 class="card-text">GÉNERO: {{this.genero}}</h6>
+    <a href="/api/products/{{this._id}}" class="btn btn-primary mt-2">Ver</a>
   </div>
 </div>
   {{/each}}

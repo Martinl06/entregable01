@@ -51,12 +51,13 @@ class ProductController{
         }
     }
 
-//funcion para obtener un solo producto
+// funcion para obtener un solo producto
     async getProductById(req, res){
 
-        const IdCart = req.user.cart
+        const IdCart = req.session.user.cart
         const cart = await cartService.getCartID(IdCart)
-        const ID = req.params.id;
+        console.log(cart)
+        const ID = req.params.pid;
         const product1 = await productService.getProduct(ID)
             if (!product1) {
               return res.status(404).send('Producto no encontrado');
@@ -64,6 +65,7 @@ class ProductController{
           
             const productGet = {
               _id: product1._id,
+              thumbnail: product1.thumbnail,
               name: product1.name,
               description: product1.description,
               price: product1.price,
@@ -74,8 +76,7 @@ class ProductController{
             };
 
             const cart1 = {
-                _id: cart._id,
-            
+               _id: cart._id,
             }
 
           
@@ -83,6 +84,7 @@ class ProductController{
     }
 }
 
+    
 
 
     async create (req, res) {
@@ -99,21 +101,15 @@ class ProductController{
 
 
     async deleteProduct (req, res) {
-        try{
-            const id = req.params.id
-            const product = await productService.deleteProduct(id)
-            return res.status(200).json({
-                status: 'success',
-                message: 'Producto eliminado',
-                payload: product
-            })
-        }catch(err){
-            console.log(err)
-            return res.status(500).json({
-                status: 'error',
-                message: 'Error al eliminar el producto',
-                data:{}
-            })
+        const { pid } = req.params;
+        try {
+            const result = await productService.deleteProduct(pid);
+            if (result.ok == true) {
+                return res.status(201).send({ ok: true, msg: result.msg });
+            }
+            res.status(result.status).send({ ok: false, msg: result.error });
+        } catch (error) {
+            res.status(500).send(error.Error);
         }
     }
 

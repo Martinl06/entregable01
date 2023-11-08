@@ -2,11 +2,6 @@ const mongoose = require('mongoose')
 
 const cartSchema = new mongoose.Schema({
 
-    date:{
-        type: String,
-        required: true,
-    },
-
     product:{
         type:[
             {

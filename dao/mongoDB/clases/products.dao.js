@@ -22,13 +22,30 @@ class ProductClass {
       }
 
       async getProductById(id) {
-        try {
-            const product = await Product.findById(id).lean();
-            console.log({product})
-        } catch (error) {
-            throw new Error('Error al buscar el producto con id: ' + id);
+            const product = await Product.findOne({ _id: id }).lean()
+            return product;
+        } 
+
+
+        async getProductPriceFromDatabase(productId) {
+            try {
+                // Busca el producto por su _id en la base de datos
+                const product = await Product.findById(productId);
+        
+                if (product) {
+                    // Si se encuentra el producto, devuelve su precio
+                    return product.price;
+                } else {
+                    // Maneja el caso en el que el producto no se encuentra
+                    throw new Error('Producto no encontrado');
+                }
+            } catch (error) {
+                // Maneja cualquier error que pueda ocurrir durante la búsqueda del producto
+                console.error(error);
+                throw new Error('Error al obtener el precio del producto');
+            }
         }
-    }
+    
 
     updateProductByID = async (id, newProps) =>{     
         try {
@@ -38,6 +55,7 @@ class ProductClass {
             return updatedProduct;
         } catch (error) {
             console.log(error)
+            throw new Error('Error al actualizar el producto');
         }
     }
 
@@ -62,13 +80,38 @@ class ProductClass {
       }
     }
 
-    async getProduct(id){
+    async getProduct(_id){
         try{
-            const product = await Product.findOne({_id:id})
+            const product = await Product.findById(_id).lean()
             return product
     }   catch(err){
             console.log(err)
         }
+    }
+
+    async getArrProductsData(arr) {
+        const productsData = [];
+      
+        for (const id of arr) {
+          const product = await this.getProductById(id);
+          productsData.push(product);
+        }
+      
+        return productsData;
+    }
+
+    async updateOne(id, product){
+        await Product.updateOne({_id: id},  {
+            name: product.name,
+            description: product.description,
+            price: product.price,
+            thumbnail: product.thumbnail,
+            code: product.code,
+            stock: product.stock,
+            genero: product.genero,
+            status: true
+        });
+       
     }
 
      generateMockFakerProducts(){

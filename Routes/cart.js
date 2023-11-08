@@ -13,8 +13,10 @@ router.post('/', checkAutentication,  CartController.createCart)
 
 router.get('/', CartController.getAllCarts )
 
+router.get ('/:cid',CartController.getCart)
+
 //agrega el carrito con el producto seleccionado
-router.post('/:id/products/:id', UserOk, CartController.addProductToCart)
+router.post('/:cid/products/:pid', UserOk, CartController.addProductToCart)
 
 //elimina el producto seleccionado del carrito
 router.delete('/:id/products/:id ', UserOk, CartController.deleteProductFromCart)
@@ -23,17 +25,16 @@ router.delete('/:id/products/:id ', UserOk, CartController.deleteProductFromCart
 router.put('/:id', CartController.UpdateCart)
 
 //actualiza solo la cantidad de ejemplares del producto por cualquier cantidad pasada desde req.body
-router.put('/:id/products/:pid', CartController.UpdateProduct)
+router.put('/:id/products/:id', CartController.UpdateProduct)
 
 //elimina todos los productos del carrito
 router.delete('/:id', UserOk, CartController.deleteCart)
 
-//devuelve el carrito con el id pasado por params
-router.get('/:id', checkAutentication, CartController.getByIdCart)
+router.get('/:cid/purchase', CartController.purchase,);  
 
-// Ruta para finalizar el proceso de compra
-router.get('/:id/purchase', CartController.purchase );
+router.get('/:cid/purchase', CartController.getPurchase);
 
+router.delete('/:cid/purchase', CartController.deletePurchase);
 
 
 module.exports = router;

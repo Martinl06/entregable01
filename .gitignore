@@ -4,3 +4,4 @@
 .env.development
 config.env.production
 config.env.development
+errors.log

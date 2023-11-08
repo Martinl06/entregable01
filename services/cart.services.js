@@ -2,6 +2,11 @@ const CartClass = require('../dao/mongoDB/clases/cart.dao.js')
 const cartClass = new CartClass()
 const ProductService = require('./product.services.js')
 const productService = new ProductService()
+const Cart = require('../dao/mongoDB/models/modelCarts.js')
+const ProductClass = require('../dao/mongoDB/clases/products.dao.js')
+const productClass = new ProductClass()
+const TicketService = require('./ticket.services.js')
+const ticketService = new TicketService()
 
 
 
@@ -31,13 +36,11 @@ class CartService {
         return await this.readCart()
     }
 
-    async getCartID(_id){
-        const cart = await cartClass.cartId(_id)
-        if(!cart){
-            return "No existe el carrito"
-          }
-          return cart
+    async getCartID(cid){
+            const CartByID = await cartClass.getCartID(cid)
+            return CartByID;
     } 
+
     async deleteCart(_id){
         const cart = await this.cartId(_id)
         if(!cart){
@@ -46,13 +49,51 @@ class CartService {
             return cart.deleteOne()
         }
     }
-    async addProductToCart(cid,pid){
-        try {
-            return await cartClass.addProductToCart(cid,pid)
-        } catch (error) {
-            console.log(error);
+
+  
+
+  async addProductToCart(cid, pid) {
+    try {
+        const cartID = await cartClass.cartId(cid);
+        console.log(cartID);
+        
+        // Verificar si el producto ya está en el carrito
+        const productIndex = cartID.product.find((pId) => pId.product.equals(pid));
+
+        if (productIndex) {
+            productIndex.quantity+=1;
+        } else {
+            cartID.product.push({ product: pid, quantity: 1 });
         }
+
+        // Calcular la suma total de productos en el carrito
+        const totalQuantity = cartID.product.reduce((total, product) => total + product.quantity, 0);
+
+        // Calcular el total de precios de los productos en el carrito (considerando el precio de cada producto)
+        const totalPrice = cartID.product.reduce((total, product) => {
+            const productData =  productClass.getProductPriceFromDatabase(product.product);
+            return total + productData.price * product.quantity;
+        }, 0);
+
+        // Actualizar la cantidad total y el total de precios en el carrito
+        cartID.totalQuantity = totalQuantity;
+        cartID.totalPrice = totalPrice;
+
+        // Guardamos el carrito actualizado
+        await cartID.save();
+
+        return `Producto agregado al carrito. Total de productos: ${totalQuantity}, Total: ${totalPrice}`;
+    } catch (error) {
+        console.log(error);
+        return "Hubo un error al agregar el producto al carrito";
     }
+}
+
+
+
+
+
+
     async UpdateCart(cid){
         try {
             return await cartClass.UpdateCart(cid)
@@ -80,12 +121,11 @@ class CartService {
     
           let cart = await cartClass.updateProduct(cartId, arrayproductId)
     
-    
           console.log(`The products of cart with id:${cartId} was updated succesfuly`)
           return cart;
     
         } catch (error) {
-          console.log("---------------------------------", error)
+          console.log(error)
           throw new Error(error.message);
         }
       }
@@ -93,14 +133,16 @@ class CartService {
       async purchase(cartId, user) {
         try {
     
-          let cart = await cartClass.findOne(cartId)
+          let cart = await cartClass.cartId(cartId)
+          console.log(cart)
           if (cart) {
             // consigue id de productos en cart
-            const productIds = cart.products.map(product => product.idProduct.toString());
+            const productIds = cart.product.map(id => id.product)
             // consigue quantity de productos en cart
-            const productsQuantity = cart.products.map(quan => quan.quantity)
+            const productsQuantity = cart.product.map(quan => quan.quantity)
             // consigue datos de los productos en cart
             const productsData = await productService.getArrProductsData(productIds)
+            console.log(productsData)
     
             let amount = 0;
             let prodOutStock = []
@@ -135,7 +177,9 @@ class CartService {
     
             //Usamos .createTicket y  Creamos el ticket
     
-            const ticket = await TicketService.createTicket({
+            const ticket = await ticketService.createTicket({
+              code: Math.floor(Math.random() * (100000 - 1)) + 1,
+              purchase_datetime: new Date(),
               amount,
               purchaser: user,//Este es el email del user que lo sacamos de req.session
               // cartId

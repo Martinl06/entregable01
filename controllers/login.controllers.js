@@ -7,6 +7,8 @@ const { recoveryPass } = require('../utils/nodemailer.js')
 const User = require('../dao/mongoDB/models/modelUser.js')
 const { verifyToken } = require('../dao/config/jwt.js')
 const { comparePassword, createPassword } = require('../utils/bcrypts.js')
+const CartService = require('../services/cart.services.js')
+const cartService = new CartService()
 
 
 
@@ -41,19 +43,24 @@ class LoginController{
     }
 
     async perfil(req, res){
-        const {email, role, password} = req.session.user
+        const {email, name, lastName, userName} = req.session.user
+        const IdCart = req.user.cart
+        const cart = await cartService.getCartID(IdCart)
         
         const user = {
+            name: name,
+            lastName: lastName,
             email: email,
-            role: role,
-            password: password,
+            userName: userName
         }
-        //console.log(user)
+        const cartID = {
+            _id: cart._id
+        }
         
         //renderiza los productos con paginacion en el perfil del user
         const {page, limit} = req.query
         const products = await productService.getAll(page, limit)
-        //console.log(products)
+        
         let productsArray = products.docs.map((product)=>{
             return {
                 _id: product._id,
@@ -72,7 +79,7 @@ class LoginController{
         for (let i = 1; i <= rest.totalPages + 1; i++) {
             links.push({label:i, href:'http://localhost:8080/api/products/?page=' + i})
         }
-        return res.status(200).render('perfil',{productsArray, user, pagination: rest, links})
+        return res.status(200).render('perfil',{productsArray, cartID, user, pagination: rest, links})
     
     }
      changeRol = async (req, res) => {
@@ -142,7 +149,7 @@ class LoginController{
             await user.save();
             res.status(200).send('La contraseña ha sido modificada');
         } catch (error) {
-            console.error(error);
+            console.error(error.Error);
             if (error.message === 'Token invalid or expired') {
                 return res.redirect('/api/forgotPassword');
             }

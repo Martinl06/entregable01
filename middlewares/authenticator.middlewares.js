@@ -1,9 +1,9 @@
+//midleware para verificar si el usuario esta logueado
 function checkAutentication (req, res, next) { 
-    if(req.session.user) {
-        next()
-    } else {
-        res.redirect('/api/sessions/login')
+    if(req.isAuthenticated()){
+        return next()
     }
+    res.redirect('/api/sessions/login')
 }
 
 function isUser(req, res, next) {

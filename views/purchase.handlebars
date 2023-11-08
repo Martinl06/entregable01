@@ -1,0 +1,14 @@
+
+<div class = "cardPurchase">
+<div class="card text-bg-secondary container" style="max-width: 25rem;">
+  <h1 class="card-header container">Gracias!</h1>
+  <div class="card-body">
+  <h3>Tu compra fue realizada con exito!</h5>
+    <h5 class="card-title">Su compra fue realizada el dia: {{newTk.purchase_datetime}} con el código: {{newTk.code}}</h5>
+    <p class="card-text">Número de ticket: {{newTk.id}} con el precio de ${{newTk.amount}}</p>
+    <p>Muchas gracias por comprar con nosotros {{newTk.purchaser}}.</p>
+    <a href="/api/products" class="btn btn-primary">Volver a la tienda</a>
+
+  </div>
+</div>
+</div>

@@ -18,12 +18,12 @@ class TicketService {
         }
     }
 
-    async updateStock(prod) {
-        prod.map(async (prod) => {
-            await productService.updateStockProduct(prod.idProduct, prod.stock)
-            console.log("se modifico stock de los product",prodStock);
-    
-        })
+    async updateStock(prodStock) {
+        try {
+            return await productService.updateStockProduct(prodStock)
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     async getTickets() {
@@ -35,6 +35,11 @@ class TicketService {
         const newTk = await ticketClass.deletePurchase();
         return newTk
 
+    }
+
+    async getTicket(){
+        const newTk = await ticketClass.getTicket();
+        return newTk
     }
 
 }

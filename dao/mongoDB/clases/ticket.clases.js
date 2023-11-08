@@ -17,6 +17,12 @@ class TicketClass{
             const newTk = await Ticket.deleteMany({})
             return newTk
                     }
+
+        async getTicket(){
+                const newTk = await Ticket.find({})
+                return newTk
+        }        
+        
         
 }
 

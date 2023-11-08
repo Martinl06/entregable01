@@ -3,6 +3,12 @@
 const socketCliente = io()
 
 
+socketCliente.on('allMessages', (data) => {
+  renderMessage(data)})
+
+  
+
+
 function getChatForm() {
     const NewChat = {
       user: document.getElementById('user').value,
@@ -14,15 +20,13 @@ function getChatForm() {
   }
 
   const chat = document.getElementById('chat');
+
   chat.addEventListener('submit', (e) => {
         e.preventDefault();
         chat.reset();
       }
       )
-      
-      socketCliente.on('allMessages', (data) => {
-        renderMessage(data)
-  })
+  
 
     function renderMessage(data) {
         let html = data.map(elem => {

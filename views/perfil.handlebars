@@ -1,46 +1,12 @@
+<br></br>
 
-<div>
+<div class="container mt-5">
     {{#if user}}
-    <nav class="navbar bg-dark border-bottom border-bottom-dark navbarPerfil" data-bs-theme="dark">
-  <div class="container">
-    <span class="navbar-text">
-        <h3> {{user.role}} Bienvenido // {{user.email}} // </h3>
-    </span>
-  </div>
-</nav>
-    {{/if}} 
+    <h3>Bienvenido {{user.name}} {{user.lastName}}</h3><br>
+    <h4>Email: {{user.email}}</h4>
+    <h4>UserName: {{user.userName}}</h5>
+    <a href="/api/cart/{{cartID._id}}" class="btn btn-primary">Mi Carrito de Compras</a>
+    {{else}}
+    <h3>Datos no enviados</h3>
+    {{/if}}
 </div>
-<h1 class="title-principal container mt-5">Lista de Productos</h1>
-  <div class = "fluid row">
-    <div class = "col-6 cards mt-5">
-  {{#each productsArray}}
-    <div class="card container mt-3" style="width: 18rem;">
-  <img src= "https://imgs.search.brave.com/RYGjKPhiy8UkyqF1mrw7VdLRmoMctxFWiR0COFKq9iY/rs:fit:860:0:0/g:ce/aHR0cDovL3R1c2lt/YWdlbmVzZGUuY29t/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDE2/LzA2L2NhbXBlcmFz/LWRlLWN1ZXJvLTEu/anBn" class="card-img-top" alt="imagen del producto">
-  <div class="card-body">
-    <h5 class="card-title">{{this.name}}</h5>
-    <p class="card-text">ID: {{this._id}}</p>
-    <p class="card-text">PRECIO: $ {{this.price}}</p>
-    <p class="card-text">DESCRIPCION: {{this.description}}</p>
-    <p class="card-text">CÓDIGO: {{this.code}}</p>
-    <p class="card-text">STOCK: {{this.stock}}</p>
-    <p class="card-text">GÉNERO: {{this.genero}}</p>
-    <a href="/api/products/{{this._id}}" class="btn btn-primary">Ver</a>
-  </div>
-</div>
-  {{/each}}
-  </div>
-</div>
-<div class = "container paginate">
-  {{#if pagination.hasPrevPage}}
-    <a style='font-size: 20;' href='/api/products/?page={{pagination.prevPage}}'>⬅{{pagination.prevPage}}</a>
-  {{/if}}
-  <a style='font-size: 20;' href='#'>{{pagination.page}}</a>
-  {{#if pagination.hasNextPage}}
-    <a style='font-size: 20;' href='/api/products/?page={{pagination.nextPage}}'>{{pagination.nextPage}}➡</a>
-  {{/if}}
-  <br />
-  <br />
-  {{#each links}}
-    <a href='{{this.href}}'>{{this.label}}</a>
-  {{/each}}
-  </div>

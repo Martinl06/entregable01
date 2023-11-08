@@ -4,7 +4,8 @@ const modelUser = require('../mongoDB/models/modelUser.js')
 const { createPassword, comparePassword } = require('../../utils/bcrypts.js');
 const CartService = require('../../services/cart.services.js');
 const cartService = new CartService()
-const UsersDTO = require('../dto/users.dto.js')
+const Cart = require('../mongoDB/models/modelCarts.js')
+
 
 
 
@@ -24,10 +25,8 @@ const initializePassport = () => {
                 
                 }
                 const email = userData.email;
-                const cart = {}
-                const date = new Date();
-                cart.date = date;
-                const newCart = await cartService.addCart(cart);
+                
+                const newCart = new Cart();
                 const role = (email === 'adminCoder@coder.com') ? 'admin' : 'user';
                 let userNew = {
                     name: userData.name,
@@ -36,8 +35,8 @@ const initializePassport = () => {
                     email: userData.email,
                     role: role,
                     age: userData.age,
-                    cart: newCart,
-                    date: date,
+                    cart: await newCart.save(),
+                    
                     password: createPassword(userData.password),
                 }
                 
@@ -64,11 +63,12 @@ const initializePassport = () => {
             if(!comparePassword(password, user.password)){
                 console.log('Contraseña incorrecta')
                 return done (null, false)
+
             }
             return done(null, user)
-            }catch{
-                return done("error al validar user" + err)
-            }
+        } catch (err) {
+            return done(err); // Pasa el error directamente
+        }
         }
         )),
 

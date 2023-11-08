@@ -158,7 +158,7 @@ const products = await productService.getAllProducts()
 })
     
 
-const SERVER_PORT = config.port ;
+const SERVER_PORT = config.port || 8080;
 server.listen(SERVER_PORT, () =>{ 
 console.log('Servidor escuchando en puerto: ' + SERVER_PORT)
 mongoManagerDB.connectionMongoDB()

@@ -18,11 +18,6 @@ console.log("Mode Option: ", program.opts());
 
 const enviroment = program.opts().mode
 
-//revisar porque no funciona
-
-dotenv.config({
-    path:enviroment === "production" ? "../config/.env.production " : "../config/.env.dev"
-});
 
 console.log("Enviroment: ", enviroment);
 
